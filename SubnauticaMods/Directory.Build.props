@@ -1,0 +1,24 @@
+<Project>
+
+
+	<PropertyGroup>
+		<LangVersion>11.0</LangVersion>
+	</PropertyGroup>
+
+
+	<!--PropertyGroup-->
+	<!--PostBuildEvent-->
+	<!--mkdir "C:\Program Files (x86)\Steam\steamapps\common\Subnautica\BepInEx\plugins\$(TargetName)"-->
+	<!--copy /Y "$(TargetPath)" "C:\Program Files (x86)\Steam\steamapps\common\Subnautica\BepInEx\plugins\$(TargetName)"-->
+	<!--IF EXIST "C:\Program Files (x86)\Steam\steamapps\common\Subnautica\BepInEx\plugins\$(TargetName)\$(TargetName).zip" ( del "C:\Program Files (x86)\Steam\steamapps\common\Subnautica\BepInEx\plugins\$(TargetName)\$(TargetName).zip")-->
+	<!--"C:\Program Files\7-Zip\7z.exe" a "C:\Program Files (x86)\Steam\steamapps\common\Subnautica\BepInEx\plugins\$(TargetName)\$(TargetName).zip" "C:\Program Files (x86)\Steam\steamapps\common\Subnautica\BepInEx\plugins\$(TargetName)"-->
+	<!--/PostBuildEvent-->
+	<!--/PropertyGroup-->
+
+
+	<!--PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' "-->
+	<!--AllowUnsafeBlocks>true</AllowUnsafeBlocks-->
+	<!--/PropertyGroup-->
+
+
+</Project>

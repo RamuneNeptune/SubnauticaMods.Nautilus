@@ -1,0 +1,85 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33723.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mods", "Mods", "{EC2CEA14-2FEC-4764-B41C-8163C5FFACFF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Other", "Other", "{9C982577-70F7-41CF-A14D-3F619A796A69}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{13E78654-9208-4693-B4BC-2EFF57E06226}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		nuget.config = nuget.config
+	EndProjectSection
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "RamuneLib", "RamuneLib\RamuneLib.shproj", "{CBD3CC10-BBDA-4920-A0DE-124BE71650A8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "-", "RadiantBlade1\-.csproj", "{FAAC08F9-E0D4-4BFC-833B-5DC43723032C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadiantBlade 1.0.0", "RadiantBlade\RadiantBlade 1.0.0.csproj", "{4CFB3351-A4EC-4A7B-8C2E-B6FEC69DF95F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Completed", "Completed", "{EEFC6651-1C3F-4FA8-808A-51109E01496C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "In-progress", "In-progress", "{B9752D78-4A37-4D30-B433-B10F05CD4A23}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeamothSprint 1.0.1", "SeamothSprint\SeamothSprint 1.0.1.csproj", "{46C5CABF-7294-4203-A6F5-EC3EC8B0B7A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StasisModule 1.0.0", "StasisModule\StasisModule 1.0.0.csproj", "{D113021B-3132-4BFA-8AB7-827868B40DAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TabTest 1.0.0", "TabTest\TabTest 1.0.0.csproj", "{31482D04-8CAC-4841-8610-CC961F3ACFC8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FAAC08F9-E0D4-4BFC-833B-5DC43723032C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAAC08F9-E0D4-4BFC-833B-5DC43723032C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAAC08F9-E0D4-4BFC-833B-5DC43723032C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAAC08F9-E0D4-4BFC-833B-5DC43723032C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CFB3351-A4EC-4A7B-8C2E-B6FEC69DF95F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CFB3351-A4EC-4A7B-8C2E-B6FEC69DF95F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CFB3351-A4EC-4A7B-8C2E-B6FEC69DF95F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CFB3351-A4EC-4A7B-8C2E-B6FEC69DF95F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46C5CABF-7294-4203-A6F5-EC3EC8B0B7A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46C5CABF-7294-4203-A6F5-EC3EC8B0B7A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46C5CABF-7294-4203-A6F5-EC3EC8B0B7A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46C5CABF-7294-4203-A6F5-EC3EC8B0B7A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D113021B-3132-4BFA-8AB7-827868B40DAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D113021B-3132-4BFA-8AB7-827868B40DAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D113021B-3132-4BFA-8AB7-827868B40DAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D113021B-3132-4BFA-8AB7-827868B40DAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31482D04-8CAC-4841-8610-CC961F3ACFC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31482D04-8CAC-4841-8610-CC961F3ACFC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31482D04-8CAC-4841-8610-CC961F3ACFC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31482D04-8CAC-4841-8610-CC961F3ACFC8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CBD3CC10-BBDA-4920-A0DE-124BE71650A8} = {9C982577-70F7-41CF-A14D-3F619A796A69}
+		{FAAC08F9-E0D4-4BFC-833B-5DC43723032C} = {9C982577-70F7-41CF-A14D-3F619A796A69}
+		{4CFB3351-A4EC-4A7B-8C2E-B6FEC69DF95F} = {B9752D78-4A37-4D30-B433-B10F05CD4A23}
+		{EEFC6651-1C3F-4FA8-808A-51109E01496C} = {EC2CEA14-2FEC-4764-B41C-8163C5FFACFF}
+		{B9752D78-4A37-4D30-B433-B10F05CD4A23} = {EC2CEA14-2FEC-4764-B41C-8163C5FFACFF}
+		{46C5CABF-7294-4203-A6F5-EC3EC8B0B7A1} = {EEFC6651-1C3F-4FA8-808A-51109E01496C}
+		{D113021B-3132-4BFA-8AB7-827868B40DAD} = {B9752D78-4A37-4D30-B433-B10F05CD4A23}
+		{31482D04-8CAC-4841-8610-CC961F3ACFC8} = {B9752D78-4A37-4D30-B433-B10F05CD4A23}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {983F3B14-3E65-4519-A019-8D289C846022}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		RamuneLib\RamuneLib.projitems*{31482d04-8cac-4841-8610-cc961f3acfc8}*SharedItemsImports = 4
+		RamuneLib\RamuneLib.projitems*{46c5cabf-7294-4203-a6f5-ec3ec8b0b7a1}*SharedItemsImports = 4
+		RamuneLib\RamuneLib.projitems*{4cfb3351-a4ec-4a7b-8c2e-b6fec69df95f}*SharedItemsImports = 4
+		RamuneLib\RamuneLib.projitems*{cbd3cc10-bbda-4920-a0de-124be71650a8}*SharedItemsImports = 13
+		RamuneLib\RamuneLib.projitems*{d113021b-3132-4bfa-8ab7-827868b40dad}*SharedItemsImports = 4
+		RamuneLib\RamuneLib.projitems*{faac08f9-e0d4-4bfc-833b-5dc43723032c}*SharedItemsImports = 5
+	EndGlobalSection
+EndGlobal
