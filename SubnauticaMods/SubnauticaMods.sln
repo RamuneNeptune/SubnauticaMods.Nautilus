@@ -10,8 +10,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{13E78654-9208-4693-B4BC-2EFF57E06226}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
-		.gitattributes = .gitattributes
-		.gitignore = .gitignore
 		nuget.config = nuget.config
 	EndProjectSection
 EndProject
@@ -30,6 +28,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StasisModule 1.0.0", "StasisModule\StasisModule 1.0.0.csproj", "{D113021B-3132-4BFA-8AB7-827868B40DAD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TabTest 1.0.0", "TabTest\TabTest 1.0.0.csproj", "{31482D04-8CAC-4841-8610-CC961F3ACFC8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StalkersDropTeethWhenTheyDie 1.0.0", "StalkersDropTeeth\StalkersDropTeethWhenTheyDie 1.0.0.csproj", "{5028E6CD-6A8A-4DAB-A6BD-29A3BFD39FDA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoPassiveScannerRoomPowerDrain 1.0.0", "NoPassiveScannerRoomPowerDrain\NoPassiveScannerRoomPowerDrain 1.0.0.csproj", "{E0D65556-6FB9-4B1E-860E-B2E8352209F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HideMaskInPDA 1.0.0", "HideMaskInPDA\HideMaskInPDA 1.0.0.csproj", "{421BC22B-B46E-408D-838E-E1668B93D22B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +61,18 @@ Global
 		{31482D04-8CAC-4841-8610-CC961F3ACFC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31482D04-8CAC-4841-8610-CC961F3ACFC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31482D04-8CAC-4841-8610-CC961F3ACFC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5028E6CD-6A8A-4DAB-A6BD-29A3BFD39FDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5028E6CD-6A8A-4DAB-A6BD-29A3BFD39FDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5028E6CD-6A8A-4DAB-A6BD-29A3BFD39FDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5028E6CD-6A8A-4DAB-A6BD-29A3BFD39FDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0D65556-6FB9-4B1E-860E-B2E8352209F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0D65556-6FB9-4B1E-860E-B2E8352209F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0D65556-6FB9-4B1E-860E-B2E8352209F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0D65556-6FB9-4B1E-860E-B2E8352209F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{421BC22B-B46E-408D-838E-E1668B93D22B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{421BC22B-B46E-408D-838E-E1668B93D22B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{421BC22B-B46E-408D-838E-E1668B93D22B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{421BC22B-B46E-408D-838E-E1668B93D22B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -70,16 +86,22 @@ Global
 		{46C5CABF-7294-4203-A6F5-EC3EC8B0B7A1} = {EEFC6651-1C3F-4FA8-808A-51109E01496C}
 		{D113021B-3132-4BFA-8AB7-827868B40DAD} = {B9752D78-4A37-4D30-B433-B10F05CD4A23}
 		{31482D04-8CAC-4841-8610-CC961F3ACFC8} = {B9752D78-4A37-4D30-B433-B10F05CD4A23}
+		{5028E6CD-6A8A-4DAB-A6BD-29A3BFD39FDA} = {B9752D78-4A37-4D30-B433-B10F05CD4A23}
+		{E0D65556-6FB9-4B1E-860E-B2E8352209F2} = {B9752D78-4A37-4D30-B433-B10F05CD4A23}
+		{421BC22B-B46E-408D-838E-E1668B93D22B} = {B9752D78-4A37-4D30-B433-B10F05CD4A23}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {983F3B14-3E65-4519-A019-8D289C846022}
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		RamuneLib\RamuneLib.projitems*{31482d04-8cac-4841-8610-cc961f3acfc8}*SharedItemsImports = 4
+		RamuneLib\RamuneLib.projitems*{421bc22b-b46e-408d-838e-e1668b93d22b}*SharedItemsImports = 4
 		RamuneLib\RamuneLib.projitems*{46c5cabf-7294-4203-a6f5-ec3ec8b0b7a1}*SharedItemsImports = 4
 		RamuneLib\RamuneLib.projitems*{4cfb3351-a4ec-4a7b-8c2e-b6fec69df95f}*SharedItemsImports = 4
+		RamuneLib\RamuneLib.projitems*{5028e6cd-6a8a-4dab-a6bd-29a3bfd39fda}*SharedItemsImports = 4
 		RamuneLib\RamuneLib.projitems*{cbd3cc10-bbda-4920-a0de-124be71650a8}*SharedItemsImports = 13
 		RamuneLib\RamuneLib.projitems*{d113021b-3132-4bfa-8ab7-827868b40dad}*SharedItemsImports = 4
+		RamuneLib\RamuneLib.projitems*{e0d65556-6fb9-4b1e-860e-b2e8352209f2}*SharedItemsImports = 4
 		RamuneLib\RamuneLib.projitems*{faac08f9-e0d4-4bfc-833b-5dc43723032c}*SharedItemsImports = 5
 	EndGlobalSection
 EndGlobal

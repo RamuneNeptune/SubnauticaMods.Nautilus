@@ -22,8 +22,8 @@ namespace Ramune.RadiantBlade.Monos
 
         public void Start()
         {
-            attackDist = 5f;
-            damage = 10f;
+            attackDist = 1000f;
+            damage = 10000f;
             renderer = GetComponentInChildren<MeshRenderer>();
         }
 
