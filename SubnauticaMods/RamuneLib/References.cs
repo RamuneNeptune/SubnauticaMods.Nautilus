@@ -45,6 +45,6 @@ global using UWE;
 global using FMOD;
 global using RamuneLib;
 global using static CraftData;
+global using Logger = RamuneLib.InternalLogger;
 global using Colors = RamuneLib.Utilities.Colors;
 global using static RamuneLib.Utilities.ScreenLogger;
-global using Logger = RamuneLib.InternalLogger;

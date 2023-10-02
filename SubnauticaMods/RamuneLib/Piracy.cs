@@ -128,14 +128,14 @@ namespace RamuneLib
                 }
             }
 
-            InternalLogger.Log(">> Piracy was not detected", LogLevel.Info);
+            InternalLogger.LogInternal(">> Piracy was not detected", LogLevel.Info);
             return false;
         }
 
 
         public static void HackTheMainframe()
         {
-            InternalLogger.Log(">> Ahoy, matey! ", LogLevel.Info);
+            InternalLogger.LogInternal(">> Ahoy, matey! ", LogLevel.Info);
 
             foreach(TechType techType in Enum.GetValues(typeof(TechType)))
             {

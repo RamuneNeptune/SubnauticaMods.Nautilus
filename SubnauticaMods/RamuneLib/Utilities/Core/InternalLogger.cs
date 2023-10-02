@@ -6,7 +6,7 @@ namespace RamuneLib
     {
         public static ManualLogSource logger = Utilities._InternalLogger;
 
-        public static void Log(string text, LogLevel level)
+        public static void LogInternal(string text, LogLevel level)
         {
             switch (level)
             {

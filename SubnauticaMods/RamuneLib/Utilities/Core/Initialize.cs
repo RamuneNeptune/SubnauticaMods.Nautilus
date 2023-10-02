@@ -12,11 +12,11 @@ namespace RamuneLib
 
             if(Piracy.Exists()) return;
 
-            InternalLogger.Log($">> Loading harmony patches for '{name} {version}'..", LogLevel.Info);
+            InternalLogger.LogInternal($">> Loading harmony patches for '{name} {version}'..", LogLevel.Info);
 
             harmony.PatchAll();
 
-            InternalLogger.Log($">> Loaded harmony patches for '{name} {version}'..", LogLevel.Info);
+            InternalLogger.LogInternal($">> Loaded harmony patches for '{name} {version}'..", LogLevel.Info);
         }
     }
 }

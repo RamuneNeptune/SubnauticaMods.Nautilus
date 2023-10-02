@@ -1,5 +1,8 @@
 
 
+using Nautilus.Crafting;
+using Newtonsoft.Json;
+
 namespace RamuneLib
 {
     public static partial class Utilities
@@ -15,6 +18,15 @@ namespace RamuneLib
             customPrefab.SetRecipe(recipe)
                 .WithFabricatorType(craftTreeType)
                 .WithStepsToFabricatorTab(stepsToFabricator);
+
+            return customPrefab;
+        }
+
+
+        public static CustomPrefab WithRecipe(this CustomPrefab customPrefab, RecipeData recipe, CraftTree.Type craftTreeType)
+        {
+            customPrefab.SetRecipe(recipe)
+                .WithFabricatorType(craftTreeType);
 
             return customPrefab;
         }

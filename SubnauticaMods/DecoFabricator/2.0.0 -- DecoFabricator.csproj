@@ -6,11 +6,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{31482D04-8CAC-4841-8610-CC961F3ACFC8}</ProjectGuid>
+    <ProjectGuid>{B3CA2907-96A4-4F33-AA2A-6A42F70EFA3D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ramune.TabTest</RootNamespace>
-    <AssemblyName>TabTest</AssemblyName>
+    <RootNamespace>Ramune.DecoFabricator</RootNamespace>
+    <AssemblyName>DecoFabricator</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
