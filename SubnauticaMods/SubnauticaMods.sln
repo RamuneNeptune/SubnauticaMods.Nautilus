@@ -37,7 +37,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.0.0 -- RamunesTextureUpsc
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Updating", "Updating", "{C2A25EE3-05E2-47AC-BBD0-F38161D5A1D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrawnSuitLightSwitch", "PrawnSuitLightSwitch\PrawnSuitLightSwitch.csproj", "{69364C13-26FD-44A3-8114-685B7BBCC907}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2.0.0 -- PrawnSuitLightSwitch", "PrawnSuitLightSwitch\2.0.0 -- PrawnSuitLightSwitch.csproj", "{69364C13-26FD-44A3-8114-685B7BBCC907}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FasterScanning", "FasterScanning\FasterScanning.csproj", "{A8601836-3C85-4F6D-898B-28BB0339417C}"
 EndProject
@@ -58,6 +58,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.0.0 -- IonCubeCrafting", "IonCubeCrafting\1.0.0 -- IonCubeCrafting.csproj", "{6D093A79-A8E2-4DE6-A643-F3AADF64A6FC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2.0.0 -- SeaglideUpgrades", "SeaglideUpgrades\2.0.0 -- SeaglideUpgrades.csproj", "{9B448119-10C0-4364-AB65-D54006DABA5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2.0.0 -- OrganizedWorkbench", "OrganizedWorkbench\2.0.0 -- OrganizedWorkbench.csproj", "{8189DD95-5CD6-4392-86B7-E39A788672E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -133,6 +135,10 @@ Global
 		{9B448119-10C0-4364-AB65-D54006DABA5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B448119-10C0-4364-AB65-D54006DABA5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B448119-10C0-4364-AB65-D54006DABA5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8189DD95-5CD6-4392-86B7-E39A788672E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8189DD95-5CD6-4392-86B7-E39A788672E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8189DD95-5CD6-4392-86B7-E39A788672E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8189DD95-5CD6-4392-86B7-E39A788672E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -150,7 +156,7 @@ Global
 		{421BC22B-B46E-408D-838E-E1668B93D22B} = {5C240343-8BF3-47CB-8F9E-57AF31662AF1}
 		{924A947D-0002-4998-B385-68E8844DB096} = {B9752D78-4A37-4D30-B433-B10F05CD4A23}
 		{C2A25EE3-05E2-47AC-BBD0-F38161D5A1D1} = {EC2CEA14-2FEC-4764-B41C-8163C5FFACFF}
-		{69364C13-26FD-44A3-8114-685B7BBCC907} = {C2A25EE3-05E2-47AC-BBD0-F38161D5A1D1}
+		{69364C13-26FD-44A3-8114-685B7BBCC907} = {70D29BC4-8785-4C79-83CC-3F3EBD03C27F}
 		{A8601836-3C85-4F6D-898B-28BB0339417C} = {C2A25EE3-05E2-47AC-BBD0-F38161D5A1D1}
 		{AB2B66E9-D9D9-48C6-9F88-46BFFE983A06} = {5C240343-8BF3-47CB-8F9E-57AF31662AF1}
 		{98630182-8B45-4EF7-B0CC-7AD81774870D} = {5C240343-8BF3-47CB-8F9E-57AF31662AF1}
@@ -161,6 +167,7 @@ Global
 		{E9BA4B5B-43A6-405B-9B84-9EDC1ADC5671} = {C2A25EE3-05E2-47AC-BBD0-F38161D5A1D1}
 		{6D093A79-A8E2-4DE6-A643-F3AADF64A6FC} = {B9752D78-4A37-4D30-B433-B10F05CD4A23}
 		{9B448119-10C0-4364-AB65-D54006DABA5F} = {C2A25EE3-05E2-47AC-BBD0-F38161D5A1D1}
+		{8189DD95-5CD6-4392-86B7-E39A788672E3} = {5C240343-8BF3-47CB-8F9E-57AF31662AF1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {983F3B14-3E65-4519-A019-8D289C846022}
@@ -173,6 +180,7 @@ Global
 		RamuneLib\RamuneLib.projitems*{5028e6cd-6a8a-4dab-a6bd-29a3bfd39fda}*SharedItemsImports = 4
 		RamuneLib\RamuneLib.projitems*{69364c13-26fd-44a3-8114-685b7bbcc907}*SharedItemsImports = 4
 		RamuneLib\RamuneLib.projitems*{6d093a79-a8e2-4de6-a643-f3aadf64a6fc}*SharedItemsImports = 4
+		RamuneLib\RamuneLib.projitems*{8189dd95-5cd6-4392-86b7-e39a788672e3}*SharedItemsImports = 4
 		RamuneLib\RamuneLib.projitems*{924a947d-0002-4998-b385-68e8844db096}*SharedItemsImports = 4
 		RamuneLib\RamuneLib.projitems*{98630182-8b45-4ef7-b0cc-7ad81774870d}*SharedItemsImports = 4
 		RamuneLib\RamuneLib.projitems*{9b448119-10c0-4364-ab65-d54006daba5f}*SharedItemsImports = 4

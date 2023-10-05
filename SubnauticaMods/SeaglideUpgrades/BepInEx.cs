@@ -7,6 +7,7 @@ namespace Ramune.SeaglideUpgrades
     [BepInProcess("Subnautica.exe")]
     public class SeaglideUpgrades : BaseUnityPlugin
     {
+        public static Config config { get; } = OptionsPanelHandler.RegisterModOptions<Config>();
         public static SeaglideUpgrades Instance;
         public static ManualLogSource logger => Instance.Logger;
         public static readonly Harmony harmony = new(GUID);
@@ -18,11 +19,13 @@ namespace Ramune.SeaglideUpgrades
         {
             Utilities.Initialize(harmony, Logger, Name, Version);
 
+            CraftTreeHandler.AddTabNode(CraftTree.Type.Workbench, "Seaglides", "Seaglides", Utilities.GetSprite(TechType.Seaglide));
+
             Items.SeaglideMK1.Patch();
             Items.SeaglideMK2.Patch();
             Items.SeaglideMK3.Patch();
 
-            InternalLogger.LogInternal("> Registered custom Seaglides", LogLevel.Info);
+            InternalLogger.LogInternal(">> Registered custom Seaglides", LogLevel.Info);
         }
     }
 }

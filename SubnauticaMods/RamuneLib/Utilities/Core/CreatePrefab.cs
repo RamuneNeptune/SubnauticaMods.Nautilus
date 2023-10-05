@@ -1,8 +1,5 @@
 
 
-using Nautilus.Crafting;
-using Newtonsoft.Json;
-
 namespace RamuneLib
 {
     public static partial class Utilities
@@ -32,11 +29,32 @@ namespace RamuneLib
         }
 
 
+        public static CustomPrefab WithRecipe(this CustomPrefab customPrefab, RecipeData recipe, CraftTree.Type craftTreeType, float craftingTime)
+        {
+            customPrefab.SetRecipe(recipe)
+                .WithFabricatorType(craftTreeType)
+                .WithCraftingTime(craftingTime);
+
+            return customPrefab;
+        }
+
+
         public static CustomPrefab WithJsonRecipe(this CustomPrefab customPrefab, string filename, CraftTree.Type craftTreeType, params string[] stepsToFabricator)
         {
             customPrefab.SetRecipeFromJson(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Recipes", filename + ".json"))
                 .WithFabricatorType(craftTreeType)
                 .WithStepsToFabricatorTab(stepsToFabricator);
+
+            return customPrefab;
+        }
+
+
+        public static CustomPrefab WithJsonRecipe(this CustomPrefab customPrefab, string filename, CraftTree.Type craftTreeType, float craftingTime, params string[] stepsToFabricator)
+        {
+            customPrefab.SetRecipeFromJson(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Recipes", filename + ".json"))
+                .WithFabricatorType(craftTreeType)
+                .WithStepsToFabricatorTab(stepsToFabricator)
+                .WithCraftingTime(craftingTime);
 
             return customPrefab;
         }
@@ -52,6 +70,34 @@ namespace RamuneLib
         public static CustomPrefab WithUnlock(this CustomPrefab customPrefab, TechType techType)
         {
             customPrefab.SetUnlock(techType);
+            return customPrefab;
+        }
+
+
+        public static CustomPrefab WithSize(this CustomPrefab customPrefab, int x, int y)
+        {
+            customPrefab.Info.WithSizeInInventory(new Vector2int(x, y));
+            return customPrefab;
+        }
+
+
+        public static CustomPrefab WithPDACategory(this CustomPrefab customPrefab, TechGroup techGroup, TechCategory techCategory)
+        {
+            customPrefab.SetPdaGroupCategory(techGroup, techCategory);
+            return customPrefab;
+        }
+
+
+        public static CustomPrefab WithPDACategoryAfter(this CustomPrefab customPrefab, TechGroup techGroup, TechCategory techCategory, TechType target)
+        {
+            customPrefab.SetPdaGroupCategoryAfter(techGroup, techCategory, target);
+            return customPrefab;
+        }
+
+
+        public static CustomPrefab WithPDACategoryBefore(this CustomPrefab customPrefab, TechGroup techGroup, TechCategory techCategory, TechType target)
+        {
+            customPrefab.SetPdaGroupCategoryBefore(techGroup, techCategory, target);
             return customPrefab;
         }
     }

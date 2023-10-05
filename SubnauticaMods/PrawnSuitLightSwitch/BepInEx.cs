@@ -7,6 +7,7 @@ namespace Ramune.PrawnSuitLightSwitch
     [BepInProcess("Subnautica.exe")]
     public class PrawnSuitLightSwitch : BaseUnityPlugin
     {
+        public static Config config { get; } = OptionsPanelHandler.RegisterModOptions<Config>();
         public static PrawnSuitLightSwitch Instance;
         public static ManualLogSource logger => Instance.Logger;
         public static readonly Harmony harmony = new(GUID);

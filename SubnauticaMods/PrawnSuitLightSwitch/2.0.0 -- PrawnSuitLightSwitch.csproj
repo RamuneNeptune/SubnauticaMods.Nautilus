@@ -6,11 +6,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9B448119-10C0-4364-AB65-D54006DABA5F}</ProjectGuid>
+    <ProjectGuid>{69364C13-26FD-44A3-8114-685B7BBCC907}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ramune.SeaglideUpgrades</RootNamespace>
-    <AssemblyName>SeaglideUpgrades</AssemblyName>
+    <RootNamespace>Ramune.PrawnSuitLightSwitch</RootNamespace>
+    <AssemblyName>PrawnSuitLightSwitch</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -345,17 +345,15 @@
   <ItemGroup>
     <Compile Include="BepInEx.cs" />
     <Compile Include="Config.cs" />
-    <Compile Include="Items\SeaglideMK1.cs" />
-    <Compile Include="Items\SeaglideMK2.cs" />
-    <Compile Include="Items\SeaglideMK3.cs" />
-    <Compile Include="Monos\UpgradedSeaglide.cs" />
-    <Compile Include="Patches\PlayerTool.cs" />
+    <Compile Include="Monos\ExosuitLightSwitch.cs" />
+    <Compile Include="Patches\Exosuit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="..\RamuneLib\RamuneLib.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
