@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("RamunesTextureUpscales")]
+[assembly: AssemblyTitle("NoCrashfish")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("RamunesTextureUpscales")]
+[assembly: AssemblyProduct("NoCrashfish")]
 [assembly: AssemblyCopyright("Copyright ©  2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("924a947d-0002-4998-b385-68e8844db096")]
+[assembly: Guid("e36d6884-0992-4e0d-8804-f7be9a288e43")]
 
 // Version information for an assembly consists of the following four values:
 //

@@ -5,19 +5,11 @@ namespace Ramune.TableCoralMultiplier.Patches
     [HarmonyPatch(typeof(SpawnOnKill), nameof(SpawnOnKill.OnKill))]
     public static class SpawnOnKillPatch
     {
-        public static List<string> tableCoral = new()
-        {
-            "JeweledDiskPieceRed",
-            "JeweledDiskPiece",
-            "JeweledDiskPieceGreen",
-            "JeweledDiskPieceBlue"
-        };
-
         public static void Postfix(SpawnOnKill __instance)
         {
-            if(!__instance.prefabToSpawn.name.Contains("JeweledDisk")) return;
+            if(!__instance.prefabToSpawn.name.StartsWith("JeweledDiskPiece")) return;
 
-            int toSpawn = 1;
+            float toSpawn = TableCoralMultiplier.config.tableCoralToSpawn;
 
             for(int i = 0; i < toSpawn - 1; i++)
             {

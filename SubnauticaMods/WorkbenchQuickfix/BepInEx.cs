@@ -1,20 +1,20 @@
 ﻿
 
-namespace Ramune.EnableAchievements
+namespace Ramune.EscapeClosesPDA
 {
     [BepInDependency("com.snmodding.nautilus")]
     [BepInPlugin(GUID, Name, Version)]
     [BepInProcess("Subnautica.exe")]
-    public class EnableAchievements : BaseUnityPlugin
+    public class EscapeClosesPDA : BaseUnityPlugin
     {
-        public static EnableAchievements Instance;
+        public static EscapeClosesPDA Instance;
         public static ManualLogSource logger => Instance.Logger;
         public static readonly Harmony harmony = new(GUID);
-        public const string GUID = "com.ramune.EnableAchievements";
-        public const string Name = "Enable Achievements";
-        public const string Version = "2.0.0";
+        public const string GUID = "com.ramune.EscapeClosesPDA";
+        public const string Name = "Escape Closes PDA";
+        public const string Version = "1.0.0";
 
-        public void Awake()
+        public void Start()
         {
             Utilities.Initialize(harmony, Logger, Name, Version);
         }

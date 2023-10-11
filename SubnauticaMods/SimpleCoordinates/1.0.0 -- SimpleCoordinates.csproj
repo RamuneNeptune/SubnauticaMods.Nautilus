@@ -6,11 +6,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B3CA2907-96A4-4F33-AA2A-6A42F70EFA3D}</ProjectGuid>
+    <ProjectGuid>{A37F3786-3C9A-4CC8-8418-92CBBA9E8325}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ramune.DecoFabricator</RootNamespace>
-    <AssemblyName>DecoFabricator</AssemblyName>
+    <RootNamespace>Ramune.SimpleCoordinates</RootNamespace>
+    <AssemblyName>SimpleCoordinates</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -344,7 +344,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BepInEx.cs" />
-    <Compile Include="Buildables\DecoFabricator.cs" />
+    <Compile Include="Monos\CoordinateDisplay.cs" />
+    <Compile Include="Patches\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

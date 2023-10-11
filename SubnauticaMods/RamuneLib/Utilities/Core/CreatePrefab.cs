@@ -60,6 +60,15 @@ namespace RamuneLib
         }
 
 
+        public static CustomPrefab WithJsonRecipe(this CustomPrefab customPrefab, string filename, float craftingTime)
+        {
+            customPrefab.SetRecipeFromJson(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Recipes", filename + ".json"))
+                .WithCraftingTime(craftingTime);
+
+            return customPrefab;
+        }
+
+
         public static CustomPrefab WithEquipment(this CustomPrefab customPrefab, EquipmentType equipmentType)
         {
             customPrefab.SetEquipment(equipmentType);
@@ -98,6 +107,14 @@ namespace RamuneLib
         public static CustomPrefab WithPDACategoryBefore(this CustomPrefab customPrefab, TechGroup techGroup, TechCategory techCategory, TechType target)
         {
             customPrefab.SetPdaGroupCategoryBefore(techGroup, techCategory, target);
+            return customPrefab;
+        }
+
+
+        public static CustomPrefab WithFabricator(this CustomPrefab customPrefab, out CraftTree.Type craftTreeType)
+        {
+            customPrefab.CreateFabricator(out CraftTree.Type _craftTreeType);
+            craftTreeType = _craftTreeType;
             return customPrefab;
         }
     }

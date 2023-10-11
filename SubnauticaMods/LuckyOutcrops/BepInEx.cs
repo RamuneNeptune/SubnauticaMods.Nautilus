@@ -1,19 +1,19 @@
 ﻿
 
-namespace Ramune.TableCoralMultiplier
+namespace Ramune.LuckyOutcrops
 {
     [BepInDependency("com.snmodding.nautilus")]
     [BepInPlugin(GUID, Name, Version)]
     [BepInProcess("Subnautica.exe")]
-    public class TableCoralMultiplier : BaseUnityPlugin
+    public class LuckyOutcrops : BaseUnityPlugin
     {
         public static Config config { get; } = OptionsPanelHandler.RegisterModOptions<Config>();
-        public static TableCoralMultiplier Instance;
+        public static LuckyOutcrops Instance;
         public static ManualLogSource logger => Instance.Logger;
         public static readonly Harmony harmony = new(GUID);
-        public const string GUID = "com.ramune.TableCoralMultiplier";
-        public const string Name = "Table Coral Multiplier";
-        public const string Version = "2.0.0";
+        public const string GUID = "com.ramune.LuckyOutcrops";
+        public const string Name = "Lucky Outcrops";
+        public const string Version = "1.0.0";
 
         public void Awake()
         {
