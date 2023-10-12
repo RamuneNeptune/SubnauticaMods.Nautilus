@@ -41,7 +41,8 @@ namespace RamuneLib
 
         public static CustomPrefab WithJsonRecipe(this CustomPrefab customPrefab, string filename, CraftTree.Type craftTreeType, params string[] stepsToFabricator)
         {
-            customPrefab.SetRecipeFromJson(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Recipes", filename + ".json"))
+            var path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Recipes", filename + ".json");
+            customPrefab.SetRecipeFromJson(path)
                 .WithFabricatorType(craftTreeType)
                 .WithStepsToFabricatorTab(stepsToFabricator);
 

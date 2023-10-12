@@ -5,7 +5,7 @@ namespace Ramune.IonCubeCrafting
     [Menu("Ion Cube Crafting")]
     public class Config : ConfigFile
     {
-        [Choice(label:"Recipe to use (requires restart)", options:)]
+        [Choice(label:"Recipe to use (requires restart)")]
         public bool isEnabled = true;
 
         [Button("Close game")]

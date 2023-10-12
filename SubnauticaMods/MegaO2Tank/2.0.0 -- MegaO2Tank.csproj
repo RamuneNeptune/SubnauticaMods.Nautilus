@@ -6,11 +6,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A77F59E1-71AD-4F13-A7F8-921117484A84}</ProjectGuid>
+    <ProjectGuid>{B06E1E39-1960-419C-A9DD-A702F729F76A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ramune.PassiveWarpersAfterQuarantineShutdown</RootNamespace>
-    <AssemblyName>PassiveWarpersAfterQuarantineShutdown</AssemblyName>
+    <RootNamespace>Ramune.MegaO2Tank</RootNamespace>
+    <AssemblyName>MegaO2Tank</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -344,11 +344,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BepInEx.cs" />
-    <Compile Include="Monos\WarperBefriender.cs" />
-    <Compile Include="Patches\Creature.cs" />
+    <Compile Include="Config.cs" />
+    <Compile Include="Items\MegaO2Tank.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />

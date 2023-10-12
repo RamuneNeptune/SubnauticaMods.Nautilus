@@ -96,6 +96,9 @@
     <Reference Include="Sentry, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Subnautica.GameLibs.71288.0.0-r.0\lib\net472\Sentry.dll</HintPath>
     </Reference>
+    <Reference Include="SuitLib">
+      <HintPath>..\..\..\..\Program Files (x86)\Steam\steamapps\common\SubnauticaBranches\Stable\BepInEx\plugins\SuitLib\SuitLib.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -345,6 +348,7 @@
   <ItemGroup>
     <Compile Include="BepInEx.cs" />
     <Compile Include="Items\RadiantBlade.cs" />
+    <Compile Include="Items\RainbowSuit.cs" />
     <Compile Include="Monos\RadiantBlade.cs" />
     <Compile Include="Monos\RadiantBlade.OnToolUseAnim.cs" />
     <Compile Include="Monos\RadiantBlade.Update.cs" />

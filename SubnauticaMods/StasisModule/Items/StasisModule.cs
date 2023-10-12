@@ -14,8 +14,6 @@ namespace Ramune.StasisModule.Items
             var clone = new CloneTemplate(Prefab.Info, TechType.SeamothElectricalDefense);
             Prefab.SetGameObject(clone);
             Prefab.Register();
-          //Prefab.SetVehicleUpgradeModule()
-          //    .WithOnModuleUsed(Monos.StasisModule.DeployStasis(Player.main.currentMountedVehicle, 1, 1, 1));
         }
     }
 }

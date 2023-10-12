@@ -20,14 +20,14 @@ namespace Ramune.SimpleCoordinates
         [Toggle("Display target coords", Order = 4)]
         public bool targetDisplay = false;
 
-        [Slider("Target coords size", Format = "{0:F0}", DefaultValue = 23f, Min = 1f, Max = 100f, Step = 1f, Tooltip = "Changes are applied automatically", Order = 5), OnChange(nameof(SendChanges))]
-        public float targetTextSize = 23f;
+        [Slider("Target coords size", Format = "{0:F0}", DefaultValue = 21f, Min = 1f, Max = 100f, Step = 1f, Tooltip = "Changes are applied automatically", Order = 5), OnChange(nameof(SendChanges))]
+        public float targetTextSize = 21f;
 
         [Slider("Target coords offset (X)", Format = "{0:F0}", DefaultValue = -830f, Min = -1000f, Max = 1000f, Step = 5f, Tooltip = "Changes are applied automatically", Order = 6), OnChange(nameof(SendChanges))]
         public float targetTextX = -830f;
 
-        [Slider("Target coords offset (Y)", Format = "{0:F0}", DefaultValue = 500f, Min = -1000f, Max = 1000f, Step = 5f, Tooltip = "Changes are applied automatically", Order = 7), OnChange(nameof(SendChanges))]
-        public float targetTextY = 500f;
+        [Slider("Target coords offset (Y)", Format = "{0:F0}", DefaultValue = 480f, Min = -1000f, Max = 1000f, Step = 5f, Tooltip = "Changes are applied automatically", Order = 7), OnChange(nameof(SendChanges))]
+        public float targetTextY = 480f;
 
         [Button("Refresh target coordinates", Tooltip = "Use this after editing TargetCoordinates.json", Order = 8)]
         public void Refresh(ButtonClickedEventArgs _)

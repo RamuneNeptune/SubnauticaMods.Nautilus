@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("PassiveWarpersAfterQuarantineShutdown")]
+[assembly: AssemblyTitle("SeaglideBoosting")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("PassiveWarpersAfterQuarantineShutdown")]
+[assembly: AssemblyProduct("SeaglideBoosting")]
 [assembly: AssemblyCopyright("Copyright ©  2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("a77f59e1-71ad-4f13-a7f8-921117484a84")]
+[assembly: Guid("7477b24d-37ca-40af-a667-ec2b4aafb489")]
 
 // Version information for an assembly consists of the following four values:
 //
