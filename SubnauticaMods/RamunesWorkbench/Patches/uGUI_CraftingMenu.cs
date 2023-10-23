@@ -1,7 +1,5 @@
 ﻿
 
-using static UWE.TUXOIL;
-
 namespace Ramune.RamunesWorkbench.Patches
 {
     [HarmonyPatch(typeof(uGUI_CraftingMenu))]
