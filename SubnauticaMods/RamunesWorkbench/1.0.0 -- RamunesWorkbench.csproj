@@ -345,6 +345,8 @@
   <ItemGroup>
     <Compile Include="BepInEx.cs" />
     <Compile Include="Buildables\RamunesWorkbench.cs" />
+    <Compile Include="Monos\DontLook.cs" />
+    <Compile Include="Monos\RamunesWorkbench.cs" />
     <Compile Include="Patches\uGUI_CraftingMenu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

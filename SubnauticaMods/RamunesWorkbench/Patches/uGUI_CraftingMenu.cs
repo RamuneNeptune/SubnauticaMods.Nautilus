@@ -1,39 +1,38 @@
 ﻿
 
+using static UWE.TUXOIL;
+
 namespace Ramune.RamunesWorkbench.Patches
 {
     [HarmonyPatch(typeof(uGUI_CraftingMenu))]
     public static class uGUI_CraftingMenuPatches
     {
-        public static Atlas.Sprite backgroundSprite = Utilities.GetSprite("Background1.Sprite");
-        public static bool isRamuneWorkbench = false;
+        public static Atlas.Sprite TabNode = Utilities.GetSprite("TabNode");
+        public static Atlas.Sprite TabNodeHover = Utilities.GetSprite("TabNodeHover");
+        public static CraftTree.Type CurrentCraftTreeType;
 
 
         [HarmonyPatch(nameof(uGUI_CraftingMenu.Open)), HarmonyPrefix]
         public static void Open(CraftTree.Type treeType, ITreeActionReceiver receiver)
         {
-            if(treeType != Buildables.RamunesWorkbench.craftTreeType) return;
-            isRamuneWorkbench = true;
+            CurrentCraftTreeType = treeType;
         }
 
 
         [HarmonyPatch(nameof(uGUI_CraftingMenu.Close)), HarmonyPrefix]
         public static void Close()
         {
-            if(isRamuneWorkbench)
-            {
-                isRamuneWorkbench = false;
-            }
+            CurrentCraftTreeType = CraftTree.Type.None;
         }
 
 
         [HarmonyPatch(nameof(uGUI_CraftingMenu.CreateIcon)), HarmonyPostfix]
         public static void CreateIcon(uGUI_CraftingMenu.Node node, RectTransform canvas, float size, float x, float y)
         {
-            if(!isRamuneWorkbench)
+            if(CurrentCraftTreeType != Buildables.RamunesWorkbench.craftTreeType)
                 return;
 
-            if (node is null) 
+            if(node is null) 
                 return;
 
             if(node.icon is null)
@@ -42,9 +41,43 @@ namespace Ramune.RamunesWorkbench.Patches
             if(node.action != TreeAction.Expand)
                 return;
             
-            node.icon.SetBackgroundSprite(backgroundSprite);
+            node.icon.SetBackgroundSprite(TabNode);
+        }
 
-            ErrorMessage.AddError(" >> node.icon.SetBackgroundSprite(backgroundSprite)");
+
+        [HarmonyPatch("uGUI_IIconManager.OnPointerEnter"), HarmonyPostfix]
+        public static void OnPointerEnter(uGUI_CraftingMenu __instance, uGUI_ItemIcon icon)
+        {            
+            if(CurrentCraftTreeType != Buildables.RamunesWorkbench.craftTreeType)
+                return;
+
+            var node = __instance.GetNode(icon);
+
+            if(node is null)
+                return;
+
+            if(node.action != TreeAction.Expand)
+                return;
+
+            node.icon.SetBackgroundSprite(TabNodeHover);
+        }
+
+
+        [HarmonyPatch("uGUI_IIconManager.OnPointerExit"), HarmonyPostfix]
+        public static void OnPointerExit(uGUI_CraftingMenu __instance, uGUI_ItemIcon icon)
+        {
+            if(CurrentCraftTreeType != Buildables.RamunesWorkbench.craftTreeType)
+                return;
+
+            var node = __instance.GetNode(icon);
+
+            if(node is null)
+                return;
+
+            if(node.action != TreeAction.Expand)
+                return;
+
+            node.icon.SetBackgroundSprite(TabNode);
         }
     }
 }

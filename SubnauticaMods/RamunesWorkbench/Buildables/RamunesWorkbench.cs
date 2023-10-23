@@ -4,8 +4,8 @@ namespace Ramune.RamunesWorkbench.Buildables
 {
     public static class RamunesWorkbench
     {
-        public static Texture2D MainTex = Utilities.GetTexture("RamunesWorkbench.TexMain");
-        public static Texture2D Illum = Utilities.GetTexture("RamunesWorkbench.TexIllum_1");
+        public static Texture2D MainTex = Utilities.GetTexture("RamunesWorkbench.Texture");
+        public static Texture2D Illum = Utilities.GetTexture("RamunesWorkbench.Illum");
         public static CraftTree.Type craftTreeType;
 
         public static CustomPrefab Prefab = Utilities.CreatePrefab("RamunesWorkbench", "Ramune's workbench", "Used to create items from RamuneNeptune's mods", Utilities.GetSprite(TechType.Workbench)) //"RamunesWorkbench.Sprite"
@@ -21,10 +21,15 @@ namespace Ramune.RamunesWorkbench.Buildables
                 FabricatorModel = FabricatorTemplate.Model.Workbench,
                 ModifyPrefab = go =>
                 {
-                    Color color = new(191f/ 255f, 116f/ 255f, 255f/255f);
+                    CraftTreeHandler.AddTabNode(craftTreeType, "One", "One", Utilities.GetSprite(TechType.Silver));
+                    CraftTreeHandler.AddTabNode(craftTreeType, "Two", "Two", Utilities.GetSprite(TechType.Gold));
+                    CraftTreeHandler.AddTabNode(craftTreeType, "Three", "Three", Utilities.GetSprite(TechType.Diamond));
+                    CraftTreeHandler.AddTabNode(craftTreeType, "Four", "Four", Utilities.GetSprite(TechType.AluminumOxide));
 
-                    CraftTreeHandler.AddTabNode(craftTreeType, "Test", "Test", Utilities.GetSprite(TechType.AcidMushroom));
-                    CraftTreeHandler.AddCraftingNode(craftTreeType, TechType.Knife, "Test");
+                    CraftTreeHandler.AddCraftingNode(craftTreeType, TechType.Knife, "One");
+                    CraftTreeHandler.AddCraftingNode(craftTreeType, TechType.Knife, "Two");
+                    CraftTreeHandler.AddCraftingNode(craftTreeType, TechType.Knife, "Three");
+                    CraftTreeHandler.AddCraftingNode(craftTreeType, TechType.Knife, "Four");
 
 
                     var renderer = go.GetComponentInChildren<Renderer>();
@@ -34,68 +39,27 @@ namespace Ramune.RamunesWorkbench.Buildables
                     renderer.material.EnableKeyword("MARMO_EMISSION");
 
 
-                    var mono = go.EnsureComponent<ColorMono>();
-                    mono.renderer = renderer;
+                    var workbench = go.GetComponent<Workbench>();
+                    go.AddComponent<Monos.RamunesWorkbench>().CopyComponent(workbench);
 
-
-                    ParticleSystem[] particles = go.GetComponentsInChildren<ParticleSystem>(true);
-                    if(particles != null)
-                    {
-                        foreach(var p in particles)
-                        {
-                            if(p is null) break;
-                            p.startColor = color;
-                        }
-                    }
-
-
-                    MeshRenderer[] beams = go.GetComponentsInChildren<MeshRenderer>(true);
-                    if(beams != null)
-                    {
-                        foreach(var b in beams)
-                        {
-                            if(b is null) break;
-                            b.material.color = color;
-                        }
-                    }
+                    GameObject.DestroyImmediate(workbench);
                 }
             };
 
             Prefab.SetGameObject(model);
             Prefab.Register();
         }
-    }
 
-    public class ColorMono : MonoBehaviour
-    {
-        public Renderer renderer;
-        public float transitionDuration = 3.5f;
-        public float elapsedTime = 0.0f;
-        public float glowStrength;
-        public bool isIncreasing = true;
 
-        public float initial = 2.35f;
-        public float result = -0.15f;
-
-        public void Update()
+        public static void QueueCraftingNode(TechType itemToCraft, params string[] pathToTab)
         {
-            if(renderer is null) return;
 
-            elapsedTime += Time.deltaTime;
+        }
 
-            float t = Mathf.Clamp01(elapsedTime / transitionDuration);
 
-            glowStrength = isIncreasing
-                ? Mathf.Lerp(result, initial, t)
-                : Mathf.Lerp(initial, result, t);
+        public static void QueueTabNode(float be, params string[] pathToTab)
+        {
 
-            renderer.material.SetFloat(ShaderPropertyID._GlowStrength, glowStrength);
-
-            if(elapsedTime >= transitionDuration)
-            {
-                isIncreasing = !isIncreasing;
-                elapsedTime = 0.0f;
-            }
         }
     }
 }
