@@ -6,11 +6,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A8601836-3C85-4F6D-898B-28BB0339417C}</ProjectGuid>
+    <ProjectGuid>{752A9808-E767-4D24-A865-3A7525490874}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ramune.FasterScanning</RootNamespace>
-    <AssemblyName>FasterScanning</AssemblyName>
+    <RootNamespace>Ramune.RamunesWorkbench</RootNamespace>
+    <AssemblyName>RamunesWorkbench</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -344,15 +344,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BepInEx.cs" />
-    <Compile Include="Config.cs" />
-    <Compile Include="Patches\PDAScanner.cs" />
+    <Compile Include="Buildables\RamunesWorkbench.cs" />
+    <Compile Include="Patches\uGUI_CraftingMenu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="..\RamuneLib\RamuneLib.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

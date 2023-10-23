@@ -70,6 +70,13 @@ namespace RamuneLib
         }
 
 
+        public static CustomPrefab WithJsonRecipe(this CustomPrefab customPrefab, string filename)
+        {
+            customPrefab.SetRecipeFromJson(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Recipes", filename + ".json"));
+            return customPrefab;
+        }
+
+
         public static CustomPrefab WithEquipment(this CustomPrefab customPrefab, EquipmentType equipmentType)
         {
             customPrefab.SetEquipment(equipmentType);

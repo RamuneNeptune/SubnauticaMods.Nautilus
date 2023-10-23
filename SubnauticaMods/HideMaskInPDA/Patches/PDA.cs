@@ -5,18 +5,11 @@ namespace Ramune.HideMaskInPDA.Patches
     [HarmonyPatch(typeof(PDA))]
     public static class PDAPatches
     {
-        [HarmonyPostfix]
-        [HarmonyPatch(typeof(PDA), nameof(PDA.Open))]
-        public static void Open()
-        {
-            Player.main.SetScubaMaskState(Player.ScubaMaskState.Off);
-        }
+        [HarmonyPatch(typeof(PDA), nameof(PDA.Open)), HarmonyPostfix]
+        public static void Open() => Player.main.SetScubaMaskState(Player.ScubaMaskState.Off);
+        
 
-        [HarmonyPostfix]
-        [HarmonyPatch(typeof(PDA), nameof(PDA.Close))]
-        public static void Close() 
-        {
-            Player.main.SetScubaMaskState(Player.ScubaMaskState.On);
-        }
+        [HarmonyPatch(typeof(PDA), nameof(PDA.Close)), HarmonyPostfix]
+        public static void Close() => Player.main.SetScubaMaskState(Player.ScubaMaskState.On);
     }
 }

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("IonCubeCrafting")]
+[assembly: AssemblyTitle("RamunesIonCyclops")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("IonCubeCrafting")]
+[assembly: AssemblyProduct("RamunesIonCyclops")]
 [assembly: AssemblyCopyright("Copyright ©  2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("6d093a79-a8e2-4de6-a643-f3aadf64a6fc")]
+[assembly: Guid("e28ca11d-cda1-47bd-ad35-04a459077aff")]
 
 // Version information for an assembly consists of the following four values:
 //

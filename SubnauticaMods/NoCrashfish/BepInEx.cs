@@ -7,6 +7,7 @@ namespace Ramune.NoCrashfish
     [BepInProcess("Subnautica.exe")]
     public class NoCrashfish : BaseUnityPlugin
     {
+        public static Config config { get; } = OptionsPanelHandler.RegisterModOptions<Config>();
         public static NoCrashfish Instance;
         public static ManualLogSource logger => Instance.Logger;
         public static readonly Harmony harmony = new(GUID);

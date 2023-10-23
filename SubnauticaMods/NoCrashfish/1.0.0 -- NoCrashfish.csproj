@@ -344,6 +344,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BepInEx.cs" />
+    <Compile Include="Config.cs" />
     <Compile Include="Patches\Creature.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
