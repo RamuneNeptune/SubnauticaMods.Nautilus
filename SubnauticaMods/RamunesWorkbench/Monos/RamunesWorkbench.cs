@@ -6,6 +6,7 @@ namespace Ramune.RamunesWorkbench.Monos
     {
         public Renderer renderer;
         public Light light = new();
+        public List<Coroutine> coroutines = new();
 
         public float duration = 3.50f;
         public float initial = 1.50f;
@@ -16,7 +17,6 @@ namespace Ramune.RamunesWorkbench.Monos
         public bool fxSet = false;
 
         public Color initialColor = new(0.75f, 0.45f, 1.00f);
-        //public Color targetColor = new(0.75f, 0.33f, 1.00f);
 
 
         public override void Awake()
@@ -78,12 +78,17 @@ namespace Ramune.RamunesWorkbench.Monos
 
             if(opened)
             {
-                StartCoroutine(FadeLight(0f, 10f, 1.7f));
+                coroutines.Add(StartCoroutine(FadeLight(light.intensity, 10f, 1.7f)));
                 //gameObject.EnsureComponent<DontLook>();
             }
             else
             {
-                StartCoroutine(FadeLight(10f, 0f, 0.4f));
+                if(coroutines.Count > 0)
+                {
+                    LoggerUtils.LogWarning(">> If it says \"Coroutine continue failure\", don't worry about it.");
+                    coroutines.ForEach(CoroutineHost.StopCoroutine);
+                }
+                StartCoroutine(FadeLight(light.intensity, 0f, 0.4f));
                 //DestroyImmediate(gameObject.GetComponent<DontLook>());
             }
         }

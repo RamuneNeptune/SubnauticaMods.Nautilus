@@ -31,7 +31,7 @@ namespace Ramune.RamunesWorkbench.Monos
                         Nautilus.Utility.AudioUtils.TryPlaySound(theReallyCoolSound, Nautilus.Utility.AudioUtils.BusPaths.PDAVoice, out Channel _);
                         Subtitles.Add("UNKNOWN: ▚┣ ▛┣ ▚┏ life ┗▄▖┅┗▖┣ down here ▞┛┏▛┣┗");
                         Subtitles.Add("PDA: Attempting to decode..");
-                        Subtitles.Add("PDA: Transmission origin co-ordinates corrupted.");
+                        Subtitles.Add("PDA: Transmission origin co-ordinates partially corrupted.");
                         currentIndex = 0;
                     }
                 }

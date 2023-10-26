@@ -15,6 +15,7 @@ namespace Ramune.RamunesWorkbench.Buildables
             .WithJsonRecipe("RamunesWorkbench")
             .WithFabricator(out craftTreeType);
 
+
         public static void Patch()
         {
             var model = new FabricatorTemplate(Prefab.Info, craftTreeType)
@@ -22,22 +23,6 @@ namespace Ramune.RamunesWorkbench.Buildables
                 FabricatorModel = FabricatorTemplate.Model.Workbench,
                 ModifyPrefab = go =>
                 {
-                    CraftTreeHandler.AddTabNode(craftTreeType, "One", "One", ImageUtils.GetSprite(TechType.Silver));
-                    CraftTreeHandler.AddCraftingNode(craftTreeType, TechType.Seaglide, "One");
-                    CraftTreeHandler.AddCraftingNode(craftTreeType, TechType.RepulsionCannon, "One");
-
-                    CraftTreeHandler.AddTabNode(craftTreeType, "Two", "Two", ImageUtils.GetSprite(TechType.Gold));
-                    CraftTreeHandler.AddCraftingNode(craftTreeType, TechType.Seaglide, "Two");
-                    CraftTreeHandler.AddCraftingNode(craftTreeType, TechType.RepulsionCannon, "Two");
-
-                    CraftTreeHandler.AddTabNode(craftTreeType, "Three", "Three", ImageUtils.GetSprite(TechType.Diamond));
-                    CraftTreeHandler.AddCraftingNode(craftTreeType, TechType.Seaglide, "Three");
-                    CraftTreeHandler.AddCraftingNode(craftTreeType, TechType.RepulsionCannon, "Three");
-
-                    CraftTreeHandler.AddTabNode(craftTreeType, "Four", "Four", ImageUtils.GetSprite(TechType.AluminumOxide));
-                    CraftTreeHandler.AddCraftingNode(craftTreeType, TechType.Seaglide, "Four");
-                    CraftTreeHandler.AddCraftingNode(craftTreeType, TechType.RepulsionCannon, "Four");
-
                     var renderer = go.GetComponentInChildren<Renderer>();
                     renderer.material.SetTexture(ShaderPropertyID._MainTex, MainTex);
                     renderer.material.SetTexture(ShaderPropertyID._SpecTex, MainTex);
