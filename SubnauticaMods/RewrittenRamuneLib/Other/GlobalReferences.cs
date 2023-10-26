@@ -5,11 +5,13 @@ global using BepInEx;
 global using BepInEx.Logging;
 global using HarmonyLib;
 
+
 /*       Unity       */
 global using UnityEngine;
 global using UnityEngine.UI;
 global using UnityEngine.Animations;
 global using UnityEngine.AddressableAssets;
+
 
 /*       System      */
 global using System;
@@ -19,6 +21,7 @@ global using System.Collections.Generic;
 global using System.Reflection.Emit;
 global using System.Reflection;
 global using System.Linq;
+
 
 /*       Nautilus    */
 global using Nautilus.Assets;
@@ -37,15 +40,12 @@ global using Nautilus.Json.ExtensionMethods;
 global using Nautilus.Json.Interfaces;
 global using Nautilus.Options;
 global using Nautilus.Options.Attributes;
-global using Nautilus.Utility;
 global using Nautilus.Utility.MaterialModifiers;
 global using Nautilus.Utility.ModMessages;
+
 
 /*        Other      */
 global using UWE;
 global using FMOD;
 global using RamuneLib;
 global using static CraftData;
-global using Logger = RamuneLib.InternalLogger;
-global using Colors = RamuneLib.Utilities.Colors;
-global using static RamuneLib.Utilities.ScreenLogger;

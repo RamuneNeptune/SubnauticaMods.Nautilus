@@ -4,10 +4,11 @@ namespace Ramune.MegaO2Tank.Items
 {
     public static class MegaO2Tank
     {
-        public static CustomPrefab Prefab = Utilities.CreatePrefab("MegaO2Tank", "Mega O₂ Tank", "Additional air capacity.", Utilities.GetSprite("MegaO2Tank.Sprite"))
-            .WithJsonRecipe("MegaO2Tank.Recipe", CraftTree.Type.Fabricator, CraftTreeHandler.Paths.FabricatorEquipment)
+        public static CustomPrefab Prefab = CustomPrefabExtensions.CreatePrefab("MegaO2Tank", "Mega O₂ Tank", "Additional air capacity.", ImageUtils.GetSprite("MegaO2Tank"))
             .WithUnlock(TechType.HighCapacityTank)
-            .WithEquipment(EquipmentType.Tank);
+            .WithEquipment(EquipmentType.Tank)
+            .WithJsonRecipe("MegaO2Tank");
+
 
         public static void Patch()
         {

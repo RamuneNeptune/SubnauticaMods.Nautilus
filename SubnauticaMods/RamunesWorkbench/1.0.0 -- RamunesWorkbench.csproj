@@ -347,14 +347,16 @@
     <Compile Include="Buildables\RamunesWorkbench.cs" />
     <Compile Include="Monos\DontLook.cs" />
     <Compile Include="Monos\RamunesWorkbench.cs" />
+    <Compile Include="Patches\Player.cs" />
     <Compile Include="Patches\uGUI_CraftingMenu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CraftHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <Import Project="..\RamuneLib\RamuneLib.projitems" Label="Shared" />
+  <Import Project="..\RewrittenRamuneLib\RewrittenRamuneLib.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>:: Variable for plugin folder

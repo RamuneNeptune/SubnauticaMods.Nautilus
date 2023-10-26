@@ -1,18 +1,21 @@
 ﻿
 
+using FMOD;
+
 namespace Ramune.RamunesWorkbench.Monos
 {
     public class DontLook : MonoBehaviour
     {
         public List<KeyCode> zxnskwnqdsp = new() { KeyCode.UpArrow, KeyCode.UpArrow, KeyCode.DownArrow, KeyCode.DownArrow, KeyCode.LeftArrow,KeyCode.RightArrow, KeyCode.LeftArrow, KeyCode.RightArrow, KeyCode.B, KeyCode.A };
-        public Sound sound;
+        public Sound theReallyCoolSound;
         public int currentIndex = 0;
 
 
         public void Start()
         {
             var path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Assets", "g2vjb2ld70kcgijheglu7h01m.wav");
-            sound = AudioUtils.CreateSound(path, AudioUtils.StandardSoundModes_3D);
+
+            theReallyCoolSound = Nautilus.Utility.AudioUtils.CreateSound(path, Nautilus.Utility.AudioUtils.StandardSoundModes_2D);
         }
 
 
@@ -25,7 +28,10 @@ namespace Ramune.RamunesWorkbench.Monos
                     currentIndex++;
                     if(currentIndex == zxnskwnqdsp.Count)
                     {
-                        AudioUtils.TryPlaySound(sound, AudioUtils.BusPaths.PDAVoice, out Channel _);
+                        Nautilus.Utility.AudioUtils.TryPlaySound(theReallyCoolSound, Nautilus.Utility.AudioUtils.BusPaths.PDAVoice, out Channel _);
+                        Subtitles.Add("UNKNOWN: ▚┣ ▛┣ ▚┏ life ┗▄▖┅┗▖┣ down here ▞┛┏▛┣┗");
+                        Subtitles.Add("PDA: Attempting to decode..");
+                        Subtitles.Add("PDA: Transmission origin co-ordinates corrupted.");
                         currentIndex = 0;
                     }
                 }

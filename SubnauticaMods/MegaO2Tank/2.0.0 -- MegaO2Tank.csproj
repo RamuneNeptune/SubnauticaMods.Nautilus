@@ -352,7 +352,7 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <Import Project="..\RamuneLib\RamuneLib.projitems" Label="Shared" />
+  <Import Project="..\RewrittenRamuneLib\RewrittenRamuneLib.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>:: Variable for plugin folder

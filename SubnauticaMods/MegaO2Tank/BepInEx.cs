@@ -3,7 +3,7 @@
 namespace Ramune.MegaO2Tank
 {
     [BepInDependency("com.snmodding.nautilus")]
-    //[BepInDependency("com.ramune.OrganizedWorkbench")]
+    [BepInDependency("com.ramune.RamunesWorkbench")]
     [BepInPlugin(GUID, Name, Version)]
     [BepInProcess("Subnautica.exe")]
     public class MegaO2Tank : BaseUnityPlugin
@@ -18,7 +18,7 @@ namespace Ramune.MegaO2Tank
 
         public void Awake()
         {
-            Utilities.Initialize(harmony, Logger, Name, Version);
+            Initializer.Initialize(harmony, Logger, Name, Version);
             Items.MegaO2Tank.Patch();
         }
     }

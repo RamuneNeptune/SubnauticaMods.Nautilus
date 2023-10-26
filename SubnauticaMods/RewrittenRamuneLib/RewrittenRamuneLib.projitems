@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>ebb8a44e-c589-4f9b-bfe8-209603e19eea</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>RewrittenRamuneLib</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Core\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Piracy\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Utils\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Other\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)core\Variables.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Other\CustomPrefabExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Other\GlobalReferences.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Initializer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)piracy\Piracy.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)piracy\Trolling.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)utils\PatchingUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)utils\ImageUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)utils\JsonUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)utils\LoggerUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)utils\PrefabUtils.cs" />
+  </ItemGroup>
+</Project>

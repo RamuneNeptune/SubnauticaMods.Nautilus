@@ -5,8 +5,8 @@ namespace Ramune.RamunesWorkbench.Patches
     [HarmonyPatch(typeof(uGUI_CraftingMenu))]
     public static class uGUI_CraftingMenuPatches
     {
-        public static Atlas.Sprite TabNode = Utilities.GetSprite("TabNode");
-        public static Atlas.Sprite TabNodeHover = Utilities.GetSprite("TabNodeHover");
+        public static Atlas.Sprite TabNode = ImageUtils.GetSprite("TabNode");
+        public static Atlas.Sprite TabNodeHover = ImageUtils.GetSprite("TabNodeHover");
         public static CraftTree.Type CurrentCraftTreeType;
 
 

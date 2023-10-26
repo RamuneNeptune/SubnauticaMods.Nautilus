@@ -2,23 +2,27 @@
 
 namespace RamuneLib
 {
-    public static partial class Utilities
+    public static class CustomPrefabExtensions
     {
+        // Creating Prefabs -----------------------------------------------------------------------------------------------------------------------------------------------
+
         public static CustomPrefab CreatePrefab(string id, string name, string description, Atlas.Sprite sprite)
         {
             return new CustomPrefab(id, name, description, sprite);
         }
 
 
-        public static CustomPrefab WithRecipe(this CustomPrefab customPrefab, RecipeData recipe, CraftTree.Type craftTreeType, params string[] stepsToFabricator)
+        public static CustomPrefab CreatePrefab(string id, string name, string description, UnityEngine.Sprite sprite)
         {
-            customPrefab.SetRecipe(recipe)
-                .WithFabricatorType(craftTreeType)
-                .WithStepsToFabricatorTab(stepsToFabricator);
-
-            return customPrefab;
+            return new CustomPrefab(id, name, description, sprite);
         }
 
+        // ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+        // Setting prefab recipe ------------------------------------------------------------------------------------------------------------------------------------------
 
         public static CustomPrefab WithRecipe(this CustomPrefab customPrefab, RecipeData recipe, CraftTree.Type craftTreeType)
         {
@@ -39,10 +43,9 @@ namespace RamuneLib
         }
 
 
-        public static CustomPrefab WithJsonRecipe(this CustomPrefab customPrefab, string filename, CraftTree.Type craftTreeType, params string[] stepsToFabricator)
+        public static CustomPrefab WithRecipe(this CustomPrefab customPrefab, RecipeData recipe, CraftTree.Type craftTreeType, params string[] stepsToFabricator)
         {
-            var path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Recipes", filename + ".json");
-            customPrefab.SetRecipeFromJson(path)
+            customPrefab.SetRecipe(recipe)
                 .WithFabricatorType(craftTreeType)
                 .WithStepsToFabricatorTab(stepsToFabricator);
 
@@ -52,7 +55,7 @@ namespace RamuneLib
 
         public static CustomPrefab WithJsonRecipe(this CustomPrefab customPrefab, string filename, CraftTree.Type craftTreeType, float craftingTime, params string[] stepsToFabricator)
         {
-            customPrefab.SetRecipeFromJson(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Recipes", filename + ".json"))
+            customPrefab.SetRecipeFromJson(JsonUtils.GetJsonRecipe(filename))
                 .WithFabricatorType(craftTreeType)
                 .WithStepsToFabricatorTab(stepsToFabricator)
                 .WithCraftingTime(craftingTime);
@@ -61,9 +64,19 @@ namespace RamuneLib
         }
 
 
+        public static CustomPrefab WithJsonRecipe(this CustomPrefab customPrefab, string filename, CraftTree.Type craftTreeType, params string[] stepsToFabricator)
+        {
+            customPrefab.SetRecipeFromJson(JsonUtils.GetJsonRecipe(filename))
+                .WithFabricatorType(craftTreeType)
+                .WithStepsToFabricatorTab(stepsToFabricator);
+
+            return customPrefab;
+        }
+
+
         public static CustomPrefab WithJsonRecipe(this CustomPrefab customPrefab, string filename, float craftingTime)
         {
-            customPrefab.SetRecipeFromJson(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Recipes", filename + ".json"))
+            customPrefab.SetRecipeFromJson(JsonUtils.GetJsonRecipe(filename))
                 .WithCraftingTime(craftingTime);
 
             return customPrefab;
@@ -72,10 +85,16 @@ namespace RamuneLib
 
         public static CustomPrefab WithJsonRecipe(this CustomPrefab customPrefab, string filename)
         {
-            customPrefab.SetRecipeFromJson(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Recipes", filename + ".json"));
+            customPrefab.SetRecipeFromJson(JsonUtils.GetJsonRecipe(filename));
             return customPrefab;
         }
 
+        // ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+        // Setting prefab EquipmentType -----------------------------------------------------------------------------------------------------------------------------------
 
         public static CustomPrefab WithEquipment(this CustomPrefab customPrefab, EquipmentType equipmentType)
         {
@@ -83,6 +102,12 @@ namespace RamuneLib
             return customPrefab;
         }
 
+        // ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+        // Setting prefab unlock TechType ---------------------------------------------------------------------------------------------------------------------------------
 
         public static CustomPrefab WithUnlock(this CustomPrefab customPrefab, TechType techType)
         {
@@ -90,6 +115,12 @@ namespace RamuneLib
             return customPrefab;
         }
 
+        // ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+        // Setting prefab size in inventory -------------------------------------------------------------------------------------------------------------------------------
 
         public static CustomPrefab WithSize(this CustomPrefab customPrefab, int x, int y)
         {
@@ -97,6 +128,12 @@ namespace RamuneLib
             return customPrefab;
         }
 
+        // ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+        // Setting prefab PDA category ------------------------------------------------------------------------------------------------------------------------------------
 
         public static CustomPrefab WithPDACategory(this CustomPrefab customPrefab, TechGroup techGroup, TechCategory techCategory)
         {
@@ -118,6 +155,12 @@ namespace RamuneLib
             return customPrefab;
         }
 
+        // ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+        // Turning prefab into a crafter (e.g. fabricator, workbench, etc..) ----------------------------------------------------------------------------------------------
 
         public static CustomPrefab WithFabricator(this CustomPrefab customPrefab, out CraftTree.Type craftTreeType)
         {
@@ -125,5 +168,7 @@ namespace RamuneLib
             craftTreeType = _craftTreeType;
             return customPrefab;
         }
+
+        // ----------------------------------------------------------------------------------------------------------------------------------------------------------------
     }
 }

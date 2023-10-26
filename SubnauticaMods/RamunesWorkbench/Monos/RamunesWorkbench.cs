@@ -7,27 +7,27 @@ namespace Ramune.RamunesWorkbench.Monos
         public Renderer renderer;
         public Light light = new();
 
-        public Color color = new(191f / 255f, 116f / 255f, 255f / 255f);
         public float duration = 3.50f;
-        public float initial = 2.35f;
-        public float result = -0.15f;
+        public float initial = 1.50f;
+        public float result = -0.05f;
         public float elapsed = 0.00f;
+
         public bool isIncreasing = true;
+        public bool fxSet = false;
+
+        public Color initialColor = new(0.75f, 0.45f, 1.00f);
+        //public Color targetColor = new(0.75f, 0.33f, 1.00f);
 
 
-        public override void Start()
+        public override void Awake()
         {
-            base.Start();
-            InitializeSparkInstances();
+            base.Awake();
+            this.InitLight();
 
-            fxLaserBeam?.ForEach(lb => lb.GetComponent<MeshRenderer>().material.color = color);
+            fxLaserBeam?.ForEach(lb => 
+            lb.GetComponent<MeshRenderer>().material.color = initialColor);
 
-            light = gameObject.EnsureComponent<Light>();
-            light.transform.parent = gameObject.transform;
-            light.intensity = 0f;
-            light.range = 1.7f;
-            light.color = color;
-            light.enabled = true;
+            CoroutineHost.StartCoroutine(WaitForFX());
         }
 
 
@@ -39,11 +39,16 @@ namespace Ramune.RamunesWorkbench.Monos
 
             float t = Mathf.Clamp01(elapsed / duration);
 
-            float glowStrength = isIncreasing
+            var glowStrength = isIncreasing
                 ? Mathf.Lerp(result, initial, t)
                 : Mathf.Lerp(initial, result, t);
 
+            //var currentColor = isIncreasing
+            //    ? Color.Lerp(initialColor, targetColor, t)
+            //    : Color.Lerp(targetColor, initialColor, t);
+
             renderer.material.SetFloat(ShaderPropertyID._GlowStrength, glowStrength);
+            //renderer.material.SetColor(ShaderPropertyID._Color, currentColor);
 
             if(elapsed >= duration)
             {
@@ -53,21 +58,33 @@ namespace Ramune.RamunesWorkbench.Monos
         }
 
 
+        public void InitLight()
+        {
+            light = gameObject.EnsureComponent<Light>();
+            light.transform.parent = gameObject.transform;
+            light.intensity = 0f;
+            light.range = 1.7f;
+            light.color = initialColor;
+            light.enabled = true;
+        }
+
+
         public override void OnOpenedChanged(bool opened)
         {
             base.OnOpenedChanged(opened);
+
             if(animator != null) animator.SetBool(AnimatorHashID.open_workbench, opened);
             FMODUWE.PlayOneShot(opened ? openSound : closeSound, soundOrigin.position, 1f);
 
             if(opened)
             {
-                StartCoroutine(FadeLight(0f, 10f, 1f));
-                gameObject.EnsureComponent<DontLook>();
+                StartCoroutine(FadeLight(0f, 10f, 1.7f));
+                //gameObject.EnsureComponent<DontLook>();
             }
             else
             {
                 StartCoroutine(FadeLight(10f, 0f, 0.4f));
-                DestroyImmediate(gameObject.GetComponent<DontLook>());
+                //DestroyImmediate(gameObject.GetComponent<DontLook>());
             }
         }
 
@@ -84,6 +101,42 @@ namespace Ramune.RamunesWorkbench.Monos
             }
 
             light.intensity = num2;
+        }
+
+
+        public IEnumerator WaitForFX()
+        {
+            while(fxSparksInstances is null)
+                yield return null;
+            
+            SetColorsForFX();
+            yield break;
+        }
+
+
+        public void SetColorsForFX()
+        {            
+            if(fxSparksInstances is null)
+                return;
+            
+            foreach(var gameobject in fxSparksInstances)
+            {
+                if(gameobject is null)
+                    break;
+                
+                var singleParticle = gameobject.GetComponent<ParticleSystem>();
+
+                if(singleParticle is not null)
+                    singleParticle.startColor = initialColor;
+
+                foreach(var particle in gameobject.GetComponentsInChildren<ParticleSystem>(true))
+                {
+                    if(particle is null)
+                        break;
+                    
+                    particle.startColor = initialColor;
+                }
+            }
         }
     }
 }
