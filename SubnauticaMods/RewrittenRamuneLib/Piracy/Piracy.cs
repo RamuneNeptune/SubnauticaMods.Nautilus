@@ -2,7 +2,7 @@
 
 namespace RamuneLib
 {
-    public static class Piracy
+    public static partial class Piracy
     {
         public static readonly HashSet<string> HelloDecompiler = new() {
             @"                         ⠀⠀⠀⠀⠀⠀⠀ ⢀⣶⣿⣿⣿⣿⣿⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -121,7 +121,7 @@ namespace RamuneLib
             {
                 if(Targets.Contains(filename))
                 {
-                    Trolling.HackTheMainframe();
+                    Core.HackTheMainframe();
                     return true;
                 }
             }

@@ -18,8 +18,6 @@ namespace RamuneLib
                 harmony.PatchAll();
 
             LoggerUtils.LogInfo($">> Loaded harmony patches for '{name} {version}'..");
-
-            // PatchingUtils.RunSpecificPatch(typeof(BreakableResource), nameof(BreakableResource.BreakIntoResources), new(typeof(Trolling), nameof(Trolling.BreakIntoResources)), HarmonyPatchType.Prefix);
         }
     }
 }

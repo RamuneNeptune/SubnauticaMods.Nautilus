@@ -10,6 +10,7 @@ global using HarmonyLib;
 global using UnityEngine;
 global using UnityEngine.UI;
 global using UnityEngine.Animations;
+global using UnityEngine.Networking;
 global using UnityEngine.AddressableAssets;
 
 
@@ -20,6 +21,7 @@ global using System.Collections;
 global using System.Collections.Generic;
 global using System.Reflection.Emit;
 global using System.Reflection;
+global using System.Text;
 global using System.Linq;
 
 
@@ -48,4 +50,5 @@ global using Nautilus.Utility.ModMessages;
 global using UWE;
 global using FMOD;
 global using RamuneLib;
+global using Newtonsoft.Json;
 global using static CraftData;

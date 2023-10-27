@@ -10,7 +10,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Core\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Piracy\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Piracy\Monos\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Piracy\Patches\" />
     <Folder Include="$(MSBuildThisFileDirectory)Utils\" />
     <Folder Include="$(MSBuildThisFileDirectory)Other\" />
   </ItemGroup>
@@ -19,8 +20,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)Other\CustomPrefabExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Other\GlobalReferences.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Initializer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)piracy\patches\BreakableResource.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)piracy\patches\LiveMixin.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Piracy\PiracyVariables.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)piracy\patches\Player.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)piracy\Piracy.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)piracy\Trolling.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Piracy\Monos\PirateTunes.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)piracy\Core.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)utils\PatchingUtils.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)utils\ImageUtils.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)utils\JsonUtils.cs" />

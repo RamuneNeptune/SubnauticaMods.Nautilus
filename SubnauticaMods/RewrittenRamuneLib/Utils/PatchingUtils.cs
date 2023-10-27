@@ -15,7 +15,7 @@ namespace RamuneLib
 
             if(targetMethod is null)
             {
-                LoggerUtils.LogError($">> Manual patch: '{targetType}.{methodName}' was not found!");
+                LoggerUtils.LogError($">> Manual patch for: '{targetType}.{methodName}' as '{patchType}' not found [0]");
                 return;
             }
 
@@ -33,6 +33,8 @@ namespace RamuneLib
                     harmony.Patch(targetMethod, transpiler: patchMethod);
                     break;
             }
+
+            LoggerUtils.LogFatal($">> Manual patch for: '{targetType}.{methodName}' as '{patchType}' called [1]");
         }
     }
 }

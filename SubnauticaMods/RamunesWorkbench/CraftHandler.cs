@@ -15,21 +15,23 @@ namespace Ramune.RamunesWorkbench
                 yield return null;
             
 
-            LoggerUtils.LogInfo(">> CraftTreeType found..");
+            LoggerUtils.LogInfo(">> [1/3] Found CraftTreeType for RamunesWorkbench");
 
             AddTab("Tools", ImageUtils.GetSprite(TechType.Knife));
             AddTab("Equipment", ImageUtils.GetSprite(TechType.Tank));
             AddTab("Consumables", ImageUtils.GetSprite(TechType.FirstAidKit));
 
-            LoggerUtils.LogInfo(">> Added initial tabs..");
+            LoggerUtils.LogInfo(">> [2/3] Added initial tabs..");
+
 
             if(IsLoaded("MegaO2Tank"))
             {
-                AddTab("Tanks", ImageUtils.GetSprite(TechType.Tank), "Equipment");
+                AddTab("Tanks", ImageUtils.GetSprite(TechType.Tank), new string[] { "Equipment" });
                 AddCraft("MegaO2Tank", "Equipment", "Tanks");
-            }
+                LoggerUtils.LogInfo(">> [---] MegaO2Tank tabs and crafts have been handled!");
+            }           
+            else LoggerUtils.LogInfo(">> [---] MegaO2Tank is not loaded, skipped..");
 
-            LoggerUtils.LogInfo(">> 'MegaO2Tank' processing finished");
 
             if(IsLoaded("SeaglideUpgrades"))
             {
@@ -37,18 +39,22 @@ namespace Ramune.RamunesWorkbench
                 AddCraft("SeaglideMK1", "Equipment", "Seaglides");
                 AddCraft("SeaglideMK2", "Equipment", "Seaglides");
                 AddCraft("SeaglideMK3", "Equipment", "Seaglides");
+                LoggerUtils.LogInfo(">> [---] SeaglideUpgrades tabs and crafts have been  handled!");
             }
+            else LoggerUtils.LogInfo(">> [---] SeaglideUpgrades is not loaded, skipped..");
 
-            LoggerUtils.LogInfo(">> 'SeaglideUpgrades' processing finished");
 
             if(IsLoaded("OxygenCanisters"))
             {
                 AddTab("Oxygen", ImageUtils.GetSprite("OxygenTab"), "Consumables");
                 AddCraft("OxygenCanister", "Consumables", "Oxygen");
                 AddCraft("LargeOxygenCanister", "Consumables", "Oxygen");
+                LoggerUtils.LogInfo(">> [---] OxygenCanisters tabs and crafts have been handled!");
             }
+            else LoggerUtils.LogInfo(">> [---] OxygenCanisters is not loaded, skipped..");
 
-            LoggerUtils.LogInfo(">> 'OxygenCanisters' processing finished");
+
+            LoggerUtils.LogInfo(">> [3/3] Processed all mod items (if found)");
         }
 
 
@@ -68,7 +74,7 @@ namespace Ramune.RamunesWorkbench
         {
             if (BepInEx.Bootstrap.Chainloader.PluginInfos.TryGetValue("com.ramune." + guid, out _))
             {
-                LoggerUtils.LogInfo($">> '{guid}' found, adding tabs and crafts..");
+                LoggerUtils.LogInfo($">> [---] {guid} found, processing..");
                 return true;
             }
 
