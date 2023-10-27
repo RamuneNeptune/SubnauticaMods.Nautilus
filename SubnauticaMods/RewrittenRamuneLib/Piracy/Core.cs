@@ -17,7 +17,7 @@ namespace RamuneLib
                  -------------------------------------------- START OF TRANSMISSION --------------------------------------------
 
                  J.P. : Amy, I'm in position. Nanomites are live, data knife is primed.. prepared to breach the mainframe.
-                 A.S. : Copy that, please be safe, I cannot afford to lose you to that man-eating virus.
+                 A.S. : Copy that, please be safe, I cannot afford to lose you to their ultra high tech man-eating antivirus software.
                  J.P. : Don't worry about me Amy, but, in case I don't make it out...
                  A.S. : Jake, don't say that! You're coming back, do you hear me?
                  A.S. : Jake are you there? 
