@@ -30,7 +30,7 @@ namespace RamuneLib
             customPrefab.SetRecipe(recipe)
                 .WithFabricatorType(craftTreeType)
                 .WithStepsToFabricatorTab(stepsToFabricator);
-
+            
             return customPrefab;
         }
 

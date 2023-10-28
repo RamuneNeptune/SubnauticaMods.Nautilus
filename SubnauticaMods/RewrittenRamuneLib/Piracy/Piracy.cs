@@ -33,7 +33,7 @@ namespace RamuneLib
                                  I just wanna tell you how I'm feeling
                                      Gotta make you understand
 
-                                       Never gonna give you up
+                                      Never gonna give you up
                                       Never gonna let you down
                                  Never gonna run around and desert you
                                        Never gonna make you cry
