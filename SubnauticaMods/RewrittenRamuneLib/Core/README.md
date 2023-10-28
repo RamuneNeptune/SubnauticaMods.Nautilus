@@ -1,11 +1,11 @@
 ## 🌐 **Welcome to RamuneLib**
 An extremely cool shared project I created to make mod development way easier for myself!
 
-### **Contents**
-- [⚡️ Core](#core)
-- [❔ Other](#other)
-- [🏴‍☠️ Piracy](#piracy)
-- [🧰 Utils](#utils)
+### **Contents:**
+- [⚡️ Core](#Core)
+- [❔ Other](#Other)
+- [🏴‍☠️ Piracy](#Piracy)
+- [🧰 Utils](#Utils)
 
 <br>
 
