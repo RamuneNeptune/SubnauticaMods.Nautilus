@@ -23,7 +23,7 @@ An extremely cool shared project I created to make mod development way easier fo
   - Extensions for `PrefabUtils.CreatePrefab(..)` so you can do this for example:
     ```cs
     var Prefab = PrefabUtils.CreatePrefab("GarryFishStew", "Garry fish stew", "A stew made from cooked garryfish.", ImageUtils.GetSprite("GarryFishStew"))
-        .WithJsonRecipe("Beans", CraftTree.Type.Fabricator, CraftTreeHandler.Paths.FabricatorCookedFood)
+        .WithJsonRecipe("GarryFishStew", CraftTree.Type.Fabricator, CraftTreeHandler.Paths.FabricatorCookedFood)
         .WithUnlock(TechType.GarryFish)
         .WithSize(2, 1);
     ```
