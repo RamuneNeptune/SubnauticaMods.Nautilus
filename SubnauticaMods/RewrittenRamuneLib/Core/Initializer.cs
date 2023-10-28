@@ -12,7 +12,7 @@ namespace RamuneLib
             if(Piracy.Exists()) 
                 return;
 
-            LoggerUtils.LogInfo($">> Loaded harmony patches for '{name} {version}'..");
+            LoggerUtils.LogInfo($">> Loading harmony patches for '{name} {version}'..");
 
             if(patchAll) 
                 harmony.PatchAll();

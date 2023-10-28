@@ -4,15 +4,14 @@ namespace Ramune.SeaglideUpgrades.Items
 {
     public static class SeaglideMK2
     {
-        public static CustomPrefab Prefab = Utilities.CreatePrefab("SeaglideMK2", "Seaglide <color=#bde170>MK2</color>", "SPEED: +25%\nMay need to re-equip to apply speed", Utilities.GetSprite("SeaglideMK2.Sprite"))
-            .WithPDACategoryAfter(TechGroup.Workbench, TechCategory.Workbench, TechType.RepulsionCannon)
-            .WithJsonRecipe("SeaglideMK2.Recipe", CraftTree.Type.Workbench, 5.5f, "Seaglides")
+        public static CustomPrefab Prefab = PrefabUtils.CreatePrefab("SeaglideMK2", "Seaglide <color=#bde170>MK2</color>", "SPEED: +25%\nMay need to re-equip to apply speed", ImageUtils.GetSprite("SeaglideMK2.Sprite"))
+            .WithJsonRecipe("SeaglideMK2.Recipe")
             .WithEquipment(EquipmentType.Hand)
             .WithUnlock(TechType.Seaglide)
             .WithSize(2, 3);
 
-        public static Texture2D TextureMain = Utilities.GetTexture("SeaglideMK2.Tex");
-        public static Texture2D TextureIllum = Utilities.GetTexture("SeaglideMK2.TexIllum");
+        public static Texture2D TextureMain = ImageUtils.GetTexture("SeaglideMK2.Tex");
+        public static Texture2D TextureIllum = ImageUtils.GetTexture("SeaglideMK2.TexIllum");
 
         public static void Patch()
         {

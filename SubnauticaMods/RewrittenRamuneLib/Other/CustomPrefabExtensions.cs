@@ -4,24 +4,6 @@ namespace RamuneLib
 {
     public static class CustomPrefabExtensions
     {
-        // Creating Prefabs -----------------------------------------------------------------------------------------------------------------------------------------------
-
-        public static CustomPrefab CreatePrefab(string id, string name, string description, Atlas.Sprite sprite)
-        {
-            return new CustomPrefab(id, name, description, sprite);
-        }
-
-
-        public static CustomPrefab CreatePrefab(string id, string name, string description, UnityEngine.Sprite sprite)
-        {
-            return new CustomPrefab(id, name, description, sprite);
-        }
-
-        // ----------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-
         // Setting prefab recipe ------------------------------------------------------------------------------------------------------------------------------------------
 
         public static CustomPrefab WithRecipe(this CustomPrefab customPrefab, RecipeData recipe, CraftTree.Type craftTreeType)

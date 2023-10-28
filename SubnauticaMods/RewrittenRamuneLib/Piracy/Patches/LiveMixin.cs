@@ -8,16 +8,22 @@ namespace RamuneLib
         {
             public static AudioSource screamSource;
 
-            [HarmonyPatch(typeof(LiveMixin), nameof(LiveMixin.Kill)), HarmonyPostfix]
-            public static void Kill(LiveMixin __instance)
+            [HarmonyPatch(typeof(LiveMixin), nameof(LiveMixin.TakeDamage)), HarmonyPostfix]
+            public static void TakeDamage(LiveMixin __instance)
             {
                 var creature = __instance.gameObject.GetComponent<Creature>();
 
                 if(creature is null)
                     return;
-
+                
                 if(screamSource is null)
-                    screamSource = __instance.gameObject.EnsureComponent<AudioSource>();
+                {
+                    var go = new GameObject("Scream");
+                    go.transform.parent = Player.main.transform;
+
+                    screamSource = go.EnsureComponent<AudioSource>();
+                    screamSource.volume = 0.1f;
+                }
 
                 if(PiracyVariables.Clip_Scream is null)
                     return;

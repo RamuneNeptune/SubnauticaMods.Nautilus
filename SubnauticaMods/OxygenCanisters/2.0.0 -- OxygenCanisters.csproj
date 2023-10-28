@@ -347,7 +347,6 @@
     <Compile Include="Config.cs" />
     <Compile Include="Items\LargeOxygenCaniser.cs" />
     <Compile Include="Items\OxygenCanister.cs" />
-    <Compile Include="Monos\OxygenProvider.cs" />
     <Compile Include="Patches\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -355,6 +354,7 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <Import Project="..\RewrittenRamuneLib\RewrittenRamuneLib.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

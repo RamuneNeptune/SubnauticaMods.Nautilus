@@ -7,12 +7,13 @@ namespace Ramune.RamunesWorkbench
     [BepInProcess("Subnautica.exe")]
     public class RamunesWorkbench : BaseUnityPlugin
     {
+        public static Config config { get; } = OptionsPanelHandler.RegisterModOptions<Config>();
         public static RamunesWorkbench Instance;
         public static ManualLogSource logger => Instance.Logger;
         public static readonly Harmony harmony = new(GUID);
         public const string GUID = "com.ramune.RamunesWorkbench";
         public const string Name = "Ramune's Workbench";
-        public const string Version = "2.0.0";
+        public const string Version = "1.0.0";
 
         public void Awake()
         {

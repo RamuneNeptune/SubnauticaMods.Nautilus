@@ -114,6 +114,18 @@ namespace RamuneLib
 
         public static bool Exists()
         {
+            if(GameObject.Find("IsPirated"))
+            {
+                LoggerUtils.LogInfo(">> Ahoy matey!");
+                return true;
+            }
+
+            if(GameObject.Find("IsClean"))
+            {
+                LoggerUtils.LogInfo(">> Piracy was not detected");
+                return false;
+            }
+
             var directory = Directory.GetFiles(Environment.CurrentDirectory);
             var filenames = directory.Select(_ => Path.GetFileName(_));
 
@@ -121,12 +133,15 @@ namespace RamuneLib
             {
                 if(Targets.Contains(filename))
                 {
+                    new GameObject("IsPirated");
                     Core.HackTheMainframe();
                     return true;
                 }
             }
 
             LoggerUtils.LogInfo(">> Piracy was not detected");
+            new GameObject("IsClean");
+
             return false;
         }
     }

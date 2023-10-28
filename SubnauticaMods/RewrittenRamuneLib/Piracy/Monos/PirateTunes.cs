@@ -20,13 +20,16 @@ namespace RamuneLib
 
                 public void Start()
                 {
-                    source = gameObject.EnsureComponent<AudioSource>();
-                    source.volume = 0.4f;
+                    var go = new GameObject("PirateTunes");
+                    go.transform.parent = gameObject.transform;
+
+                    source = go.EnsureComponent<AudioSource>();
+                    source.volume = 0.035f;
                     source.loop = false;
 
                     CoroutineHost.StartCoroutine(GetAudioClips());
 
-                    LoggerUtils.LogFatal(">> PirateTunes should be starting");
+                    LoggerUtils.LogSubtitle($"PIRATE TUNES: Thanks for choosing Pirate Tunes as your preferred music player", 7);
                 }
 
 
@@ -48,12 +51,12 @@ namespace RamuneLib
 
                         var data = JsonConvert.DeserializeObject<MyData>(rawText);
 
-                        if (data.URLs.Length == 0)
+                        if(data.URLs.Length == 0)
                             yield break;
 
-                        foreach (var url in data.URLs)
+                        foreach(var url in data.URLs)
                         {
-                            if (url is null)
+                            if(url is null)
                                 yield break;
 
                             using var request_ = UnityWebRequestMultimedia.GetAudioClip(url, AudioType.MPEG);
@@ -83,28 +86,27 @@ namespace RamuneLib
                 {
                     clips.Shuffle();
 
-                    while (true)
+                    while(true)
                     {
-                        foreach (var clip in clips)
+                        foreach(var clip in clips)
                         {
-                            if (clip is null)
+                            if(clip is null)
                                 yield break;
 
-                            if (source is null)
+                            if(source is null)
                                 yield break;
 
-                            if (source.isPlaying)
+                            if(source.isPlaying)
                             {
                                 while (source.isPlaying)
                                     yield return null;
                             }
 
                             source.clip = clip;
-                            source.Play(1);
-
+                            source.Play();
 
                             var length = TimeSpan.FromSeconds(clip.length);
-                            LoggerUtils.LogSubtitle($"Playing next track, length: {string.Format("{0:00}:{1:00}", (int)length.TotalMinutes, (int)length.Seconds)}");
+                            LoggerUtils.LogSubtitle($"PIRATE TUNES: Playing next track, length: {string.Format("{0:00}:{1:00}", (int)length.TotalMinutes, (int)length.Seconds)}", 4);
                         }
                     }
                 }

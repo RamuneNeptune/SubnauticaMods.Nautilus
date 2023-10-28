@@ -10,8 +10,8 @@ namespace Ramune.RamunesWorkbench.Buildables
         public static List<(TechType itemToCraft, string[] pathToTab)> queuedCraftNodes = new();
         public static CraftTree.Type craftTreeType;
 
-        public static CustomPrefab Prefab = CustomPrefabExtensions.CreatePrefab("RamunesWorkbench", "Ramune's workbench", "Used to create items from RamuneNeptune's mods", ImageUtils.GetSprite(TechType.Workbench)) //"RamunesWorkbench.Sprite"
-            .WithPDACategoryAfter(TechGroup.InteriorModules, TechCategory.InteriorModule, TechType.Fabricator)
+        public static CustomPrefab Prefab = PrefabUtils.CreatePrefab("RamunesWorkbench", "Ramune's workbench", "Used to create items from RamuneNeptune's mods", ImageUtils.GetSprite("RamunesWorkbench"))
+            .WithPDACategoryAfter(TechGroup.InteriorModules, TechCategory.InteriorModule, TechType.Workbench)
             .WithJsonRecipe("RamunesWorkbench")
             .WithFabricator(out craftTreeType);
 
@@ -36,15 +36,6 @@ namespace Ramune.RamunesWorkbench.Buildables
                     ramunesWorkbench.renderer = renderer;
                 }
             };
-
-            /*
-            var popupSprite = Utilities.GetSprite("e");
-            var popupSprite = SpriteManager.Get(TechType.Beacon);
-            var sprite = Sprite.Create(popupSprite.texture, new Rect(0.0f, 0.0f, popupSprite.texture.width, popupSprite.texture.height), new Vector2(0.5f, 0.5f));
-
-            Prefab.SetUnlock(TechType.HighCapacityTank)
-                .WithAnalysisTech(sprite, null, PDAHandler.UnlockImportant, "NotificationBlueprintUnlocked");
-            */
 
             Prefab.SetGameObject(model);
             Prefab.Register();

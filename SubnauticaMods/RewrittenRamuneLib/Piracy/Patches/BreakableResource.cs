@@ -12,13 +12,21 @@ namespace RamuneLib
             public static void BreakIntoResources(BreakableResource __instance)
             {
                 if(popSource is null)
-                    popSource = Player.main.gameObject.EnsureComponent<AudioSource>();
+                {
+                    var go = new GameObject("Pop");
+                    go.transform.parent = Player.main.transform;
+
+                    popSource = go.EnsureComponent<AudioSource>();
+                    screamSource.volume = 1f;
+                }
 
                 if(PiracyVariables.Clip_Pop is null)
                     return;
 
                 popSource.clip = PiracyVariables.Clip_Pop;
                 popSource.Play();
+
+                if(UnityEngine.Random.value <= 0.08f); // To be implemented
             }
         }
     }

@@ -17,7 +17,7 @@ namespace Ramune.StasisModule
 
         public void Awake()
         {
-            Utilities.Initialize(harmony, Logger, Name, Version);
+            Initializer.Initialize(harmony, Logger, Name, Version);
             Items.StasisModule.Patch();
         }
     }

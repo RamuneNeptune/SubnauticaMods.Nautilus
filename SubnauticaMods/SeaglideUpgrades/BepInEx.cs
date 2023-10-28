@@ -17,15 +17,15 @@ namespace Ramune.SeaglideUpgrades
 
         public void Awake()
         {
-            Utilities.Initialize(harmony, Logger, Name, Version);
+            Initializer.Initialize(harmony, Logger, Name, Version);
 
-            CraftTreeHandler.AddTabNode(CraftTree.Type.Workbench, "Seaglides", "Seaglides", Utilities.GetSprite(TechType.Seaglide));
+            CraftTreeHandler.AddTabNode(CraftTree.Type.Workbench, "Seaglides", "Seaglides", ImageUtils.GetSprite(TechType.Seaglide));
 
             Items.SeaglideMK1.Patch();
             Items.SeaglideMK2.Patch();
             Items.SeaglideMK3.Patch();
 
-            InternalLogger.LogInternal(">> Registered custom Seaglides", LogLevel.Info);
+            LoggerUtils.LogInfo(">> Registered custom Seaglides");
         }
     }
 }

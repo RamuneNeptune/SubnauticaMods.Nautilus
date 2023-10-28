@@ -22,7 +22,7 @@ namespace RamuneLib
         public static void LogFatal(string message) => Variables.logger?.LogFatal(message);
 
 
-        public static void LogSubtitle(string message, float delay = -1f, float duration = 5f)
+        public static void LogSubtitle(string message, float duration = 5f, float delay = -1f)
         {
             var builder = new StringBuilder();
             builder.Append(message);

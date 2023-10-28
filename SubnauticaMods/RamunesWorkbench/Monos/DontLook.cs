@@ -1,7 +1,5 @@
 ﻿
 
-using FMOD;
-
 namespace Ramune.RamunesWorkbench.Monos
 {
     public class DontLook : MonoBehaviour

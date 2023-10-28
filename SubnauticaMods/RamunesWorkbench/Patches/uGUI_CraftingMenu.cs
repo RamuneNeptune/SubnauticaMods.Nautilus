@@ -5,8 +5,22 @@ namespace Ramune.RamunesWorkbench.Patches
     [HarmonyPatch(typeof(uGUI_CraftingMenu))]
     public static class uGUI_CraftingMenuPatches
     {
-        public static Atlas.Sprite TabNode = ImageUtils.GetSprite("TabNode");
-        public static Atlas.Sprite TabNodeHover = ImageUtils.GetSprite("TabNodeHover");
+        public static Atlas.Sprite VanillaTabNode = ImageUtils.GetSprite("Vanilla.TabNode");
+        public static Atlas.Sprite VanillaTabNodeHover = ImageUtils.GetSprite("Vanilla.TabNodeHover");
+        public static Atlas.Sprite FancyTabNode = ImageUtils.GetSprite("Fancy.TabNode");
+        public static Atlas.Sprite FancyTabNodeHover = ImageUtils.GetSprite("Fancy.TabNodeHover");
+
+        public static Atlas.Sprite[] GetTabNodeSprites()
+        {
+            if(RamunesWorkbench.config.tabStyle == Config.NodeStyle.Vanilla)
+                return new Atlas.Sprite[] { VanillaTabNode, VanillaTabNodeHover };
+
+            if(RamunesWorkbench.config.tabStyle == Config.NodeStyle.Fancy)
+                return new Atlas.Sprite[] { FancyTabNode, FancyTabNodeHover };
+
+            return null;
+        }
+
         public static CraftTree.Type CurrentCraftTreeType;
 
 
@@ -38,8 +52,8 @@ namespace Ramune.RamunesWorkbench.Patches
 
             if(node.action != TreeAction.Expand)
                 return;
-            
-            node.icon.SetBackgroundSprite(TabNode);
+
+            node.icon.SetBackgroundSprite(GetTabNodeSprites()[0]);
         }
 
 
@@ -57,7 +71,7 @@ namespace Ramune.RamunesWorkbench.Patches
             if(node.action != TreeAction.Expand)
                 return;
 
-            node.icon.SetBackgroundSprite(TabNodeHover);
+            node.icon.SetBackgroundSprite(GetTabNodeSprites()[1]);
         }
 
 
@@ -75,7 +89,7 @@ namespace Ramune.RamunesWorkbench.Patches
             if(node.action != TreeAction.Expand)
                 return;
 
-            node.icon.SetBackgroundSprite(TabNode);
+            node.icon.SetBackgroundSprite(GetTabNodeSprites()[0]);
         }
     }
 }

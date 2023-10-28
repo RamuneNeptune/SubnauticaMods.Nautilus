@@ -7,6 +7,7 @@ namespace Ramune.OxygenCanisters
     [BepInProcess("Subnautica.exe")]
     public class OxygenCanisters : BaseUnityPlugin
     {
+        public static Config config { get; } = OptionsPanelHandler.RegisterModOptions<Config>();
         public static OxygenCanisters Instance;
         public static ManualLogSource logger => Instance.Logger;
         public static readonly Harmony harmony = new(GUID);
@@ -16,7 +17,7 @@ namespace Ramune.OxygenCanisters
 
         public void Awake()
         {
-            Utilities.Initialize(harmony, Logger, Name, Version);
+            Initializer.Initialize(harmony, Logger, Name, Version);
             Items.OxygenCanister.Patch();
             Items.LargeOxygenCaniser.Patch();
         }

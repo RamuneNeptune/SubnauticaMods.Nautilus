@@ -19,7 +19,7 @@ namespace Ramune.RadiantBlade
 
         public void Awake()
         {
-            Utilities.Initialize(harmony, Logger, Name, Version);
+            Initializer.Initialize(harmony, Logger, Name, Version);
             Items.RadiantBlade.Patch();
 
             Items.RainbowSuit.Patch();
