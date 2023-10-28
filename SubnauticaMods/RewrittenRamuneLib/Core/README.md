@@ -1,5 +1,5 @@
 ## 🌐 **Welcome to RamuneLib**
-### **Note:** RamuneLib is **NOT** a mod, it's a [shared project](https://learn.microsoft.com/en-us/xamarin/cross-platform/app-fundamentals/shared-projects?tabs=windows#what-is-a-shared-project) that compiles itself into your mod's .dll
+#### **Note:** RamuneLib is **NOT** a mod, it's a [shared project](https://learn.microsoft.com/en-us/xamarin/cross-platform/app-fundamentals/shared-projects?tabs=windows#what-is-a-shared-project) that compiles itself into your mod's .dll
 An extremely cool shared project I created to make mod development way easier for myself!
 
 ### **Contents:**
