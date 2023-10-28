@@ -1,9 +1,17 @@
 ## 🌐 **Welcome to RamuneLib**
 An extremely cool shared project I created to make mod development way easier for myself!
 
+### **Contents**
+- [⚡️ Core](#core)
+- [❔ Other](#other)
+- [🏴‍☠️ Piracy](#piracy)
+- [🧰 Utils](#utils)
+
+<br>
+
 <!-------------------------------------------------------------------------------------->
 
-## ⚡️ **Core**
+## ⚡️ **[Core]()**
 - **Initializer.cs**
   - Patches all harmony patches and checks for piracy, all in one line of code
 
@@ -15,10 +23,11 @@ An extremely cool shared project I created to make mod development way easier fo
     - Path to `BepInEx\plugins\YourMod\Assets`
     - Path to `BepInEx\plugins\YourMod\Recipes` (used for `.WithJsonRecipe(..)`)
 
+<br>
 
 <!-------------------------------------------------------------------------------------->
 
-## ❔ **Other**
+## ❔ **[Other]()**
 - **CustomPrefabExtensions.cs**
   - Extensions for `PrefabUtils.CreatePrefab(..)` so you can do this for example:
     ```cs
@@ -31,21 +40,25 @@ An extremely cool shared project I created to make mod development way easier fo
 - **GlobalReferences.cs**
   - Contains a bunch of common `global using XYZ;` so I never have to add these to the top of every file ever again
 
-<!-------------------------------------------------------------------------------------->
-
-## 🏴‍☠️ **Piracy**
-- **Example**
-  - Example
-
-- **Example**
-  - Example
-
-- **Example**
-  - Example
+<br>
 
 <!-------------------------------------------------------------------------------------->
 
-## 🧰 **Utils**
+## 🏴‍☠️ **[Piracy]()**
+- **Example**
+  - Example
+
+- **Example**
+  - Example
+
+- **Example**
+  - Example
+
+<br>
+
+<!-------------------------------------------------------------------------------------->
+
+## 🧰 **[Utils]()**
 - **ImageUtils.cs**
   - Contains methods to grab sprites and textures from `BepInEx\plugins\YourMod\Assets`
 
@@ -61,5 +74,4 @@ An extremely cool shared project I created to make mod development way easier fo
 - **PrefabUtils.cs**
   - Contains methods to create a `CustomPrefab` and `RecipeData`
 
-  
 <!-------------------------------------------------------------------------------------->
