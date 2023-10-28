@@ -25,7 +25,7 @@ An extremely cool shared project I created to make mod development way easier fo
     var Prefab = PrefabUtils.CreatePrefab("GarryFishStew", "Garry fish stew", "A stew made from cooked garryfish.", ImageUtils.GetSprite("GarryFishStew"))
         .WithJsonRecipe("Beans", CraftTree.Type.Fabricator, CraftTreeHandler.Paths.FabricatorCookedFood)
         .WithUnlock(TechType.GarryFish)
-        .WithSize(2, 1)
+        .WithSize(2, 1);
     ```
 
 - **GlobalReferences.cs**
@@ -53,7 +53,7 @@ An extremely cool shared project I created to make mod development way easier fo
   - Contains a method to fetch a json recipe from `BepInEx\plugins\YourMod\Recipes`, you shouldn't ever need to use this because `.WithJsonRecipe(..)` already calls it for you
 
 - **LoggerUtils.cs**
-  - Contains methods to log to console, to screen (`ErrorMessage.AddMessage(..)`, and to subtitles (with optional delay and duration parameters))
+  - Contains methods to log to console, to screen (`ErrorMessage.AddMessage(..)`), and to subtitles (with optional delay and duration parameters)
 
 - **PatchingUtils.cs**
   - Contains a method to run a specific harmony patch, currently only used to run piracy trolls
