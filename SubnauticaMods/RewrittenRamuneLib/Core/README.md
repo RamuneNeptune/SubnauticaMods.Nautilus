@@ -1,9 +1,9 @@
-## **Welcome to RamuneLib**
+## 🌐 **Welcome to RamuneLib**
 An extremely cool shared project I created to make mod development way easier for myself!
 
 <!-------------------------------------------------------------------------------------->
 
-## **Core**
+## ⚡️ **Core**
 - **Initializer.cs**
   - Patches all harmony patches and checks for piracy, all in one line of code
 
@@ -18,7 +18,7 @@ An extremely cool shared project I created to make mod development way easier fo
 
 <!-------------------------------------------------------------------------------------->
 
-## **Other**
+## ❔ **Other**
 - **CustomPrefabExtensions.cs**
   - Extensions for `PrefabUtils.CreatePrefab(..)` so you can do this for example:
     ```cs
@@ -33,7 +33,7 @@ An extremely cool shared project I created to make mod development way easier fo
 
 <!-------------------------------------------------------------------------------------->
 
-## **Piracy**
+## 🏴‍☠️ **Piracy**
 - **Example**
   - Example
 
@@ -45,7 +45,7 @@ An extremely cool shared project I created to make mod development way easier fo
 
 <!-------------------------------------------------------------------------------------->
 
-## **Utils**
+## 🧰 **Utils**
 - **ImageUtils.cs**
   - Contains methods to grab sprites and textures from `BepInEx\plugins\YourMod\Assets`
 
