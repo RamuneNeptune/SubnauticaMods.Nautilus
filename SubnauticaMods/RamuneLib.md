@@ -14,10 +14,10 @@ A super cool shared project I created to make mod development easier, troll pira
 <!-------------------------------------------------------------------------------------->
 
 ## ⚡️ **[Core]()**
-- **Initializer.cs**
+- ### **Initializer.cs**
   - Patches all harmony patches and checks for piracy, all in one line of code
 
-- **Variables.cs**
+- ### **Variables.cs**
   - Stores `public static` variables for:
     - Harmony instance for `PatchingUtils.RunSpecificPatch(..)`, set via `Initializer.Initialize(..)`
     - Logger used for `LoggerUtils`, set via `Initializer.Initialize(..)`
@@ -30,7 +30,7 @@ A super cool shared project I created to make mod development easier, troll pira
 <!-------------------------------------------------------------------------------------->
 
 ## ❔ **[Other]()**
-- **CustomPrefabExtensions.cs**
+- ### **CustomPrefabExtensions.cs**
   - Extensions for `PrefabUtils.CreatePrefab(..)` so you can do this for example:
     ```cs
     var Prefab = PrefabUtils.CreatePrefab("GarryFishStew", "Garry fish stew", "A stew made from cooked garryfish.", ImageUtils.GetSprite("GarryFishStew"))
@@ -39,7 +39,7 @@ A super cool shared project I created to make mod development easier, troll pira
         .WithSize(2, 1);
     ```
 
-- **GlobalReferences.cs**
+- ### **GlobalReferences.cs**
   - Contains a bunch of common `global using XYZ;` so I never have to add these to the top of every file ever again
 
 <br>
@@ -47,13 +47,13 @@ A super cool shared project I created to make mod development easier, troll pira
 <!-------------------------------------------------------------------------------------->
 
 ## 🏴‍☠️ **[Piracy]()**
-- **Example**
+- ### **Example**
   - Example
 
-- **Example**
+- ### **Example**
   - Example
 
-- **Example**
+- ### **Example**
   - Example
 
 <br>
@@ -61,7 +61,7 @@ A super cool shared project I created to make mod development easier, troll pira
 <!-------------------------------------------------------------------------------------->
 
 ## 🧰 **[Utils]()**
-- **ImageUtils.cs**
+- ### **ImageUtils.cs**
   - Contains methods to load custom sprites and textures
 
     - `ImageUtils.GetSprite(string filename) : Atlas.Sprite`
@@ -85,10 +85,10 @@ A super cool shared project I created to make mod development easier, troll pira
         var sprite = ImageUtils.GetUnitySprite("MegaBlade");
         ```
 
-- **JsonUtils.cs**
+- ### **JsonUtils.cs**
   - Contains a method to fetch a json recipe from `BepInEx\plugins\YourMod\Recipes`, you shouldn't ever need to use this because `.WithJsonRecipe(..)` already calls it for you
 
-- **LoggerUtils.cs**
+- ### **LoggerUtils.cs**
   - Contains methods to log to console, to screen (`ErrorMessage.AddMessage(..)`), and to subtitles (with optional delay and duration parameters)
 
     - `LoggerUtils.LogScreen(string message)`
@@ -141,7 +141,7 @@ A super cool shared project I created to make mod development easier, troll pira
         LoggerUtils.LogSubtitle("PDA: Transmission coordinates received", 20f);
         ```
 
-- **PatchingUtils.cs**
+- ### **PatchingUtils.cs**
   - Contains a method to run a specific harmony patch
 
     - `PatchingUtils.RunSpecificPatch(Type targetType, string methodName, HarmonyMethod patchMethod, HarmonyPatchType patchType)`
@@ -158,7 +158,7 @@ A super cool shared project I created to make mod development easier, troll pira
       PatchingUtils.RunSpecificPatch(typeof(Player), nameof(Player.Awake), new HarmonyMethod(typeof(YourPatchingClass), nameof(YourPatchingClass.PatchMethod)), HarmonyPatchType.Transpiler);
       ```
 
-- **PrefabUtils.cs**
+- ### **PrefabUtils.cs**
   - Contains methods to create a `CustomPrefab` and `RecipeData`
 
     - `PrefabUtils.CreatePrefab(string id, string name, string description, Atlas.Sprite sprite) : CustomPrefab`
