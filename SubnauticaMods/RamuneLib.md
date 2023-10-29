@@ -62,7 +62,28 @@ A super cool shared project I created to make mod development easier, troll pira
 
 ## 🧰 **[Utils]()**
 - **ImageUtils.cs**
-  - Contains methods to grab sprites and textures from `BepInEx\plugins\YourMod\Assets`
+  - Contains methods to load custom sprites and textures
+
+    - `ImageUtils.GetSprite(string filename) : Atlas.Sprite`
+      - Returns: an Atlas.Sprite using a .png image from `BepInEx\plugins\YourMod\Assets\filename.png`
+      - Example:
+        ```cs
+        var sprite = ImageUtils.GetSprite("MegaBlade");
+        ```
+
+    - `ImageUtils.GetSprite(TechType techType) : Atlas.Sprite`
+      - Returns: an Atlas.Sprite from the input TechType
+      - Example:
+        ```cs
+        var sprite = ImageUtils.GetSprite(TechType.Knife);
+        ```
+
+    - `ImageUtils.GetSprite(string filename) : UnityEngine.Sprite`
+      - Returns: a UnityEngine.Sprite using a .png image from `BepInEx\plugins\YourMod\Assets\filename.png`
+      - Example:
+        ```cs
+        var sprite = ImageUtils.GetUnitySprite("MegaBlade");
+        ```
 
 - **JsonUtils.cs**
   - Contains a method to fetch a json recipe from `BepInEx\plugins\YourMod\Recipes`, you shouldn't ever need to use this because `.WithJsonRecipe(..)` already calls it for you
@@ -70,10 +91,102 @@ A super cool shared project I created to make mod development easier, troll pira
 - **LoggerUtils.cs**
   - Contains methods to log to console, to screen (`ErrorMessage.AddMessage(..)`), and to subtitles (with optional delay and duration parameters)
 
+    - `LoggerUtils.LogScreen(string message)`
+      - What it does: logs a message on screen using the games `ErrorMessage.AddMessage(..)` system
+      - Example:
+        ```cs
+        LoggerUtils.LogScreen("We've been trying to reach you about your cars extended warranty.");
+        ```
+
+    - `LoggerUtils.LogInfo(string message)`
+      - What it does: logs a message to the BepInEx console / logfile as `[Info : YourMod] Message`
+      - Example:
+        ```cs
+        LoggerUtils.LogInfo("This is an info message.");
+        ```
+
+    - `LoggerUtils.LogDebug(string message)`
+      - What it does: logs a message to the BepInEx console / logfile as `[Debug : YourMod] Message`
+      - Example:
+        ```cs
+        LoggerUtils.LogDebug("This is a debug message.");
+        ```
+
+    - `LoggerUtils.LogWarning(string message)`
+      - What it does: logs a message to the BepInEx console / logfile as `[Warning : YourMod] Message`
+      - Example:
+        ```cs
+        LoggerUtils.LogWarning("This is a warning message.");
+        ```
+
+    - `LoggerUtils.LogError(string message)`
+      - What it does: logs a message to the BepInEx console / logfile as `[Error : YourMod] Message`
+      - Example:
+        ```cs
+        LoggerUtils.LogError("This is an error message.");
+        ```
+
+    - `LoggerUtils.LogFatal(string message)`
+      - What it does: logs a message to the BepInEx console / logfile as `[Fatal : YourMod] Message`
+      - Example:
+        ```cs
+        LoggerUtils.LogFatal("This is a fatal message.");
+        ```
+
+    - `LoggerUtils.LogSubtitle(string message, float duration = 5f, float delay = -1f)`
+      - What it does: logs a message on screen using the games `Subtitles.Add(..)`
+      - Example:
+        ```cs
+        // Adds a subtitle that lasts 20 seconds
+        LoggerUtils.LogSubtitle("PDA: Transmission coordinates received", 20f);
+        ```
+
 - **PatchingUtils.cs**
-  - Contains a method to run a specific harmony patch, currently only used to run piracy trolls
+  - Contains a method to run a specific harmony patch
+
+    - `PatchingUtils.RunSpecificPatch(Type targetType, string methodName, HarmonyMethod patchMethod, HarmonyPatchType patchType)`
+      - What it does: Runs a singular specified harmony patch
+      - Example: 
+      ```cs
+      // Prefix
+      PatchingUtils.RunSpecificPatch(typeof(Player), nameof(Player.Awake), new HarmonyMethod(typeof(YourPatchingClass), nameof(YourPatchingClass.PatchMethod)), HarmonyPatchType.Prefix);
+
+      // Postfix
+      PatchingUtils.RunSpecificPatch(typeof(Player), nameof(Player.Awake), new HarmonyMethod(typeof(YourPatchingClass), nameof(YourPatchingClass.PatchMethod)), HarmonyPatchType.Postfix);
+
+      // Transpiler
+      PatchingUtils.RunSpecificPatch(typeof(Player), nameof(Player.Awake), new HarmonyMethod(typeof(YourPatchingClass), nameof(YourPatchingClass.PatchMethod)), HarmonyPatchType.Transpiler);
+      ```
 
 - **PrefabUtils.cs**
   - Contains methods to create a `CustomPrefab` and `RecipeData`
+
+    - `PrefabUtils.CreatePrefab(string id, string name, string description, Atlas.Sprite sprite) : CustomPrefab`
+
+      - Returns: A custom prefab set with all the specified arguments
+      - Example:
+        ```cs
+        var Prefab = PrefabUtils.CreatePrefab("MegaBlade", "Mega blade", "An absolutely devestating mega blade.", ImageUtils.GetSprite("MegaBlade"));
+        ```
+
+    - `PrefabUtils.CreatePrefab(string id, string name, string description, UnityEngine.Sprite sprite) : CustomPrefab`
+
+      - Returns: A custom prefab set with all the specified arguments
+      - Example:
+        ```cs
+        var Prefab = PrefabUtils.CreatePrefab("MegaBlade", "Mega blade", "An absolutely devestating mega blade.", ImageUtils.GetUnitySprite("MegaBlade"));
+        ```
+
+    - `PrefabUtils.CreateRecipe(int craftAmount, params Ingredient[] ingredients) : RecipeData`
+
+      - Returns: A new RecipeData set with all the specified arguments
+      - Example:
+        ```cs
+        var Recipe = PrefabUtils.CreateRecipe(1, 
+            new Ingredient(TechType.Titanium, 4),
+            new Ingredient(TechType.Lithium, 3),
+            new Ingredient(TechType.Copper, 2),
+            new Ingredient(TechType.Quartz, 1));
+        ```
 
 <!-------------------------------------------------------------------------------------->

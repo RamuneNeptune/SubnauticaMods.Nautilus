@@ -17,7 +17,7 @@ namespace RamuneLib
 
 
         public static RecipeData CreateRecipe(int craftAmount, params Ingredient[] ingredients)
-        {
+        { 
             return new RecipeData()
             {
                 craftAmount = craftAmount,
