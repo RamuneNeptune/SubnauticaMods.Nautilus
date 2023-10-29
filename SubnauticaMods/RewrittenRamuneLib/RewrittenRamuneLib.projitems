@@ -12,7 +12,6 @@
     <Folder Include="$(MSBuildThisFileDirectory)Core\" />
     <Folder Include="$(MSBuildThisFileDirectory)Piracy\Monos\" />
     <Folder Include="$(MSBuildThisFileDirectory)Piracy\Patches\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Utils\" />
     <Folder Include="$(MSBuildThisFileDirectory)Other\" />
   </ItemGroup>
   <ItemGroup>

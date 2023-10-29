@@ -24,5 +24,19 @@ namespace RamuneLib
                 Ingredients = new(ingredients)
             };
         }
+
+
+        public static RecipeData CreateRecipe(int craftAmount, params object[] recipeItems)
+        {
+            var ingredients = recipeItems.OfType<Ingredient>().ToArray();
+            var linkedItems = recipeItems.OfType<TechType>().ToArray();
+
+            return new RecipeData()
+            {
+                craftAmount = craftAmount,
+                Ingredients = new List<Ingredient>(ingredients),
+                LinkedItems = new List<TechType>(linkedItems)
+            };
+        }
     }
 }
