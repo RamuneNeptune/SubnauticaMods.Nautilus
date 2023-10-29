@@ -6,13 +6,10 @@
 	</PropertyGroup>
 	
 	<PropertyGroup>
-		<RootNamespace>Ramune.$(MSBuildProjectName)</RootNamespace>
-	</PropertyGroup>
-	
-	<PropertyGroup>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<RootNamespace>$(SolutionName).Ramune.$(MSBuildProjectName)</RootNamespace>
 	</PropertyGroup>
-	
-	<Import Project="C:\Source\SubnauticaMods.Nautilus\SubnauticaMods\RewrittenRamuneLib\RewrittenRamuneLib.projitems" Label="Shared" />
+
+	<!--<Import Project="C:\Source\SubnauticaMods.Nautilus\SubnauticaMods\RewrittenRamuneLib\RewrittenRamuneLib.projitems" Label="Shared" />-->
 
 </Project>

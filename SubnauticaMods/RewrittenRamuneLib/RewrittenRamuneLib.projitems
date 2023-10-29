@@ -27,10 +27,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)piracy\Piracy.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Piracy\Monos\PirateTunes.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)piracy\Core.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)utils\PatchingUtils.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)utils\ImageUtils.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)utils\JsonUtils.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)utils\LoggerUtils.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)utils\PrefabUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\PatchingUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\ImageUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\JsonUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\LoggerUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\PrefabUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\VehicleUtils.cs" />
   </ItemGroup>
 </Project>
