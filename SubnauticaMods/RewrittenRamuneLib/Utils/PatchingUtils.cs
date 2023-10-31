@@ -41,7 +41,7 @@ namespace RamuneLib
                     break;
 
                 default:
-                    LoggerUtils.LogError($">> Manual patch for: '{targetType}.{methodName}' as '{patchType}' could not be run because '{patchType}' is not a valid option");
+                    LoggerUtils.LogError($">> Manual patch for: '{targetType}.{methodName}' as '{patchType}' could not be run because '{patchType}' is not a valid option (prefix, postfix, or transpiler)");
                     return;
             }
 

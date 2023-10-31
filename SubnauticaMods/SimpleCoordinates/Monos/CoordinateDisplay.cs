@@ -1,6 +1,7 @@
 ﻿
-
+using Nautilus.Utility;
 using Newtonsoft.Json.Linq;
+
 
 namespace Ramune.SimpleCoordinates.Monos
 {
@@ -33,18 +34,6 @@ namespace Ramune.SimpleCoordinates.Monos
 
         public void Update()
         {
-            if(GameInput.GetKeyDown(KeyCode.Y))
-            {
-                StoryGoalCustomEventHandler.main.gunDisabled = true;
-                Log("<b>gunDisabled = true</b>").WithColor(Utilities.Colors.Green);
-            }
-
-            if(GameInput.GetKeyDown(KeyCode.U))
-            {
-                StoryGoalCustomEventHandler.main.gunDisabled = false;
-                Log("<b>gunDisabled = false</b>").WithColor(Utilities.Colors.Red);
-            }
-
             if(!SimpleCoordinates.config.display && !textHidden)
             {
                 text.Hide();
