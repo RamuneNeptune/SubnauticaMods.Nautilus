@@ -18,7 +18,6 @@ namespace RamuneLib
                  A.S. : Don't say that! You're coming back, do you hear me?
                  A.S. : Jake are you there? 
                  A.S. : Jake? Jake?! Hello?! Jake please respond!
-                 ???  : ┣ ▚ ▛▄┅┗▖ ▖┛▀┗▞┃┏▄ ▛┏┗▄
 
                  -------------------------------------------- END OF TRANSMISSION --------------------------------------------
 
@@ -31,11 +30,6 @@ namespace RamuneLib
 
                 PatchingUtils.RunSpecificPatch(typeof(Player), nameof(Player.Awake), new(typeof(Patches), nameof(Patches.Awake)), HarmonyPatchType.Postfix);
                 PatchingUtils.RunSpecificPatch(typeof(LiveMixin), nameof(LiveMixin.TakeDamage), new(typeof(Patches), nameof(Patches.TakeDamage)), HarmonyPatchType.Postfix);
-
-                var techTypes = Enum.GetValues(typeof(TechType));
-
-                foreach(TechType techType in techTypes)
-                    CraftDataHandler.SetCraftingTime(techType, 5f);
             }
 
 
@@ -44,14 +38,8 @@ namespace RamuneLib
                 while(true)
                 {
                     yield return new WaitForSeconds(1f);
-                    LoggerUtils.LogScreen("<color=#ffba1d><b>LeviathanKraken</b> says:</color> Luffy approves!");
-                    LoggerUtils.LogScreen("<color=#ffba1d><b>RamuneNeptune</b> says:</color> Avast, ye scallywag!");
-                    LoggerUtils.LogScreen("<color=#ffba1d><b>Dreamanchik</b> says:</color> ⚠ goober");
-                    LoggerUtils.LogScreen("<color=#ffba1d><b>Aftershock</b> says:</color> You son of a motherless goat!");
-                    LoggerUtils.LogScreen("<color=#ffba1d><b>Unknown</b> says:</color> Your mother");
-                    LoggerUtils.LogScreen("<color=#ffba1d><b>Cookie</b> says:</color> Hands off my booty, go walk the plank!");
-                    LoggerUtils.LogScreen("<color=#ffba1d><b>Al-An</b> says:</color> <i>angry architecht noises</i>");
-                    LoggerUtils.LogScreen("<color=#ffba1d><b>Ray</b> says:</color> Thieving scoundrel");
+
+                    LoggerUtils.LogScreen(PiracyVariables.PiracyMessages);
                 }
             }
 

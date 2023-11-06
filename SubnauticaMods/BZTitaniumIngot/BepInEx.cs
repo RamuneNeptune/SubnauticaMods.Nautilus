@@ -16,8 +16,8 @@ namespace Ramune.BZTitaniumIngot
 
         public void Awake()
         {
-            Utilities.Initialize(harmony, Logger, Name, Version);
-            CraftDataHandler.SetRecipeData(TechType.TitaniumIngot, Utilities.CreateRecipe(1, new Ingredient(TechType.Titanium, 5)));
+            Initializer.Initialize(harmony, Logger, Name, Version);
+            CraftDataHandler.SetRecipeData(TechType.TitaniumIngot, PrefabUtils.CreateRecipe(1, new Ingredient(TechType.Titanium, 5)));
         }
     }
 }

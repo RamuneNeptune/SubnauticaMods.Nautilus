@@ -4,7 +4,7 @@ namespace Ramune.RadiantBlade.Monos
 {
     public partial class RadiantBlade : HeatBlade
     {
-        public static FMODAsset AssetSeismic = AudioUtils.GetFmodAsset("event:/creature/crash/die");
+        public static FMODAsset AssetSeismic = Nautilus.Utility.AudioUtils.GetFmodAsset("event:/creature/crash/die");
 
         public static void UseSeismic(Creature creature)
         {

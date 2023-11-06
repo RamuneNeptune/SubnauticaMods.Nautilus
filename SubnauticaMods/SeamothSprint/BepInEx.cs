@@ -17,7 +17,7 @@ namespace Ramune.SeamothSprint
 
         public void Awake()
         {
-            Utilities.Initialize(harmony, Logger, Name, Version);
+            Initializer.Initialize(harmony, Logger, Name, Version);
         }
     }
 }

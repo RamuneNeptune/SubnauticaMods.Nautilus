@@ -13,7 +13,8 @@ namespace Ramune.RamunesWorkbench.Buildables
         public static CustomPrefab Prefab = PrefabUtils.CreatePrefab("RamunesWorkbench", "Ramune's workbench", "Used to create items from RamuneNeptune's mods", ImageUtils.GetSprite("RamunesWorkbench"))
             .WithPDACategoryAfter(TechGroup.InteriorModules, TechCategory.InteriorModule, TechType.Workbench)
             .WithJsonRecipe("RamunesWorkbench")
-            .WithFabricator(out craftTreeType);
+            .WithFabricator(out craftTreeType)
+            .WithAutoUnlock();
 
 
         public static void Patch()

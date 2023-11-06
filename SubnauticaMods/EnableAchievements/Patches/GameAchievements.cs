@@ -8,7 +8,7 @@ namespace Ramune.EnableAchievements.Patches
         public static bool Prefix(GameAchievements.Id id)
         {
             PlatformUtils.main.GetServices().UnlockAchievement(id);
-            Logger.LogInternal($">> Unlocked '{id}'", LogLevel.Info);
+            LoggerUtils.LogInfo($">> Unlocked '{id}'");
 
             return false;
         }

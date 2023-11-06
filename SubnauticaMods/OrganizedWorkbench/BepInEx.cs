@@ -16,7 +16,7 @@ namespace Ramune.OrganizedWorkbench
 
         public void Awake()
         {
-            Utilities.Initialize(harmony, Logger, Name, Version);
+            Initializer.Initialize(harmony, Logger, Name, Version);
 
             List<(TechType, string)> list = new()
             {
@@ -35,9 +35,9 @@ namespace Ramune.OrganizedWorkbench
             };
 
             CraftTreeHandler.RemoveNode(CraftTree.Type.Workbench, "Vanilla");
-            CraftTreeHandler.AddTabNode(CraftTree.Type.Workbench, "Tools", "Tools", Utilities.GetSprite(TechType.Knife));
-            CraftTreeHandler.AddTabNode(CraftTree.Type.Workbench, "Equipment", "Equipment", Utilities.GetSprite(TechType.Tank));
-            CraftTreeHandler.AddTabNode(CraftTree.Type.Workbench, "Modules", "Modules", Utilities.GetSprite(TechType.VehicleHullModule1));
+            CraftTreeHandler.AddTabNode(CraftTree.Type.Workbench, "Tools", "Tools", ImageUtils.GetSprite(TechType.Knife));
+            CraftTreeHandler.AddTabNode(CraftTree.Type.Workbench, "Equipment", "Equipment", ImageUtils.GetSprite(TechType.Tank));
+            CraftTreeHandler.AddTabNode(CraftTree.Type.Workbench, "Modules", "Modules", ImageUtils.GetSprite(TechType.VehicleHullModule1));
 
             foreach(var value in list.Skip(1)) CraftTreeHandler.AddCraftingNode(CraftTree.Type.Workbench, value.Item1, value.Item2);
         }

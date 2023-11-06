@@ -4,10 +4,10 @@ namespace Ramune.RadiantBlade.Items
 {
     public static class RadiantBlade
     {            
-        public static Texture2D TextureMain = Utilities.GetTexture("RadiantBlade.TextureMain");
-        public static Texture2D TextureIllum = Utilities.GetTexture("RadiantBlade.TextureIllum");
+        public static Texture2D TextureMain = ImageUtils.GetTexture("RadiantBlade.TextureMain");
+        public static Texture2D TextureIllum = ImageUtils.GetTexture("RadiantBlade.TextureIllum");
 
-        public static CustomPrefab Prefab = Utilities.CreatePrefab("RadiantBlade", "Radiant blade", "A radiant blade, because it's radiant.", Utilities.GetSprite("RadiantBlade.Sprite"))
+        public static CustomPrefab Prefab = PrefabUtils.CreatePrefab("RadiantBlade", "Radiant blade", "A radiant blade, because it's radiant.", ImageUtils.GetSprite("RadiantBlade.Sprite"))
             .WithJsonRecipe("RadiantBlade", CraftTree.Type.Fabricator, CraftTreeHandler.Paths.FabricatorMachines)
             .WithEquipment(EquipmentType.Hand)
             .WithUnlock(TechType.Knife);

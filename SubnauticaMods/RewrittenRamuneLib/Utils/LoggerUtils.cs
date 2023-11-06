@@ -4,8 +4,44 @@ namespace RamuneLib
 {
     public static class LoggerUtils
     {
+        public static class Screen
+        {
+            public enum LogLevel
+            {
+                [EnumString("<color=#54c8f2><b>Info:</b></color>")] Info,
+
+                [EnumString("<color=#b30000><b>Error:</b></color>")] Error,
+
+                [EnumString("<color=#b1b1b1><b>Debug:</b></color>")] Debug,
+
+                [EnumString("<color=#ffac00><b>Warning:</b></color>")] Warning,
+
+                [EnumString("<color=#00b300><b>Success:</b></color>")] Success,
+
+                [EnumString("<color=#b30000><b>Fail:</b></color>")] Fail
+            }
+
+            public static void LogInfo(string message) => ErrorMessage.AddError(LogLevel.Info.GetEnumStringValue() + " " + message);
+
+
+            public static void LogError(string message) => ErrorMessage.AddError(LogLevel.Error.GetEnumStringValue() + " " + message);
+
+
+            public static void LogDebug(string message) => ErrorMessage.AddError(LogLevel.Debug.GetEnumStringValue() + " " + message);
+
+
+            public static void LogWarning(string message) => ErrorMessage.AddError(LogLevel.Warning.GetEnumStringValue() + " " + message);
+
+
+            public static void LogSuccess(string message) => ErrorMessage.AddError(LogLevel.Success.GetEnumStringValue() + " " + message);
+
+
+            public static void LogFail(string message) => ErrorMessage.AddError(LogLevel.Fail.GetEnumStringValue() + " " + message);
+        }
+
+
         /// <summary>
-        /// Logs a message to the screen using ErrorMessage.AddMessage.
+        /// Logs a message to the screen using ErrorMessage.AddError
         /// </summary>
         /// <param name="message">The message to log.</param>
         /// <example>
@@ -13,7 +49,20 @@ namespace RamuneLib
         /// LoggerUtils.LogScreen("This is an example message to display on the screen.");
         /// </code>
         /// </example>
-        public static void LogScreen(string message) => ErrorMessage.AddMessage(message);
+        public static void LogScreen(string message) => ErrorMessage.AddError(message);
+
+
+        /// <summary>
+        /// Logs a message to the screen using ErrorMessage.AddError
+        /// </summary>
+        /// <param name="message">The message to log.</param>
+        /// <param name="logLevel">This is just a prefix to the message, e.g. LoggerUtils.LogLevel.Info == "Info: {message}"</param>
+        /// <example>
+        /// <code>
+        /// LoggerUtils.LogScreen("This is an example message to display on the screen.", LoggerUtils.ScreenLevel.Info);
+        /// </code>
+        /// </example>
+        public static void LogScreen(string message, LogLevel logLevel) => ErrorMessage.AddError(logLevel.GetEnumStringValue() + " " + message);
 
 
         /// <summary>

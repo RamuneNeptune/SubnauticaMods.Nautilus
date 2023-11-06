@@ -5,11 +5,11 @@ namespace Ramune.DecoFabricator.Buildables
     public static class DecoFabricator
     {
         public static CraftTree.Type craftTreeType;
-        public static Texture2D TextureMain = Utilities.GetTexture("DecoFabricator.Tex");
+        public static Texture2D TextureMain = ImageUtils.GetTexture("DecoFabricatorTexture");
 
-        public static CustomPrefab Prefab = Utilities.CreatePrefab("DecoFabricator", "Decorations fabricator", "Used to fabricate posters, toys, caps, and more", Utilities.GetSprite("DecoFabricator.Sprite"))
+        public static CustomPrefab Prefab = PrefabUtils.CreatePrefab("DecoFabricator", "Decorations fabricator", "Used to fabricate posters, toys, caps, and more", ImageUtils.GetSprite("DecoFabricator"))
             .WithPDACategoryAfter(TechGroup.InteriorModules, TechCategory.InteriorModule, TechType.Fabricator)
-            .WithJsonRecipe("DecoFabricator.Recipe", 5.5f)
+            .WithJsonRecipe("DecoFabricator")
             .WithFabricator(out craftTreeType);
 
 
@@ -38,7 +38,7 @@ namespace Ramune.DecoFabricator.Buildables
             CraftTreeHandler.AddTabNode(craftTreeType, TechMap.Values.ElementAt(2), TechMap.Values.ElementAt(2), SpriteManager.Get(TechType.ArcadeGorgetoy));
 
 
-            var recipe = Utilities.CreateRecipe(1, new Ingredient(TechType.Titanium, 1));
+            var recipe = PrefabUtils.CreateRecipe(1, new Ingredient(TechType.Titanium, 1));
 
 
             foreach(var techCategory in TechMap)

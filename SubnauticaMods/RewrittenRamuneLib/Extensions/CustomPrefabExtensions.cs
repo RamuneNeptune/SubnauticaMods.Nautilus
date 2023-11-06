@@ -56,6 +56,15 @@ namespace RamuneLib
         }
 
 
+        public static CustomPrefab WithJsonRecipe(this CustomPrefab customPrefab, string filename, CraftTree.Type craftTreeType)
+        {
+            customPrefab.SetRecipeFromJson(JsonUtils.GetJsonRecipe(filename))
+                .WithFabricatorType(craftTreeType);
+
+            return customPrefab;
+        }
+
+
         public static CustomPrefab WithJsonRecipe(this CustomPrefab customPrefab, string filename, float craftingTime)
         {
             customPrefab.SetRecipeFromJson(JsonUtils.GetJsonRecipe(filename))
@@ -94,6 +103,13 @@ namespace RamuneLib
         public static CustomPrefab WithUnlock(this CustomPrefab customPrefab, TechType techType)
         {
             customPrefab.SetUnlock(techType);
+            return customPrefab;
+        }
+
+
+        public static CustomPrefab WithAutoUnlock(this CustomPrefab customPrefab)
+        {
+            KnownTechHandler.UnlockOnStart(customPrefab.Info.TechType);
             return customPrefab;
         }
 

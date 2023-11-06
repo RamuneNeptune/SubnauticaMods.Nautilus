@@ -5,10 +5,12 @@ namespace Ramune.RamunesWorkbench.Patches
     [HarmonyPatch(typeof(uGUI_CraftingMenu))]
     public static class uGUI_CraftingMenuPatches
     {
+        public static CraftTree.Type CurrentCraftTreeType;
         public static Atlas.Sprite VanillaTabNode = ImageUtils.GetSprite("Vanilla.TabNode");
         public static Atlas.Sprite VanillaTabNodeHover = ImageUtils.GetSprite("Vanilla.TabNodeHover");
         public static Atlas.Sprite FancyTabNode = ImageUtils.GetSprite("Fancy.TabNode");
         public static Atlas.Sprite FancyTabNodeHover = ImageUtils.GetSprite("Fancy.TabNodeHover");
+
 
         public static Atlas.Sprite[] GetTabNodeSprites()
         {
@@ -20,8 +22,6 @@ namespace Ramune.RamunesWorkbench.Patches
 
             return null;
         }
-
-        public static CraftTree.Type CurrentCraftTreeType;
 
 
         [HarmonyPatch(nameof(uGUI_CraftingMenu.Open)), HarmonyPrefix]

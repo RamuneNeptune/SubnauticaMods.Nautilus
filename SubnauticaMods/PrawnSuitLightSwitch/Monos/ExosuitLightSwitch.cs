@@ -4,8 +4,8 @@ namespace Ramune.PrawnSuitLightSwitch.Monos
 {
     public class ExosuitLightSwitch : MonoBehaviour
     {
-        public FMODAsset lightOn = AudioUtils.GetFmodAsset("event:/sub/seamoth/seamoth_light_on");
-        public FMODAsset lightOff = AudioUtils.GetFmodAsset("event:/sub/seamoth/seamoth_light_off");
+        public FMODAsset lightOn = Nautilus.Utility.AudioUtils.GetFmodAsset("event:/sub/seamoth/seamoth_light_on");
+        public FMODAsset lightOff = Nautilus.Utility.AudioUtils.GetFmodAsset("event:/sub/seamoth/seamoth_light_off");
         public Light[] lights;
 
         public bool on, playSounds, displaySubtitles;
@@ -15,7 +15,7 @@ namespace Ramune.PrawnSuitLightSwitch.Monos
             Light[] exosuitLights = gameObject.FindChild("lights_parent").GetComponentsInChildren<Light>(true);
 
             if(exosuitLights != null) lights = exosuitLights;
-            else Logger.LogInternal("Couldn't find lights for Exosuit!", LogLevel.Error);
+            else LoggerUtils.LogError("Couldn't find lights for Exosuit!");
         }
 
         public void Update()

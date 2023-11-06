@@ -17,14 +17,14 @@ namespace Ramune.SimpleCoordinates.Monos
             text = new();
             text.ShowMessage("", 1);
             text.SetColor(new(1f, 0.75f, 0.16f));
-            text.SetAlign(TMPro.TextAlignmentOptions.Center);
+            text.SetAlign(TextAlignmentOptions.Center);
             text.SetLocation(SimpleCoordinates.config.textX, SimpleCoordinates.config.textY);
             text.SetSize((int)SimpleCoordinates.config.textSize);
 
             targetText = new();
             targetText.ShowMessage("", 1);
             targetText.SetColor(new(1f, 0.75f, 0.16f));
-            targetText.SetAlign(TMPro.TextAlignmentOptions.Center);
+            targetText.SetAlign(TextAlignmentOptions.Center);
             targetText.SetLocation(SimpleCoordinates.config.targetTextX, SimpleCoordinates.config.targetTextY);
             targetText.SetSize((int)SimpleCoordinates.config.targetTextSize);
 

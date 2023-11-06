@@ -16,7 +16,7 @@ namespace Ramune.DecoFabricator
 
         public void Awake()
         {
-            Utilities.Initialize(harmony, Logger, Name, Version);
+            Initializer.Initialize(harmony, Logger, Name, Version);
             Buildables.DecoFabricator.Patch();
         }
     }

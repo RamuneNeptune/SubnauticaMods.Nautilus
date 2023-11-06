@@ -37,5 +37,39 @@ namespace RamuneLib.Utils
 
             return values;
         }
+
+
+        public static void MultiplyVehicleSpeeds(this Vehicle vehicle, float multiplier)
+        {
+            vehicle.forwardForce *= multiplier;
+            vehicle.backwardForce *= multiplier;
+            vehicle.sidewardForce *= multiplier;
+            vehicle.verticalForce *= multiplier;
+        }
+
+
+        public static void MultiplyVehicleSpeeds(this Vehicle vehicle, float multiplier, float duration)
+        {
+            CoroutineHost.StartCoroutine(MultiplyVehicleSpeedsAsync(vehicle, multiplier, duration));
+        }
+
+        private static IEnumerator MultiplyVehicleSpeedsAsync(Vehicle vehicle, float multiplier, float duration)
+        {
+            float[] originals = GetVehicleSpeeds(vehicle);
+
+            vehicle.forwardForce *= multiplier;
+            vehicle.backwardForce *= multiplier;
+            vehicle.sidewardForce *= multiplier;
+            vehicle.verticalForce *= multiplier;
+
+            yield return new WaitForSeconds(duration);
+
+            vehicle.forwardForce *= originals[0];
+            vehicle.backwardForce *= originals[1];
+            vehicle.sidewardForce *= originals[2];
+            vehicle.verticalForce *= originals[3];
+
+            // Not tested yet, dunno if this shit works
+        }
     }
 }

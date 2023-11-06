@@ -1,6 +1,4 @@
 ﻿
-using SuitLib;
-
 
 namespace Ramune.RadiantBlade
 {
@@ -21,7 +19,7 @@ namespace Ramune.RadiantBlade
         {
             Initializer.Initialize(harmony, Logger, Name, Version);
             Items.RadiantBlade.Patch();
-
+            /*
             Items.RainbowSuit.Patch();
             Items.RainbowGloves.Patch();
 
@@ -32,6 +30,7 @@ namespace Ramune.RadiantBlade
             var GlovesKVP = new Dictionary<string, Texture2D> { { "_MainTex", Items.RainbowGloves.TextureMain }, { "_SpecTex", Items.RainbowGloves.TextureMain } };
             var RamuneGloves = new ModdedGloves(GlovesKVP, ModdedSuitsManager.VanillaModel.Reinforced, Items.RainbowGloves.Prefab.Info.TechType);
             ModdedSuitsManager.AddModdedGloves(RamuneGloves);
+            */
         }
     }
 }

@@ -27,16 +27,17 @@ namespace Ramune.SeamothSprint
 
             if(seamoths.Length < 1)
             {
-                Log("None found").WithColor(Colors.Yellow);
+                LoggerUtils.Screen.LogFail("Could not find any Seamoths");
                 return;
             }
 
             SeaMoth target = null;
             float closest = float.MaxValue;
 
-            Log($"Checking distances for [{seamoths.Length}] Seamoths").WithColor(Colors.White);
+            LoggerUtils.Screen.LogInfo($"Checking distances on {seamoths.Length} Seamoths");
 
-            foreach(SeaMoth seamoth in seamoths)
+
+            foreach (SeaMoth seamoth in seamoths)
             {
                 float distance = Vector3.Distance(seamoth.transform.position, Player.main.transform.position);
 
@@ -44,11 +45,14 @@ namespace Ramune.SeamothSprint
                 {
                     closest = distance;
                     target = seamoth;
-                    Log($" >> Set new closest ({distance}m)").WithColor(Colors.Yellow);
+
+                    LoggerUtils.Screen.LogInfo($"Found new closest Seamoth ({distance}m)..");
                 }
             }
 
             target.TeleportVehicle(Player.main.transform.position, MainCamera.camera.transform.rotation);
+
+            LoggerUtils.Screen.LogSuccess($"Teleported Seamoth to player");
         }
     }
 }

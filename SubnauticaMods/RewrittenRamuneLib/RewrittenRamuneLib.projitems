@@ -12,15 +12,16 @@
     <Folder Include="$(MSBuildThisFileDirectory)Core\" />
     <Folder Include="$(MSBuildThisFileDirectory)Extensions\" />
     <Folder Include="$(MSBuildThisFileDirectory)Piracy\Monos\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Piracy\Patches\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)core\Variables.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\CustomPrefabExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Miscellaneous\Attributes.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Miscellaneous\GlobalReferences.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Initializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)piracy\patches\BreakableResource.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)piracy\patches\LiveMixin.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Piracy\Patches\SoundSystem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Piracy\PiracyVariables.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)piracy\patches\Player.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)piracy\Piracy.cs" />

@@ -2,6 +2,7 @@
 
 namespace Ramune.RadiantBlade.Items
 {
+    /*
     public static class RainbowSuit
     {
         public static Texture2D TextureMain = Utilities.GetTexture("RamuneSuit.TextureMain");
@@ -41,4 +42,5 @@ namespace Ramune.RadiantBlade.Items
             Prefab.Register();
         }
     }
+    */
 }

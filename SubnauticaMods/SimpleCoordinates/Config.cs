@@ -38,7 +38,7 @@ namespace Ramune.SimpleCoordinates
         [Button("Open TargetCoordinates.json", Tooltip = "Opens the json file which your Target Coordinates will be read from", Order = 9)]
         public void Open(ButtonClickedEventArgs _)
         {
-            System.Diagnostics.Process.Start(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "TargetCoordinates.json"));
+            Process.Start(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "TargetCoordinates.json"));
         }
 
         public void SendChanges(object sender, SliderChangedEventArgs args)

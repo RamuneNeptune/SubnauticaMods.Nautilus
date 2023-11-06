@@ -1,12 +1,14 @@
 
 
 /*      BepInEx      */
+
 global using BepInEx;
 global using BepInEx.Logging;
 global using HarmonyLib;
 
 
 /*       Unity       */
+
 global using UnityEngine;
 global using UnityEngine.UI;
 global using UnityEngine.Animations;
@@ -15,8 +17,10 @@ global using UnityEngine.AddressableAssets;
 
 
 /*       System      */
+
 global using System;
 global using System.IO;
+global using System.Diagnostics;
 global using System.Collections;
 global using System.Collections.Generic;
 global using System.Reflection.Emit;
@@ -26,6 +30,7 @@ global using System.Linq;
 
 
 /*       Nautilus    */
+
 global using Nautilus.Assets;
 global using Nautilus.Assets.Gadgets;
 global using Nautilus.Assets.PrefabTemplates;
@@ -47,8 +52,11 @@ global using Nautilus.Utility.ModMessages;
 
 
 /*        Other      */
+
 global using UWE;
 global using FMOD;
+global using TMPro;
 global using RamuneLib;
 global using Newtonsoft.Json;
+global using Newtonsoft.Json.Linq;
 global using static CraftData;
