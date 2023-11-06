@@ -1,6 +1,4 @@
 ﻿
-using SealSubMod.MonoBehaviours;
-
 
 namespace Ramune.Seal.CustomizableLights.Patches
 {

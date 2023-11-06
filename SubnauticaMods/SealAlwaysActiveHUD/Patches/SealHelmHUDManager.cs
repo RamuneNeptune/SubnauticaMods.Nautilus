@@ -1,8 +1,5 @@
 ﻿
 
-using SealSubMod.MonoBehaviours;
-
-
 namespace Ramune.Seal.AlwaysActiveHUD.Patches
 {
     [HarmonyPatch(typeof(SealHelmHUDManager))]

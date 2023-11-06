@@ -320,6 +320,7 @@ Global
 		SolutionGuid = {983F3B14-3E65-4519-A019-8D289C846022}
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		RewrittenRamuneLib\RewrittenRamuneLib.projitems*{17fbf530-e995-435f-90b1-96deed9f4c22}*SharedItemsImports = 4
 		RewrittenRamuneLib\RewrittenRamuneLib.projitems*{1e8cbf6f-d66e-40e8-834b-f85ee6c3aa5d}*SharedItemsImports = 4
 		RewrittenRamuneLib\RewrittenRamuneLib.projitems*{2aa9caeb-9c92-46a2-961f-53868b8fc699}*SharedItemsImports = 4
 		RewrittenRamuneLib\RewrittenRamuneLib.projitems*{35a8660b-874f-4a8d-8ea4-8e67a5b2e258}*SharedItemsImports = 4
@@ -328,19 +329,23 @@ Global
 		RewrittenRamuneLib\RewrittenRamuneLib.projitems*{46c5cabf-7294-4203-a6f5-ec3ec8b0b7a1}*SharedItemsImports = 4
 		RewrittenRamuneLib\RewrittenRamuneLib.projitems*{4cfb3351-a4ec-4a7b-8c2e-b6fec69df95f}*SharedItemsImports = 4
 		RewrittenRamuneLib\RewrittenRamuneLib.projitems*{5028e6cd-6a8a-4dab-a6bd-29a3bfd39fda}*SharedItemsImports = 4
+		RewrittenRamuneLib\RewrittenRamuneLib.projitems*{603bbd88-c0cf-45fe-bf80-b44edb2cef33}*SharedItemsImports = 4
 		SealUtils\SealUtils.projitems*{603bbd88-c0cf-45fe-bf80-b44edb2cef33}*SharedItemsImports = 4
 		RewrittenRamuneLib\RewrittenRamuneLib.projitems*{64327dbf-906b-48ed-a438-19f13d2b7a32}*SharedItemsImports = 4
 		RewrittenRamuneLib\RewrittenRamuneLib.projitems*{69364c13-26fd-44a3-8114-685b7bbcc907}*SharedItemsImports = 4
 		RewrittenRamuneLib\RewrittenRamuneLib.projitems*{6ebf2f0d-5ab5-4868-97af-410458604d6d}*SharedItemsImports = 4
 		RewrittenRamuneLib\RewrittenRamuneLib.projitems*{7386d927-3038-4631-aea9-b7600f5c648b}*SharedItemsImports = 4
+		SealUtils\SealUtils.projitems*{7386d927-3038-4631-aea9-b7600f5c648b}*SharedItemsImports = 4
 		RewrittenRamuneLib\RewrittenRamuneLib.projitems*{7477b24d-37ca-40af-a667-ec2b4aafb489}*SharedItemsImports = 4
 		RewrittenRamuneLib\RewrittenRamuneLib.projitems*{752a9808-e767-4d24-a865-3a7525490874}*SharedItemsImports = 4
 		RewrittenRamuneLib\RewrittenRamuneLib.projitems*{8189dd95-5cd6-4392-86b7-e39a788672e3}*SharedItemsImports = 4
+		RewrittenRamuneLib\RewrittenRamuneLib.projitems*{943c3a70-e684-48fb-b677-9baaae0bbc54}*SharedItemsImports = 4
 		SealUtils\SealUtils.projitems*{943c3a70-e684-48fb-b677-9baaae0bbc54}*SharedItemsImports = 4
 		RewrittenRamuneLib\RewrittenRamuneLib.projitems*{98630182-8b45-4ef7-b0cc-7ad81774870d}*SharedItemsImports = 4
 		RewrittenRamuneLib\RewrittenRamuneLib.projitems*{9b448119-10c0-4364-ab65-d54006daba5f}*SharedItemsImports = 4
 		RewrittenRamuneLib\RewrittenRamuneLib.projitems*{a37f3786-3c9a-4cc8-8418-92cbba9e8325}*SharedItemsImports = 4
 		RewrittenRamuneLib\RewrittenRamuneLib.projitems*{a8601836-3c85-4f6d-898b-28bb0339417c}*SharedItemsImports = 4
+		RewrittenRamuneLib\RewrittenRamuneLib.projitems*{a9cb014c-f691-4e5c-84a8-84ea3f8c890d}*SharedItemsImports = 4
 		SealUtils\SealUtils.projitems*{a9cb014c-f691-4e5c-84a8-84ea3f8c890d}*SharedItemsImports = 4
 		RewrittenRamuneLib\RewrittenRamuneLib.projitems*{ab2b66e9-d9d9-48c6-9f88-46bffe983a06}*SharedItemsImports = 4
 		RewrittenRamuneLib\RewrittenRamuneLib.projitems*{b06e1e39-1960-419c-a9dd-a702f729f76a}*SharedItemsImports = 4
@@ -349,6 +354,7 @@ Global
 		SealUtils\SealUtils.projitems*{ca9f51e1-7329-4171-9f49-c4f24785a8e8}*SharedItemsImports = 13
 		RewrittenRamuneLib\RewrittenRamuneLib.projitems*{cde97852-8f6e-4b38-91ca-5686e206dc5a}*SharedItemsImports = 4
 		RewrittenRamuneLib\RewrittenRamuneLib.projitems*{cf3b6db5-6c19-42a9-b6ca-6151571cdd62}*SharedItemsImports = 4
+		SealUtils\SealUtils.projitems*{cf3b6db5-6c19-42a9-b6ca-6151571cdd62}*SharedItemsImports = 4
 		RewrittenRamuneLib\RewrittenRamuneLib.projitems*{d113021b-3132-4bfa-8ab7-827868b40dad}*SharedItemsImports = 4
 		RewrittenRamuneLib\RewrittenRamuneLib.projitems*{e0d65556-6fb9-4b1e-860e-b2e8352209f2}*SharedItemsImports = 4
 		RewrittenRamuneLib\RewrittenRamuneLib.projitems*{e28ca11d-cda1-47bd-ad35-04a459077aff}*SharedItemsImports = 4
