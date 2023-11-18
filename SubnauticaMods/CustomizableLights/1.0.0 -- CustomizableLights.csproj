@@ -6,11 +6,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{603BBD88-C0CF-45FE-BF80-B44EDB2CEF33}</ProjectGuid>
+    <ProjectGuid>{86C23BFE-56F1-43FF-950A-036F7DB73640}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ramune.Seal.UITweaks</RootNamespace>
-    <AssemblyName>Seal.UITweaks</AssemblyName>
+    <RootNamespace>Ramune.CustomizableLights</RootNamespace>
+    <AssemblyName>CustomizableLights</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -87,13 +87,10 @@
       <HintPath>..\packages\MonoMod.Utils.21.12.13.1\lib\net452\MonoMod.Utils.dll</HintPath>
     </Reference>
     <Reference Include="Nautilus, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Subnautica.Nautilus.1.0.0-pre.21\lib\net472\Nautilus.dll</HintPath>
+      <HintPath>..\packages\Subnautica.Nautilus.1.0.0-pre.22\lib\net472\Nautilus.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="SealSub-publicized">
-      <HintPath>..\..\..\..\Program Files (x86)\Steam\steamapps\common\SubnauticaBranches\Stable\SealSub-publicized.dll</HintPath>
     </Reference>
     <Reference Include="Sentry, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Subnautica.GameLibs.71288.0.0-r.0\lib\net472\Sentry.dll</HintPath>
@@ -346,17 +343,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BepInEx.cs" />
-    <Compile Include="Config.cs" />
-    <Compile Include="Patches\DepthUIManager.cs" />
-    <Compile Include="Patches\PowerUIManager.cs" />
-    <Compile Include="Patches\SealUpgradeConsole.cs" />
+    <Compile Include="Config\Config.cs" />
+    <Compile Include="Config\SubRoot.cs" />
+    <Compile Include="Config\Exosuit.cs" />
+    <Compile Include="Config\FlashLight.cs" />
+    <Compile Include="Config\MapRoomCamera.cs" />
+    <Compile Include="Config\Seaglide.cs" />
+    <Compile Include="Config\SeaMoth.cs" />
+    <Compile Include="Monos\CustomizableLights.cs" />
+    <Compile Include="Patches\Exosuit.cs" />
+    <Compile Include="Patches\FlashLight.cs" />
+    <Compile Include="Patches\MapRoomCamera.cs" />
+    <Compile Include="Patches\Seaglide.cs" />
+    <Compile Include="Patches\SeaMoth.cs" />
+    <Compile Include="Patches\SubRoot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <Import Project="..\SealUtils\SealUtils.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -6,11 +6,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{603BBD88-C0CF-45FE-BF80-B44EDB2CEF33}</ProjectGuid>
+    <ProjectGuid>{2F15E29F-8280-474F-B56C-4ED1CA57E9B9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ramune.Seal.UITweaks</RootNamespace>
-    <AssemblyName>Seal.UITweaks</AssemblyName>
+    <RootNamespace>Ramune.Seal.ShrinkModule</RootNamespace>
+    <AssemblyName>Seal.ShrinkModule</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -346,10 +346,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BepInEx.cs" />
-    <Compile Include="Config.cs" />
-    <Compile Include="Patches\DepthUIManager.cs" />
-    <Compile Include="Patches\PowerUIManager.cs" />
-    <Compile Include="Patches\SealUpgradeConsole.cs" />
+    <Compile Include="Items\ShrinkModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -357,6 +354,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="..\SealUtils\SealUtils.projitems" Label="Shared" />
+  <Import Project="..\RewrittenRamuneLib\RewrittenRamuneLib.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
