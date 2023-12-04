@@ -7,7 +7,7 @@ namespace Ramune.DecoFabricator.Buildables
         public static CraftTree.Type craftTreeType;
         public static Texture2D TextureMain = ImageUtils.GetTexture("DecoFabricatorTexture");
 
-        public static CustomPrefab Prefab = PrefabUtils.CreatePrefab("DecoFabricator", "Decorations fabricator", "Used to fabricate posters, toys, caps, and more", ImageUtils.GetSprite("DecoFabricator"))
+        public static CustomPrefab Prefab = PrefabUtils.CreatePrefab("DecoFabricator", "Decorations fabricator", "Used to fabricate posters, toys, caps, and more", ImageUtils.GetSprite(TechType.Fabricator))
             .WithPDACategoryAfter(TechGroup.InteriorModules, TechCategory.InteriorModule, TechType.Fabricator)
             .WithJsonRecipe("DecoFabricator")
             .WithFabricator(out craftTreeType);

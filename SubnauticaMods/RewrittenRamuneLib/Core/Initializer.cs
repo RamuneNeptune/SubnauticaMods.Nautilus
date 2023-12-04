@@ -1,5 +1,7 @@
 
 
+using HarmonyLib;
+
 namespace RamuneLib
 {
     public static class Initializer
@@ -14,10 +16,11 @@ namespace RamuneLib
 
             LoggerUtils.LogInfo($">> Loading harmony patches for '{name} {version}'..");
 
-            if(patchAll) 
+            if(patchAll)
+            {
                 harmony.PatchAll();
-
-            LoggerUtils.LogInfo($">> Loaded harmony patches for '{name} {version}'..");
+                LoggerUtils.LogInfo($">> Loaded harmony patches for '{name} {version}'..");
+            }
         }
     }
 }

@@ -5,8 +5,8 @@ namespace Ramune.SeamothSprint
     [Menu("Seamoth Sprint")]
     public class Config : ConfigFile
     {
-        [Toggle("Enable this mod", Order = 1)]
-        public bool isEnabled = true;
+        [Toggle("Force requiring sprint module", Order = 1)]
+        public bool requiresModule = false;
 
         [Toggle("Enable insanity (boost speed multipler will be tripled)", Order = 2)]
         public bool isInsanity = false;

@@ -22,7 +22,9 @@ namespace Ramune.RamunesWorkbench.Monos
         public override void Awake()
         {
             base.Awake();
-            this.InitLight();
+
+            if(Ramune.RamunesWorkbench.RamunesWorkbench.config.light)
+                this.InitLight();
 
             fxLaserBeam?.ForEach(lb => 
             lb.GetComponent<MeshRenderer>().material.color = initialColor);
@@ -34,6 +36,9 @@ namespace Ramune.RamunesWorkbench.Monos
         public void Update()
         {
             if(renderer is null) return;
+
+            if(!Ramune.RamunesWorkbench.RamunesWorkbench.config.animation)
+                return;
 
             elapsed += Time.deltaTime;
 
@@ -75,6 +80,9 @@ namespace Ramune.RamunesWorkbench.Monos
 
             if(animator != null) animator.SetBool(AnimatorHashID.open_workbench, opened);
             FMODUWE.PlayOneShot(opened ? openSound : closeSound, soundOrigin.position, 1f);
+
+            if(Ramune.RamunesWorkbench.RamunesWorkbench.config.light is false)
+                return;
 
             if(opened)
             {

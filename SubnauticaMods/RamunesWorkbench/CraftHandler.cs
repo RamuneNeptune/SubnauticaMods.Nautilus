@@ -12,9 +12,6 @@ namespace Ramune.RamunesWorkbench
             while(CraftTreeType is CraftTree.Type.None)
                 yield return null;
             
-
-            LoggerUtils.LogInfo(">> [1/3] Found CraftTreeType for RamunesWorkbench");
-
             AddTab("Tools", ImageUtils.GetSprite("TabTools"));
             AddTab("Equipment", ImageUtils.GetSprite("TabEquipment"));
             AddTab("Consumables", ImageUtils.GetSprite("TabConsumables"));
@@ -28,17 +25,17 @@ namespace Ramune.RamunesWorkbench
             AddTab("Prawn suit", ImageUtils.GetSprite(TechType.Exosuit), "Modules");
             AddTab("Cyclops", ImageUtils.GetSprite(TechType.Cyclops), "Modules");
 
-            LoggerUtils.LogInfo(">> [2/3] Added initial tabs");
-            LoggerUtils.LogInfo(" ");
+
+            LoggerUtils.LogInfo("<---- RAMUNE'S WORKING PRCOESSING START ---->");
+            LoggerUtils.LogInfo("");
 
 
             if(IsLoaded("MegaO2Tank"))
             {
                 AddTab("Tanks", ImageUtils.GetSprite(TechType.PlasteelTank), "Equipment");
                 AddCraft("MegaO2Tank", "Equipment", "Tanks");
-                LoggerUtils.LogInfo("MegaO2Tank sorted!");
+                LoggerUtils.LogInfo(">> 'Mega O2 Tank' items processed");
             }
-            else LoggerUtils.LogInfo("MegaO2Tank is not loaded");
 
 
             if(IsLoaded("SeaglideUpgrades"))
@@ -47,9 +44,8 @@ namespace Ramune.RamunesWorkbench
                 AddCraft("SeaglideMK1", "Equipment", "Seaglides");
                 AddCraft("SeaglideMK2", "Equipment", "Seaglides");
                 AddCraft("SeaglideMK3", "Equipment", "Seaglides");
-                LoggerUtils.LogInfo("SeaglideUpgrades sorted!");
+                LoggerUtils.LogInfo(">> 'Seaglide Upgrades' items processed");
             }
-            else LoggerUtils.LogInfo("SeaglideUpgrades is not loaded");
 
 
             if(IsLoaded("LithiumBatteries"))
@@ -58,55 +54,48 @@ namespace Ramune.RamunesWorkbench
                 AddCraft("IonPowerCellAlt", "Power", "PowerCells");
                 AddCraft("LithiumBattery", "Power", "Batteries");
                 AddCraft("LithiumPowerCell", "Power", "PowerCells");
-                LoggerUtils.LogInfo("LithiumBatteries sorted!");
+                LoggerUtils.LogInfo(">> 'Lithium Batteries' items processed");
             }
-            else LoggerUtils.LogInfo("LithiumBatteries is not loaded");
 
 
             if(IsLoaded("KioniteBatteries"))
             {
                 AddCraft("KioniteBattery", "Power", "Batteries");
                 AddCraft("KionitePowerCell", "Power", "PowerCells");
-                LoggerUtils.LogInfo("KioniteBatteries sorted!");
+                LoggerUtils.LogInfo(">> 'Kionite Batteries' items processed");
             }
-            else LoggerUtils.LogInfo("KioniteBatteries is not loaded");
 
 
             if(IsLoaded("OxygenCanisters"))
             {
                 AddCraft("OxygenCanister", "Consumables");
                 AddCraft("LargeOxygenCanister", "Consumables");
-                LoggerUtils.LogInfo("OxygenCanisters sorted!");
+                LoggerUtils.LogInfo(">> 'Oxygen Canisters' items processed");
             }
-            else LoggerUtils.LogInfo("OxygenCanisters is not loaded");
 
 
             if(IsLoaded("SeamothTurbo"))
             {
                 AddCraft("SeamothTurbo", "Modules", "Seamoth");
-                LoggerUtils.LogInfo("SeamothTurboModule sorted!");
+                LoggerUtils.LogInfo(">> 'Seamoth Turbo Module' items processed");
             }
-            else LoggerUtils.LogInfo("SeamothTurboModule is not loaded");
 
 
             if(IsLoaded("SeamothLeviathanRadar"))
             {
                 AddCraft("SeamothLeviathanRadar", "Modules", "Seamoth");
-                LoggerUtils.LogInfo("SeamothLeviathanRadar sorted!");
+                LoggerUtils.LogInfo(">> 'Seamoth Leviathan Radar' items processed");
             }
-            else LoggerUtils.LogInfo("SeamothLeviathanRadar is not loaded");
 
 
             if(IsLoaded("StasisModule"))
             {
                 AddCraft("StasisModule", "Modules", "Seamoth");
-                LoggerUtils.LogInfo("StasisModule sorted!");
+                LoggerUtils.LogInfo(">> 'Stasis Module' items processed");
             }
-            else LoggerUtils.LogInfo("StasisModule is not loaded");
 
-
-            LoggerUtils.LogInfo(" ");
-            LoggerUtils.LogInfo(">> [3/3] Processed all mod items (if found)");
+            LoggerUtils.LogInfo("");
+            LoggerUtils.LogInfo("<---- RAMUNE'S WORKING PRCOESSING END ---->");
         }
 
 
@@ -124,11 +113,8 @@ namespace Ramune.RamunesWorkbench
 
         public static bool IsLoaded(string guid)
         {
-            if (BepInEx.Bootstrap.Chainloader.PluginInfos.TryGetValue("com.ramune." + guid, out _))
-            {
-                LoggerUtils.LogInfo($">> {guid} sorting..");
+            if(BepInEx.Bootstrap.Chainloader.PluginInfos.TryGetValue("com.ramune." + guid, out _))
                 return true;
-            }
 
             return false;
         }

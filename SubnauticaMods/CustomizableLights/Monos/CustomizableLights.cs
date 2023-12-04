@@ -29,6 +29,12 @@ namespace Ramune.CustomizableLights.Monos
 
         public void OnColorChange(object sender, CustomEventArgs.ColorEventArgs args)
         {
+            if(this.lights.Length == 0)
+            {
+                DestroyImmediate(this);
+                return;
+            }
+
             foreach(var li in this.lights)
             {
                 if(li is null)
@@ -40,6 +46,12 @@ namespace Ramune.CustomizableLights.Monos
 
         public void OnSettingsChange(object sender, CustomEventArgs.SettingsEventArgs args)
         {
+            if(this.lights.Length == 0)
+            {
+                DestroyImmediate(this);
+                return;
+            }
+
             foreach(var li in this.lights)
             {
                 if(li is null)

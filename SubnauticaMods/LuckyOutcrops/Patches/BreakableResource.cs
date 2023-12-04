@@ -12,19 +12,19 @@ namespace Ramune.LuckyOutcrops.Patches
         {
             chance = LuckyOutcrops.config.crashfishChance / 100f;
 
-            if (UnityEngine.Random.value < chance)
+            if(UnityEngine.Random.value < chance)
             {
                 __instance.broken = true;
                 __instance.SendMessage("OnBreakResource", null, SendMessageOptions.DontRequireReceiver);
 
-                if (__instance.gameObject.GetComponent<VFXBurstModel>()) __instance.gameObject.BroadcastMessage("OnKill");
+                if(__instance.gameObject.GetComponent<VFXBurstModel>()) __instance.gameObject.BroadcastMessage("OnKill");
                 else UnityEngine.Object.Destroy(__instance.gameObject);
 
-                if (__instance.customGoalText != "") GoalManager.main.OnCustomGoalEvent(__instance.customGoalText);
+                if(__instance.customGoalText != "") GoalManager.main.OnCustomGoalEvent(__instance.customGoalText);
 
                 FMODUWE.PlayOneShot(__instance.breakSound, __instance.transform.position, 1f);
 
-                if (__instance.hitFX) global::Utils.PlayOneShotPS(__instance.breakFX, __instance.transform.position, Quaternion.Euler(new Vector3(270f, 0f, 0f)), null);
+                if(__instance.hitFX) global::Utils.PlayOneShotPS(__instance.breakFX, __instance.transform.position, Quaternion.Euler(new Vector3(270f, 0f, 0f)), null);
 
                 DevConsole.SendConsoleCommand("spawn crash");
                 return false;

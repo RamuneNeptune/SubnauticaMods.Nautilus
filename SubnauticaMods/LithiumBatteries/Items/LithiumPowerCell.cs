@@ -7,11 +7,10 @@ namespace Ramune.LithiumBatteries.Items
         public static Texture2D Texture = ImageUtils.GetTexture("LithiumPowerCellTexture");
         public static Texture2D TextureIllum = ImageUtils.GetTexture("LithiumPowerCellTextureIllum");
 
-        public static CustomPrefab Prefab = PrefabUtils.CreatePrefab("LithiumPowerCell", "Lithium power cell", "A lithium power cell that can hold 400 power.", ImageUtils.GetSprite("LithiumPowerCell"))
+        public static CustomPrefab Prefab = PrefabUtils.CreatePrefab("LithiumPowerCell", "Lithium power cell", "Power cell optimized with a high-efficiency lithium-ion core for extended capacity.", ImageUtils.GetSprite("LithiumPowerCell"))
+            .WithPDACategory(TechGroup.Workbench, TechCategory.Workbench)
             .WithEquipment(EquipmentType.PowerCellCharger)
             .WithJsonRecipe("LithiumPowerCell");
-            //.WithPDACategory(TechGroup.Uncategorized, TechCategory.Electronics);
-
 
         public static void Patch()
         {

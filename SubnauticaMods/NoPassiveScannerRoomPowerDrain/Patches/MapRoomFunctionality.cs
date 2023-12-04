@@ -1,7 +1,5 @@
 ﻿
 
-using System.Reflection.Emit;
-
 namespace Ramune.NoPassiveScannerRoomPowerDrain.Patches
 {
     [HarmonyPatch(typeof(MapRoomFunctionality), nameof(MapRoomFunctionality.UpdateScanning))]

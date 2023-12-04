@@ -3,10 +3,12 @@
 namespace Ramune.LithiumBatteries
 {
     [BepInDependency("com.snmodding.nautilus")]
+    [BepInDependency("com.ramune.RamunesWorkbench")]
     [BepInPlugin(GUID, Name, Version)]
     [BepInProcess("Subnautica.exe")]
     public class LithiumBatteries : BaseUnityPlugin
     {
+        public static Config config { get; } = OptionsPanelHandler.RegisterModOptions<Config>();
         public static LithiumBatteries Instance;
         public static ManualLogSource logger => Instance.Logger;
         public static readonly Harmony harmony = new(GUID);

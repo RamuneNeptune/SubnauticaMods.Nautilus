@@ -1,5 +1,4 @@
 ﻿
-global using Ramune.CustomizableLights.Patches;
 
 namespace Ramune.CustomizableLights
 {
@@ -14,7 +13,7 @@ namespace Ramune.CustomizableLights
         public static readonly Harmony harmony = new(GUID);
         public const string GUID = "com.ramune.CustomizableLights";
         public const string Name = "Customizable Lights";
-        public const string Version = "1.0.0";
+        public const string Version = "1.0.1";
 
         public void Awake()
         {

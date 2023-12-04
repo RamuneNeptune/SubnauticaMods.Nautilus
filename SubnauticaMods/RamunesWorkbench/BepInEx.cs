@@ -13,13 +13,12 @@ namespace Ramune.RamunesWorkbench
         public static readonly Harmony harmony = new(GUID);
         public const string GUID = "com.ramune.RamunesWorkbench";
         public const string Name = "Ramune's Workbench";
-        public const string Version = "1.0.0";
+        public const string Version = "1.1.0";
 
         public void Awake()
         {
             Initializer.Initialize(harmony, Logger, Name, Version);
             Buildables.RamunesWorkbench.Patch();
-
             CoroutineHost.StartCoroutine(CraftHandler.WaitForChainloader());
         }
     }

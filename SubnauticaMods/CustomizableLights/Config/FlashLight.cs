@@ -6,22 +6,22 @@ namespace Ramune.CustomizableLights
 {
     public partial class Config : ConfigFile
     {
-        [Slider("<color=#ffbd2e>Flashlight</color> Light Red (R)", Format = "{0:F1}", DefaultValue = 1f, Min = 0f, Max = 1f, Step = 0.1f, Order = 37), OnChange(nameof(FlashlightOnColorChange))]
+        [Slider("<color=#f48c06>Flashlight</color> Light Red (R)", Format = "{0:F1}", DefaultValue = 1f, Min = 0f, Max = 1f, Step = 0.1f, Order = 37), OnChange(nameof(FlashlightOnColorChange))]
         public float FlashlightRed = 1f;
 
-        [Slider("<color=#ffbd2e>Flashlight</color> Light Green (G)", Format = "{0:F1}", DefaultValue = 1f, Min = 0f, Max = 1f, Step = 0.1f, Order = 38), OnChange(nameof(FlashlightOnColorChange))]
+        [Slider("<color=#f48c06>Flashlight</color> Light Green (G)", Format = "{0:F1}", DefaultValue = 1f, Min = 0f, Max = 1f, Step = 0.1f, Order = 38), OnChange(nameof(FlashlightOnColorChange))]
         public float FlashlightGreen = 1f;
 
-        [Slider("<color=#ffbd2e>Flashlight</color> Light Blue (B)", Format = "{0:F1}", DefaultValue = 1f, Min = 0f, Max = 1f, Step = 0.1f, Order = 39), OnChange(nameof(FlashlightOnColorChange))]
+        [Slider("<color=#f48c06>Flashlight</color> Light Blue (B)", Format = "{0:F1}", DefaultValue = 1f, Min = 0f, Max = 1f, Step = 0.1f, Order = 39), OnChange(nameof(FlashlightOnColorChange))]
         public float FlashlightBlue = 1f;
 
-        [Slider("<color=#ffbd2e>Flashlight</color> Light Range Multiplier (x)", Format = "{0:0.0}x", DefaultValue = 1f, Min = 0f, Max = 5f, Step = 0.1f, Order = 40), OnChange(nameof(FlashlightOnSettingsChange))]
+        [Slider("<color=#f48c06>Flashlight</color> Light Range Multiplier (x)", Format = "{0:0.0}x", DefaultValue = 1f, Min = 0f, Max = 5f, Step = 0.1f, Order = 40), OnChange(nameof(FlashlightOnSettingsChange))]
         public float FlashlightRange = 1f;
 
-        [Slider("<color=#ffbd2e>Flashlight</color> Light Intensity Multiplier (x)", Format = "{0:0.0}x", DefaultValue = 1f, Min = 0f, Max = 5f, Step = 0.1f, Order = 41), OnChange(nameof(FlashlightOnSettingsChange))]
+        [Slider("<color=#f48c06>Flashlight</color> Light Intensity Multiplier (x)", Format = "{0:0.0}x", DefaultValue = 1f, Min = 0f, Max = 5f, Step = 0.1f, Order = 41), OnChange(nameof(FlashlightOnSettingsChange))]
         public float FlashlightIntensity = 1f;
 
-        [Slider("<color=#ffbd2e>Flashlight</color> Light Cone Size Multipler (x)", Format = "{0:0.0}x", DefaultValue = 1f, Min = 0f, Max = 5f, Step = 0.1f, Order = 42), OnChange(nameof(FlashlightOnSettingsChange))]
+        [Slider("<color=#f48c06>Flashlight</color> Light Cone Size Multipler (x)", Format = "{0:0.0}x", DefaultValue = 1f, Min = 0f, Max = 5f, Step = 0.1f, Order = 42), OnChange(nameof(FlashlightOnSettingsChange))]
         public float FlashlightConesize = 1f;
 
         //[Toggle("<alpha=#00>----------------------------------------------------------------------------------------------------</alpha>", Order = 43)]

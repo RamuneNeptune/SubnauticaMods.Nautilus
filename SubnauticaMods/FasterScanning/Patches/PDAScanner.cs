@@ -13,17 +13,18 @@ namespace Ramune.FasterScanning.Patches
         {
             var techType = PDAScanner.scanTarget.techType;
             var entryData = PDAScanner.GetEntryData(techType);
-            var knownTech = PDAScanner.complete.Contains(techType);
+            var isKnownTech = PDAScanner.complete.Contains(techType);
 
             if(PDAScanner.scanTarget.isPlayer) return;
 
             multiplier = FasterScanning.config.multiplier;
 
             one = 2.0f / multiplier;
-            two = entryData.scanTime / multiplier;
 
-            if(knownTech) num = one;
-            if(entryData is not null) num = two;
+            if(entryData is not null) num = entryData.scanTime / multiplier;
+            else num = one;
+
+            if(isKnownTech) num = one;
             
             PDAScanner.scanTarget.progress = PDAScanner.scanTarget.progress + Time.deltaTime / num;
         }

@@ -4,7 +4,7 @@ namespace Ramune.SeaglideUpgrades.Items
 {
     public static class SeaglideMK1
     {
-        public static CustomPrefab Prefab = PrefabUtils.CreatePrefab("SeaglideMK1", "Seaglide <color=#03f0f1>MK1</color>", "SPEED: +15%\nMay need to re-equip to apply speed", ImageUtils.GetSprite("SeaglideMK1.Sprite"))
+        public static CustomPrefab Prefab = PrefabUtils.CreatePrefab("SeaglideMK1", "Seaglide <color=#03f0f1>MK1</color>", "SPEED: +15%\nConverts torque into thrust underwater via propeller.", ImageUtils.GetSprite("SeaglideMK1.Sprite"))
             .WithJsonRecipe("SeaglideMK1.Recipe")
             .WithEquipment(EquipmentType.Hand)
             .WithUnlock(TechType.Seaglide)
@@ -19,12 +19,7 @@ namespace Ramune.SeaglideUpgrades.Items
             {
                 ModifyPrefab = go =>
                 {
-                    var component = go.EnsureComponent<Monos.UpgradedSeaglide>();
-
-                    component.acceleration = 42f;
-                    component.speed = 42f;
-                    component.isMk1 = true;
-
+                    var colorizer = go.EnsureComponent<Monos.SeaglideLightColorizer>();
                     var renderers = go.GetComponentsInChildren<SkinnedMeshRenderer>(true);
 
                     if(SeaglideUpgrades.config.glossyBool) renderers.ForEach(x => x.material.SetTexture(ShaderPropertyID._SpecTex, TextureMain));

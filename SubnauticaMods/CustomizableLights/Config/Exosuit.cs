@@ -6,22 +6,22 @@ namespace Ramune.CustomizableLights
 {
     public partial class Config : ConfigFile
     {
-        [Slider("<color=#ffbd2e>Exosuit</color> Light Red (R)", Format = "{0:F1}", DefaultValue = 1f, Min = 0f, Max = 1f, Step = 0.1f, Order = 8), OnChange(nameof(ExosuitOnColorChange))]
+        [Slider("<color=#f9c80e>Exosuit</color> Light Red (R)", Format = "{0:F1}", DefaultValue = 1f, Min = 0f, Max = 1f, Step = 0.1f, Order = 8), OnChange(nameof(ExosuitOnColorChange))]
         public float ExosuitRed = 1f;
 
-        [Slider("<color=#ffbd2e>Exosuit</color> Light Green (G)", Format = "{0:F1}", DefaultValue = 1f, Min = 0f, Max = 1f, Step = 0.1f, Order = 9), OnChange(nameof(ExosuitOnColorChange))]
+        [Slider("<color=#f9c80e>Exosuit</color> Light Green (G)", Format = "{0:F1}", DefaultValue = 1f, Min = 0f, Max = 1f, Step = 0.1f, Order = 9), OnChange(nameof(ExosuitOnColorChange))]
         public float ExosuitGreen = 1f;
 
-        [Slider("<color=#ffbd2e>Exosuit</color> Light Blue (B)", Format = "{0:F1}", DefaultValue = 1f, Min = 0f, Max = 1f, Step = 0.1f, Order = 11), OnChange(nameof(ExosuitOnColorChange))]
+        [Slider("<color=#f9c80e>Exosuit</color> Light Blue (B)", Format = "{0:F1}", DefaultValue = 1f, Min = 0f, Max = 1f, Step = 0.1f, Order = 11), OnChange(nameof(ExosuitOnColorChange))]
         public float ExosuitBlue = 1f;
 
-        [Slider("<color=#ffbd2e>Exosuit</color> Light Range Multiplier (x)", Format = "{0:0.0}x", DefaultValue = 1f, Min = 0f, Max = 5f, Step = 0.1f, Order = 12), OnChange(nameof(ExosuitOnSettingsChange))]
+        [Slider("<color=#f9c80e>Exosuit</color> Light Range Multiplier (x)", Format = "{0:0.0}x", DefaultValue = 1f, Min = 0f, Max = 5f, Step = 0.1f, Order = 12), OnChange(nameof(ExosuitOnSettingsChange))]
         public float ExosuitRange = 1f;
 
-        [Slider("<color=#ffbd2e>Exosuit</color> Light Intensity Multiplier (x)", Format = "{0:0.0}x", DefaultValue = 1f, Min = 0f, Max = 5f, Step = 0.1f, Order = 13), OnChange(nameof(ExosuitOnSettingsChange))]
+        [Slider("<color=#f9c80e>Exosuit</color> Light Intensity Multiplier (x)", Format = "{0:0.0}x", DefaultValue = 1f, Min = 0f, Max = 5f, Step = 0.1f, Order = 13), OnChange(nameof(ExosuitOnSettingsChange))]
         public float ExosuitIntensity = 1f;
 
-        [Slider("<color=#ffbd2e>Exosuit</color> Light Cone Size Multipler (x)", Format = "{0:0.0}x", DefaultValue = 1f, Min = 0f, Max = 5f, Step = 0.1f, Order = 14), OnChange(nameof(ExosuitOnSettingsChange))]
+        [Slider("<color=#f9c80e>Exosuit</color> Light Cone Size Multipler (x)", Format = "{0:0.0}x", DefaultValue = 1f, Min = 0f, Max = 5f, Step = 0.1f, Order = 14), OnChange(nameof(ExosuitOnSettingsChange))]
         public float ExosuitConesize = 1f;
 
         [Toggle("<alpha=#00>----------------------------------------------------------------------------------------------------</alpha>", Order = 15)]

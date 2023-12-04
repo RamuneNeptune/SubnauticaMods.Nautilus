@@ -13,11 +13,11 @@ namespace Ramune.FasterScanning
         public static readonly Harmony harmony = new(GUID);
         public const string GUID = "com.ramune.FasterScanning";
         public const string Name = "Faster Scanning";
-        public const string Version = "2.0.0";
+        public const string Version = "2.0.1";
 
         public void Awake()
         {
-            Utilities.Initialize(harmony, Logger, Name, Version);
+            Initializer.Initialize(harmony, Logger, Name, Version);
         }
     }
 }

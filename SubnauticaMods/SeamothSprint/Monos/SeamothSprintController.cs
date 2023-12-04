@@ -27,7 +27,12 @@ namespace Ramune.SeamothSprint.Monos
 
         public void Update()
         {
-            if(!SeamothSprint.config.isEnabled) return;
+            if(SeamothSprint.config.requiresModule)
+            {
+                if(vehicle.modules.GetCount(TechType.Quartz) > 0)
+                    return;
+            }
+
             if(SeamothSprint.config.energyMultiplier == 1) energy = 0.066667f;
             if(!seamoth.playerFullyEntered) return;
 

@@ -13,7 +13,7 @@ namespace Ramune.CustomizableLights.Patches
             if(_lights.Length == 0)
                 return;
 
-            _lights = _lights.Where(light => light is not null && light.name is not "flashlight spotlight").ToArray();
+            _lights = _lights.Where(light => light is not null && light.name is "flashlight spotlight").ToArray();
 
             var customizableLights = __instance.gameObject.EnsureComponent<Monos.CustomizableLights>();
             customizableLights.defaults = new float[] { 50f, 1f, 90f, 71.4f };

@@ -6,9 +6,8 @@ namespace Ramune.LithiumBatteries.Items
     {
         public static CustomPrefab Prefab = PrefabUtils.CreatePrefab("IonBatteryAlt", "Ion battery", "Battery infused with alien ion technology.", ImageUtils.GetSprite(TechType.PrecursorIonBattery))
             .WithEquipment(EquipmentType.BatteryCharger)
+            .WithUnlock(TechType.PrecursorIonBattery)
             .WithJsonRecipe("IonBatteryAlt");
-          //.WithPDACategory();
-
 
         public static void Patch()
         {

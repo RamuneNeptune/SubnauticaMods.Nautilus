@@ -6,8 +6,7 @@ namespace Ramune.BZEnameledGlass.Items
     {
         public static CustomPrefab Prefab = PrefabUtils.CreatePrefab("EnameledGlassClone", "Enameled glass", "Glass, hardened using a natural substrate.", ImageUtils.GetSprite(TechType.EnameledGlass))
             .WithJsonRecipe("EnameledGlassClone", CraftTree.Type.Fabricator, CraftTreeHandler.Paths.FabricatorsBasicMaterials)
-            .WithUnlock(TechType.EnameledGlass);
-
+            .WithAutoUnlock();
 
         public static void Patch()
         {

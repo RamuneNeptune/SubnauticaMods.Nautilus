@@ -13,7 +13,7 @@ namespace Ramune.SeamothSprint
         public static readonly Harmony harmony = new(GUID);
         public const string GUID = "com.ramune.SeamothSprint";
         public const string Name = "Seamoth Sprint";
-        public const string Version = "1.0.1";
+        public const string Version = "2.0.0";
 
         public void Awake()
         {

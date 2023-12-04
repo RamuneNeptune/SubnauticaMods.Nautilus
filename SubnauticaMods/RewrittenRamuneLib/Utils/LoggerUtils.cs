@@ -53,19 +53,6 @@ namespace RamuneLib
 
 
         /// <summary>
-        /// Logs a message to the screen using ErrorMessage.AddError
-        /// </summary>
-        /// <param name="message">The message to log.</param>
-        /// <param name="logLevel">This is just a prefix to the message, e.g. LoggerUtils.LogLevel.Info == "Info: {message}"</param>
-        /// <example>
-        /// <code>
-        /// LoggerUtils.LogScreen("This is an example message to display on the screen.", LoggerUtils.ScreenLevel.Info);
-        /// </code>
-        /// </example>
-        public static void LogScreen(string message, LogLevel logLevel) => ErrorMessage.AddError(logLevel.GetEnumStringValue() + " " + message);
-
-
-        /// <summary>
         /// Logs an informational message using the logger if available.
         /// </summary>
         /// <param name="message">The informational message to log.</param>
@@ -129,6 +116,7 @@ namespace RamuneLib
         /// Logs a subtitle message with optional duration and delay.
         /// </summary>
         /// <param name="message">The subtitle message to log.</param>
+        /// <param name="clearSubtitles">Whether it should or should not clear the current subtitles.</param>
         /// <param name="duration">The duration to display the subtitle (default is 5 seconds).</param>
         /// <param name="delay">The delay before displaying the subtitle (default is -1 seconds).</param>
         /// <example>
@@ -138,9 +126,7 @@ namespace RamuneLib
         /// </example>
         public static void LogSubtitle(string message, float duration = 5f, float delay = -1f)
         {
-            var builder = new StringBuilder();
-            builder.Append(message);
-
+            var builder = new StringBuilder().Append(message);
             Subtitles.AddRawLong(1, builder, delay, duration);
         }
     }

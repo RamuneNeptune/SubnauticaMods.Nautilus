@@ -3,6 +3,7 @@
 namespace Ramune.SeaglideUpgrades
 {
     [BepInDependency("com.snmodding.nautilus")]
+    [BepInDependency("com.ramune.RamunesWorkbench")]
     [BepInPlugin(GUID, Name, Version)]
     [BepInProcess("Subnautica.exe")]
     public class SeaglideUpgrades : BaseUnityPlugin
@@ -18,13 +19,9 @@ namespace Ramune.SeaglideUpgrades
         public void Awake()
         {
             Initializer.Initialize(harmony, Logger, Name, Version);
-
-            CraftTreeHandler.AddTabNode(CraftTree.Type.Workbench, "Seaglides", "Seaglides", ImageUtils.GetSprite(TechType.Seaglide));
-
             Items.SeaglideMK1.Patch();
             Items.SeaglideMK2.Patch();
             Items.SeaglideMK3.Patch();
-
             LoggerUtils.LogInfo(">> Registered custom Seaglides");
         }
     }

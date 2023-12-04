@@ -8,6 +8,9 @@ namespace Ramune.CustomizableLights.Patches
         [HarmonyPatch(nameof(Seaglide.Start)), HarmonyPostfix]
         public static void Start(Seaglide __instance)
         {
+            if(__instance.pickupable?.GetTechType() != TechType.Seaglide)
+                return;
+
             Light[] _lights = __instance.gameObject.GetComponentsInChildren<Light>(true);
 
             if(_lights.Length == 0)
