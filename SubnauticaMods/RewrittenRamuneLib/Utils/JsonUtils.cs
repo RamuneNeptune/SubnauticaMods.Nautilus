@@ -1,6 +1,6 @@
 
 
-namespace RamuneLib
+namespace RamuneLib.Utils
 {
     public static class JsonUtils
     {

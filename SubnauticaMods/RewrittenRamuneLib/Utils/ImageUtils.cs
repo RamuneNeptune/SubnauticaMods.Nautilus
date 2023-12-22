@@ -1,10 +1,10 @@
 
 
-namespace RamuneLib
+namespace RamuneLib.Utils
 {
     public static class ImageUtils
     {
-        public static string GetAssetPath(string filename) => Path.Combine(Variables.Paths.AssetsFolder, filename + ".png");
+        public static string GetAssetPath(string filename, string extension = ".png") => Path.Combine(Variables.Paths.AssetsFolder, filename + extension);
 
 
         /// <summary>
@@ -12,10 +12,7 @@ namespace RamuneLib
         /// </summary>
         /// <param name="filename">The filename of the sprite to load.</param>
         /// <returns>The loaded <see cref="Atlas.Sprite"/>.
-        public static Atlas.Sprite GetSprite(string filename)
-        {
-            return Nautilus.Utility.ImageUtils.LoadSpriteFromFile(GetAssetPath(filename));
-        }
+        public static Atlas.Sprite GetSprite(string filename, string extension = ".png") => Nautilus.Utility.ImageUtils.LoadSpriteFromFile(GetAssetPath(filename, extension));
 
 
         /// <summary>
@@ -23,10 +20,7 @@ namespace RamuneLib
         /// </summary>
         /// <param name="techType">The TechType of the sprite to retrieve.</param>
         /// <returns>The retrieved <see cref="Atlas.Sprite"/>.
-        public static Atlas.Sprite GetSprite(TechType techType)
-        {
-            return SpriteManager.Get(techType);
-        }
+        public static Atlas.Sprite GetSprite(TechType techType) => SpriteManager.Get(techType);
 
 
         /// <summary>
@@ -34,12 +28,13 @@ namespace RamuneLib
         /// </summary>
         /// <param name="filename">The filename of the sprite to load.</param>
         /// <returns>The loaded <see cref="Sprite"/>.
-        public static Sprite GetUnitySprite(string filename)
-        {
-            var sprite = Nautilus.Utility.ImageUtils.LoadSpriteFromFile(GetAssetPath(filename));
+        public static Sprite GetUnitySprite(string filename, string extension = ".png") => GetSprite(filename, extension).AsUnitySprite();
 
-            return Sprite.Create(sprite.texture, new Rect(0f, 0f, sprite.texture.width, sprite.texture.height), new Vector2(0.5f, 0.5f));
-        }
+
+        /// <summary>
+        /// Returns the passed <see cref="Atlas.Sprite"/> as a <see cref="Sprite"/> 
+        /// </summary>
+        public static Sprite AsUnitySprite(this Atlas.Sprite sprite) => Sprite.Create(sprite.texture, new Rect(0f, 0f, sprite.texture.width, sprite.texture.height), new Vector2(0.5f, 0.5f));
 
 
         /// <summary>
@@ -47,9 +42,6 @@ namespace RamuneLib
         /// </summary>
         /// <param name="filename">The filename of the texture to load.</param>
         /// <returns>The loaded <see cref="Texture2D"/>.
-        public static Texture2D GetTexture(string filename)
-        {
-            return Nautilus.Utility.ImageUtils.LoadTextureFromFile(GetAssetPath(filename));
-        }
+        public static Texture2D GetTexture(string filename, string extension = ".png") => Nautilus.Utility.ImageUtils.LoadTextureFromFile(GetAssetPath(filename, extension));
     }
 }

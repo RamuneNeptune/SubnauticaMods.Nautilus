@@ -6,11 +6,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9B448119-10C0-4364-AB65-D54006DABA5F}</ProjectGuid>
+    <ProjectGuid>{84423C79-1C63-4C94-8A12-019EB1668AF8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ramune.SeaglideUpgrades</RootNamespace>
-    <AssemblyName>SeaglideUpgrades</AssemblyName>
+    <RootNamespace>Ramune.LeviathanRadarChip</RootNamespace>
+    <AssemblyName>LeviathanRadarChip</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -25,7 +25,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -88,7 +87,8 @@
       <HintPath>..\packages\MonoMod.Utils.21.12.13.1\lib\net452\MonoMod.Utils.dll</HintPath>
     </Reference>
     <Reference Include="Nautilus, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Subnautica.Nautilus.1.0.0-pre.22\lib\net472\Nautilus.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\..\Source\SubnauticaMods.Nautilus\SubnauticaMods\packages\Subnautica.Nautilus.1.0.0-pre.22\lib\net472\Nautilus.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -344,20 +344,29 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BepInEx.cs" />
-    <Compile Include="Config.cs" />
-    <Compile Include="Items\SeaglideMK1.cs" />
-    <Compile Include="Items\SeaglideMK2.cs" />
-    <Compile Include="Items\SeaglideMK3.cs" />
-    <Compile Include="Monos\SeaglideLightColorizer.cs" />
-    <Compile Include="Patches\KnownTech.cs" />
-    <Compile Include="Patches\PlayerTool.cs" />
+    <Compile Include="Monos\TrackerMenu.cs" />
+    <Compile Include="Patches\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Items\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\BepInEx.AssemblyPublicizer.MSBuild.0.4.0\build\BepInEx.AssemblyPublicizer.MSBuild.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\BepInEx.AssemblyPublicizer.MSBuild.0.4.0\build\BepInEx.AssemblyPublicizer.MSBuild.props'))" />
+    <Error Condition="!Exists('..\packages\BepInEx.PluginInfoProps.1.1.0\build\BepInEx.PluginInfoProps.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\BepInEx.PluginInfoProps.1.1.0\build\BepInEx.PluginInfoProps.props'))" />
+    <Error Condition="!Exists('..\packages\BepInEx.Core.5.4.21\build\BepInEx.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\BepInEx.Core.5.4.21\build\BepInEx.Core.targets'))" />
+    <Error Condition="!Exists('..\packages\PolySharp.1.13.1\build\PolySharp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PolySharp.1.13.1\build\PolySharp.targets'))" />
+  </Target>
+  <Import Project="..\packages\BepInEx.Core.5.4.21\build\BepInEx.Core.targets" Condition="Exists('..\packages\BepInEx.Core.5.4.21\build\BepInEx.Core.targets')" />
+  <Import Project="..\packages\PolySharp.1.13.1\build\PolySharp.targets" Condition="Exists('..\packages\PolySharp.1.13.1\build\PolySharp.targets')" />
   <PropertyGroup>
     <PostBuildEvent>:: Variable for plugin folder
 set TargetDirectory="C:\Program Files (x86)\Steam\steamapps\common\Subnautica\BepInEx\plugins\$(TargetName)"
@@ -374,15 +383,4 @@ if exist %25TargetDirectory%25\$(TargetName).zip (del %25TargetDirectory%25\$(Ta
 :: Create a zip file containing the mod
 "C:\Program Files\7-Zip\7z.exe" a %25TargetDirectory%25\$(TargetName).zip %25TargetDirectory%25</PostBuildEvent>
   </PropertyGroup>
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\BepInEx.AssemblyPublicizer.MSBuild.0.4.0\build\BepInEx.AssemblyPublicizer.MSBuild.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\BepInEx.AssemblyPublicizer.MSBuild.0.4.0\build\BepInEx.AssemblyPublicizer.MSBuild.props'))" />
-    <Error Condition="!Exists('..\packages\BepInEx.PluginInfoProps.1.1.0\build\BepInEx.PluginInfoProps.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\BepInEx.PluginInfoProps.1.1.0\build\BepInEx.PluginInfoProps.props'))" />
-    <Error Condition="!Exists('..\packages\BepInEx.Core.5.4.21\build\BepInEx.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\BepInEx.Core.5.4.21\build\BepInEx.Core.targets'))" />
-    <Error Condition="!Exists('..\packages\PolySharp.1.13.1\build\PolySharp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PolySharp.1.13.1\build\PolySharp.targets'))" />
-  </Target>
-  <Import Project="..\packages\BepInEx.Core.5.4.21\build\BepInEx.Core.targets" Condition="Exists('..\packages\BepInEx.Core.5.4.21\build\BepInEx.Core.targets')" />
-  <Import Project="..\packages\PolySharp.1.13.1\build\PolySharp.targets" Condition="Exists('..\packages\PolySharp.1.13.1\build\PolySharp.targets')" />
 </Project>

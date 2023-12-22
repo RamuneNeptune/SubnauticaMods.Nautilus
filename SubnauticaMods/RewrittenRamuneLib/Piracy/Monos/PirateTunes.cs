@@ -4,7 +4,7 @@ namespace RamuneLib
 {
     public static partial class Piracy
     {
-        public static class Monos
+        public static partial class Monos
         {
             public class MyData
             {
@@ -16,6 +16,16 @@ namespace RamuneLib
             {
                 public List<AudioClip> clips = new();
                 public AudioSource source;
+
+
+                public void Update()
+                {
+                    if(GameInput.GetKeyDown(KeyCode.Period))
+                    {
+                        LoggerUtils.LogSubtitle($"PIRATE TUNES: Skipping track..");
+                        source.Stop();
+                    }
+                }
 
 
                 public void Start()

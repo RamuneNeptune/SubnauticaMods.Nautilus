@@ -346,8 +346,6 @@
     <Compile Include="BepInEx.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Items\StasisModule.cs" />
-    <Compile Include="Monos\TeleportMenu.cs" />
-    <Compile Include="Patches\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

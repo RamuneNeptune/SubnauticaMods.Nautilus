@@ -3,6 +3,7 @@
 namespace Ramune.RamunesCustomizedStorage
 {
     [BepInDependency("com.snmodding.nautilus")]
+    [BepInDependency("SN.Morelockers", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInPlugin(GUID, Name, Version)]
     [BepInProcess("Subnautica.exe")]
     public class RamunesCustomizedStorage : BaseUnityPlugin

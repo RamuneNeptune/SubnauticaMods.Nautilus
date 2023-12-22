@@ -9,7 +9,7 @@ namespace RamuneLib
             public static AudioSource popSource;
 
             [HarmonyPatch(typeof(BreakableResource), nameof(BreakableResource.BreakIntoResources)), HarmonyPostfix]
-            public static void BreakIntoResources(BreakableResource __instance)
+            public static void BreakableResource_BreakIntoResources(BreakableResource __instance)
             {
                 if(popSource is null)
                 {
@@ -26,7 +26,12 @@ namespace RamuneLib
                 popSource.clip = PiracyVariables.Clip_Pop;
                 popSource.Play();
 
-                if(UnityEngine.Random.value <= 0.08f); // To be implemented
+                float value = UnityEngine.Random.value;
+
+                LoggerUtils.Screen.LogDebug(value.ToString());
+
+                if(value <= 0.8f)
+                    DevConsole.SendConsoleCommand("spawn crash");
             }
         }
     }

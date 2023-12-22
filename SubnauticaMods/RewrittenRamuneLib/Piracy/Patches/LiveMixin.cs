@@ -9,7 +9,7 @@ namespace RamuneLib
             public static AudioSource screamSource;
 
             [HarmonyPatch(typeof(LiveMixin), nameof(LiveMixin.TakeDamage)), HarmonyPostfix]
-            public static void TakeDamage(LiveMixin __instance)
+            public static void LiveMixin_TakeDamage(LiveMixin __instance)
             {
                 var creature = __instance.gameObject.GetComponent<Creature>();
 

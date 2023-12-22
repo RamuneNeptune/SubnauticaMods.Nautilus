@@ -20,6 +20,8 @@ namespace Ramune.SeaglideUpgrades.Items
                 ModifyPrefab = go =>
                 {
                     var colorizer = go.EnsureComponent<Monos.SeaglideLightColorizer>();
+                    colorizer.thisSeaglide = Monos.SeaglideLightColorizer.UpgradedSeaglide.MK3;
+
                     var renderers = go.GetComponentsInChildren<SkinnedMeshRenderer>(true);
 
                     if(SeaglideUpgrades.config.glossyBool) renderers.ForEach(x => x.material.SetTexture(ShaderPropertyID._SpecTex, TextureMain));

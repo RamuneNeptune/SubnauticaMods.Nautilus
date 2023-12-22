@@ -13,7 +13,7 @@ namespace Ramune.RamunesWorkbench
         public static readonly Harmony harmony = new(GUID);
         public const string GUID = "com.ramune.RamunesWorkbench";
         public const string Name = "Ramune's Workbench";
-        public const string Version = "1.1.0";
+        public const string Version = "1.1.1";
 
         public void Awake()
         {

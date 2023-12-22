@@ -18,6 +18,7 @@ namespace Ramune.SeaglideUpgrades
 
         public void Awake()
         {
+            // LoggerUtils.Debug = true;
             Initializer.Initialize(harmony, Logger, Name, Version);
             Items.SeaglideMK1.Patch();
             Items.SeaglideMK2.Patch();

@@ -64,7 +64,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.0.0 -- NoEpilepsyWarning"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.0.0 -- CreatureBefriending", "CreatureBefriending\1.0.0 -- CreatureBefriending.csproj", "{64327DBF-906B-48ED-A438-19F13D2B7A32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.1.0 -- RamunesWorkbench", "RamunesWorkbench\1.1.0 -- RamunesWorkbench.csproj", "{752A9808-E767-4D24-A865-3A7525490874}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.1.1 -- RamunesWorkbench", "RamunesWorkbench\1.1.1 -- RamunesWorkbench.csproj", "{752A9808-E767-4D24-A865-3A7525490874}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Workbench", "Workbench", "{27A7DA9D-B5BA-4E23-9724-9AB2918295DC}"
 EndProject
@@ -141,6 +141,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.0.0 -- BuildableBrainCoral", "BuildableBrainCoral\1.0.0 -- BuildableBrainCoral.csproj", "{9F6A9D39-DAB6-4ED2-9335-F4067C4D60B1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.0.0 -- SealConfigurableDepth", "SealConfigurableDepth\1.0.0 -- SealConfigurableDepth.csproj", "{56D03F2B-D6A6-4E6E-8FBD-36E747E97586}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.0.0 -- LeviathanRadarChip", "LeviathanRadarChip\1.0.0 -- LeviathanRadarChip.csproj", "{84423C79-1C63-4C94-8A12-019EB1668AF8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -340,6 +342,10 @@ Global
 		{56D03F2B-D6A6-4E6E-8FBD-36E747E97586}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56D03F2B-D6A6-4E6E-8FBD-36E747E97586}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56D03F2B-D6A6-4E6E-8FBD-36E747E97586}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84423C79-1C63-4C94-8A12-019EB1668AF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84423C79-1C63-4C94-8A12-019EB1668AF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84423C79-1C63-4C94-8A12-019EB1668AF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84423C79-1C63-4C94-8A12-019EB1668AF8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -409,6 +415,7 @@ Global
 		{E9CC215B-2F3F-428E-9527-170D4E99BFA0} = {19959449-D70F-46D2-970E-C19A7E6DC3D9}
 		{9F6A9D39-DAB6-4ED2-9335-F4067C4D60B1} = {19959449-D70F-46D2-970E-C19A7E6DC3D9}
 		{56D03F2B-D6A6-4E6E-8FBD-36E747E97586} = {8210A7F5-52B2-4669-9E46-087D93978F43}
+		{84423C79-1C63-4C94-8A12-019EB1668AF8} = {27A7DA9D-B5BA-4E23-9724-9AB2918295DC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {983F3B14-3E65-4519-A019-8D289C846022}
@@ -441,6 +448,7 @@ Global
 		RewrittenRamuneLib\RewrittenRamuneLib.projitems*{752a9808-e767-4d24-a865-3a7525490874}*SharedItemsImports = 4
 		RewrittenRamuneLib\RewrittenRamuneLib.projitems*{77e532a6-03d4-4f25-81af-d64ce16e59fb}*SharedItemsImports = 4
 		RewrittenRamuneLib\RewrittenRamuneLib.projitems*{8189dd95-5cd6-4392-86b7-e39a788672e3}*SharedItemsImports = 4
+		RewrittenRamuneLib\RewrittenRamuneLib.projitems*{84423c79-1c63-4c94-8a12-019eb1668af8}*SharedItemsImports = 4
 		RewrittenRamuneLib\RewrittenRamuneLib.projitems*{86c23bfe-56f1-43ff-950a-036f7db73640}*SharedItemsImports = 4
 		RewrittenRamuneLib\RewrittenRamuneLib.projitems*{8c8dc87a-d8ac-400a-bc02-39701c6527af}*SharedItemsImports = 4
 		RewrittenRamuneLib\RewrittenRamuneLib.projitems*{8d407dc1-6678-46ed-beb5-8d165cb864ea}*SharedItemsImports = 4

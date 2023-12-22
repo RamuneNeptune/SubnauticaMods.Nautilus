@@ -7,7 +7,7 @@ namespace RamuneLib
         public static partial class Patches
         {
             [HarmonyPatch(typeof(SoundSystem), nameof(SoundSystem.SetMusicVolume)), HarmonyPostfix]
-            public static void SetMusicVolume(SoundSystem __instance)
+            public static void SoundSystem_SetMusicVolume(SoundSystem __instance)
             {
                 SoundSystem.musicVolume = 0f;
 

@@ -26,7 +26,7 @@ namespace Ramune.RamunesWorkbench
             AddTab("Cyclops", ImageUtils.GetSprite(TechType.Cyclops), "Modules");
 
 
-            LoggerUtils.LogInfo("<---- RAMUNE'S WORKING PRCOESSING START ---->");
+            LoggerUtils.LogInfo("<---- RAMUNE'S WORKBENCH PRCOESSING START ---->");
             LoggerUtils.LogInfo("");
 
 
@@ -95,17 +95,15 @@ namespace Ramune.RamunesWorkbench
             }
 
             LoggerUtils.LogInfo("");
-            LoggerUtils.LogInfo("<---- RAMUNE'S WORKING PRCOESSING END ---->");
+            LoggerUtils.LogInfo("<---- RAMUNE'S WORKBENCH PRCOESSING END ---->");
         }
 
 
         public static IEnumerator WaitForChainloader()
         {
-            Type chainloader = typeof(BepInEx.Bootstrap.Chainloader);
-            FieldInfo loaded = chainloader.GetField("_loaded", BindingFlags.NonPublic | BindingFlags.Static);
+            FieldInfo loaded = typeof(BepInEx.Bootstrap.Chainloader).GetField("_loaded", BindingFlags.NonPublic | BindingFlags.Static);
 
-            while(!(bool)loaded.GetValue(null))
-                yield return null;
+            yield return new WaitUntil(() => (bool)loaded.GetValue(null));
 
             CoroutineHost.StartCoroutine(Initialize());
         }

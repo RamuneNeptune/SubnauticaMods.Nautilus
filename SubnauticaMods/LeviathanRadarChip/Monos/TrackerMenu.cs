@@ -1,8 +1,6 @@
 ﻿
 
-using System.Text.RegularExpressions;
-
-namespace Ramune.StasisModule.Monos
+namespace Ramune.LeviathanRadarChip.Monos
 {
     public static class BasicMenu
     {
@@ -24,6 +22,7 @@ namespace Ramune.StasisModule.Monos
             {
                 MenuClone = GameObject.Instantiate(template.gameObject, uGUI.main.hud.transform);
                 MenuClone.name = "TeleportMenu";
+                MenuClone.gameObject.GetComponent<Image>().color = new Color(1f, 0.1f, 0f, 0.8f);
 
                 var menu = MenuClone.AddComponent<BasicMenuComponent>();
                 var buttons = MenuClone.GetComponentsInChildren<Button>(true);
@@ -41,18 +40,18 @@ namespace Ramune.StasisModule.Monos
                 isFirst = true;
 
                 var headerText = MenuClone.transform.Find("Header").GetComponent<TextMeshProUGUI>();
-                headerText.text = "Menu header";
+                headerText.text = "Select leviathan to track";
 
-                SetupButton(templateButton.gameObject, "One");
-                SetupButton(templateButton.gameObject, "Two");
-                SetupButton(templateButton.gameObject, "Three");
-                SetupButton(templateButton.gameObject, "Four");
-                SetupButton(templateButton.gameObject, "Five");
-                SetupButton(templateButton.gameObject, "Six");
+                BasicMenu.AddButton(templateButton.gameObject, "Reefback");
+                BasicMenu.AddButton(templateButton.gameObject, "Sea Dragon");
+                BasicMenu.AddButton(templateButton.gameObject, "Sea Treader");
+                BasicMenu.AddButton(templateButton.gameObject, "Reaper Leviathan");
+                BasicMenu.AddButton(templateButton.gameObject, "Ghost Leviathan");
+                BasicMenu.AddButton(templateButton.gameObject, "Ghost Leviathan Juvenile");
 
                 uGUI_INavigableIconGrid grid = MenuClone.GetComponentInChildren<uGUI_INavigableIconGrid>();
 
-                if (grid is null) grid = MenuClone.GetComponent<uGUI_INavigableIconGrid>();
+                if(grid is null) grid = MenuClone.GetComponent<uGUI_INavigableIconGrid>();
                 else GamepadInputModule.current.SetCurrentGrid(grid);
             }
             catch(Exception ex) 
@@ -62,7 +61,7 @@ namespace Ramune.StasisModule.Monos
         }
 
 
-        private static void SetupButton(GameObject gameObject, string text)
+        public static void AddButton(GameObject gameObject, string text)
         {
             GameObject buttonGo;
 
@@ -72,6 +71,8 @@ namespace Ramune.StasisModule.Monos
                 isFirst = false;
             }
             else buttonGo = GameObject.Instantiate(templateButton.gameObject, templateButton.transform.parent);
+
+            buttonGo.GetComponent<Image>().color = new Color(0.6f, 0f, 0f, 1f);
 
             var button = buttonGo.GetComponent<Button>();
             button.onClick = new Button.ButtonClickedEvent();
@@ -85,14 +86,18 @@ namespace Ramune.StasisModule.Monos
 
     public class BasicMenuComponent : uGUI_InputGroup, uGUI_IButtonReceiver
     {
-        public void Start() => this.Select();
+        public void Start()
+        {
+            this.Select();
+            
+        }
 
         public bool OnButtonDown(GameInput.Button button)
         {
-            if(button == GameInput.Button.UIMenu)
+            if(button == GameInput.Button.UICancel && IngameMenu.main.CanClose())
             {
-                Close();
-                GameInput.ClearInput();
+                //Close();
+                //GameInput.ClearInput();
                 return true;
             }
             return false;
@@ -100,8 +105,10 @@ namespace Ramune.StasisModule.Monos
 
         public void Close()
         {
+            /*
             Deselect();
             Destroy(gameObject);
+            */
         }
 
         public void OnEnable()
@@ -113,9 +120,11 @@ namespace Ramune.StasisModule.Monos
 
         public override void OnDisable()
         {
+            /*
             base.OnDisable();
             uGUI_LegendBar.ClearButtons();
             Destroy(gameObject);
+            */
         }
 
         public override void OnSelect(bool lockMovement)
@@ -128,9 +137,11 @@ namespace Ramune.StasisModule.Monos
 
         public override void OnDeselect()
         {
+            /*
             base.OnDeselect();
             FreezeTime.End(FreezeTime.Id.IngameMenu);
             Destroy(gameObject);
+            */
         }
     }
 }

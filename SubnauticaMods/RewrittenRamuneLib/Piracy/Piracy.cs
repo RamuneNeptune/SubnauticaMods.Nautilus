@@ -105,10 +105,9 @@ namespace RamuneLib
 
         public static readonly List<string> Targets = new() {
             "steam_api64.cdx", "steam_api64.ini", "steam_emu.ini",
+            "Torrent-Igruha.Org.URL", "oalinst.exe", "account_name.txt",
             "valve.ini", "chuj.cdx", "SteamUserID.cfg", "Achievements.bin",
-            "steam_settings", "user_steam_id.txt", "account_name.txt", "ScreamAPI.dll",
-            "ScreamAPI32.dll", "ScreamAPI64.dll", "SmokeAPI.dll", "SmokeAPI32.dll", "SmokeAPI64.dll",
-            "Free Steam Games Pre-installed for PC.url", "Torrent-Igruha.Org.URL", "oalinst.exe",
+            "steam_settings", "user_steam_id.txt", "Free Steam Games Pre-installed for PC.url", 
         };
 
 
@@ -125,6 +124,8 @@ namespace RamuneLib
                 LoggerUtils.LogInfo(">> Piracy was not detected");
                 return false;
             }
+
+            // This ensures we don't run the file check if another mod has already done so
 
             var directory = Directory.GetFiles(Environment.CurrentDirectory);
             var filenames = directory.Select(_ => Path.GetFileName(_));

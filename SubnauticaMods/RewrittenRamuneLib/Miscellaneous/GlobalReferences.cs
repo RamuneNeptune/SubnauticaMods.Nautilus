@@ -60,3 +60,4 @@ global using RamuneLib;
 global using Newtonsoft.Json;
 global using Newtonsoft.Json.Linq;
 global using static CraftData;
+global using RamuneLib.Utils;

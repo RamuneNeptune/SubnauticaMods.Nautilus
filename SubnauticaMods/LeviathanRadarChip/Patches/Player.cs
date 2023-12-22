@@ -1,6 +1,6 @@
 ﻿
 
-namespace Ramune.StasisModule.Patches
+namespace Ramune.LeviathanRadarChip.Patches
 {
     [HarmonyPatch(typeof(Player))]
     public static class PlayerPatch
@@ -8,7 +8,7 @@ namespace Ramune.StasisModule.Patches
         [HarmonyPatch(nameof(Player.Update)), HarmonyPostfix]
         public static void Update(Player __instance)
         {
-            if(GameInput.GetKeyDown(KeyCode.K))
+            if(GameInput.GetKeyDown(KeyCode.K) && !Cursor.visible)
                 Monos.BasicMenu.ShowTeleportMenu();
         }
     }

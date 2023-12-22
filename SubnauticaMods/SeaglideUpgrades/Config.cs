@@ -147,8 +147,17 @@ namespace Ramune.SeaglideUpgrades
 
         public static void OnChangeMK1()
         {
+            if(LoggerUtils.Debug)
+                LoggerUtils.LogDebug("OnChangeMK1() -- Begin..");
+
             foreach(var colorizer in Seaglides.Colorizers)
             {
+                if(colorizer is null)
+                {
+                    Seaglides.Colorizers.Remove(colorizer);
+                    continue;
+                }
+
                 colorizer.Refresh(SeaglideLightColorizer.UpgradedSeaglide.MK1,
                     ref SeaglideUpgrades.config.redmk1,
                     ref SeaglideUpgrades.config.greenmk1,
@@ -157,13 +166,25 @@ namespace Ramune.SeaglideUpgrades
                     ref SeaglideUpgrades.config.rangemk1,
                     ref SeaglideUpgrades.config.conesizemk1);
             }
+
+            if(LoggerUtils.Debug)
+                LoggerUtils.LogDebug("OnChangeMK1() -- Begin..");
         }
 
 
         public static void OnChangeMK2()
         {
+            if(LoggerUtils.Debug)
+                LoggerUtils.LogDebug("OnChangeMK2() -- Begin..");
+
             foreach(var colorizer in Seaglides.Colorizers)
             {
+                if(colorizer is null)
+                {
+                    Seaglides.Colorizers.Remove(colorizer);
+                    continue;
+                }
+
                 colorizer.Refresh(SeaglideLightColorizer.UpgradedSeaglide.MK2,
                     ref SeaglideUpgrades.config.redmk2,
                     ref SeaglideUpgrades.config.greenmk2,
@@ -172,13 +193,25 @@ namespace Ramune.SeaglideUpgrades
                     ref SeaglideUpgrades.config.rangemk2,
                     ref SeaglideUpgrades.config.conesizemk2);
             }
+
+            if(LoggerUtils.Debug)
+                LoggerUtils.LogDebug("OnChangeMK2() -- End");
         }
 
 
         public static void OnChangeMK3()
         {
+            if(LoggerUtils.Debug)
+                LoggerUtils.LogDebug("OnChangeMK3() -- Begin..");
+
             foreach(var colorizer in Seaglides.Colorizers)
             {
+                if(colorizer is null)
+                {
+                    Seaglides.Colorizers.Remove(colorizer);
+                    continue;
+                }
+                    
                 colorizer.Refresh(SeaglideLightColorizer.UpgradedSeaglide.MK3,
                     ref SeaglideUpgrades.config.redmk3,
                     ref SeaglideUpgrades.config.greenmk3,
@@ -187,6 +220,9 @@ namespace Ramune.SeaglideUpgrades
                     ref SeaglideUpgrades.config.rangemk3,
                     ref SeaglideUpgrades.config.conesizemk3);
             }
+
+            if(LoggerUtils.Debug)
+                LoggerUtils.LogDebug("OnChangeMK3() -- End");
         }
     }
 }
