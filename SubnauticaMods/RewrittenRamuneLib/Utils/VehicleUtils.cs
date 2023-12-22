@@ -37,35 +37,14 @@ namespace RamuneLib.Utils
         /// Retrieves an array of speed values set on the provided vehicle component.
         /// </summary>
         /// <returns>An array containing the values set on the provided vehicle component in the following order: forwardForce, backwardForce, sidewardForce, verticalForce.</returns>
-        public static float[] GetValueForSpeedType(Vehicle vehicle, SpeedType speedType)
+        public static float[] GetCurrentSpeedValues(Vehicle vehicle)
         {
             float[] values = null;
 
-            switch(speedType)
-            {
-                case SpeedType.All:
-                    values.Add(vehicle.forwardForce);
-                    values.Add(vehicle.backwardForce);
-                    values.Add(vehicle.sidewardForce);
-                    values.Add(vehicle.verticalForce);
-                    break;
-
-                case SpeedType.ForwardForce:
-                    values.Add(vehicle.forwardForce);
-                    break;
-
-                case SpeedType.BackwardForce:
-                    values.Add(vehicle.backwardForce);
-                    break;
-
-                case SpeedType.SidewardForce:
-                    values.Add(vehicle.sidewardForce);
-                    break;
-
-                case SpeedType.VerticalForce:
-                    values.Add(vehicle.verticalForce);
-                    break;
-            }
+            values.Add(vehicle.forwardForce);
+            values.Add(vehicle.backwardForce);
+            values.Add(vehicle.sidewardForce);
+            values.Add(vehicle.verticalForce);
 
             return values;
         }
@@ -73,7 +52,7 @@ namespace RamuneLib.Utils
 
         private static IEnumerator SpeedupAsync(Vehicle vehicle, SpeedType speedType, float multiplier, float duration = 0, Action onIncrease = null, Action onDecrease = null)
         {
-            float[] originals = GetValueForSpeedType(vehicle, speedType);
+            float[] originals = GetCurrentSpeedValues(vehicle);
 
             switch(speedType)
             {
