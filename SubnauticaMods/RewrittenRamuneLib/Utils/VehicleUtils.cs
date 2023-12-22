@@ -118,19 +118,19 @@ namespace RamuneLib.Utils
                     break;
 
                 case SpeedType.ForwardForce:
-                    vehicle.forwardForce *= originals[0];
+                    vehicle.forwardForce = originals[0];
                     break;
 
                 case SpeedType.BackwardForce:
-                    vehicle.backwardForce *= originals[1];
+                    vehicle.backwardForce = originals[1];
                     break;
 
                 case SpeedType.SidewardForce:
-                    vehicle.sidewardForce *= originals[2];
+                    vehicle.sidewardForce = originals[2];
                     break;
 
                 case SpeedType.VerticalForce:
-                    vehicle.verticalForce *= originals[3];
+                    vehicle.verticalForce = originals[3];
                     break;
             }
 
