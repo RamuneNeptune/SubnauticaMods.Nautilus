@@ -172,7 +172,7 @@ A super cool shared project I created to make mod development easier, troll pira
   - 🔍 `PrefabUtils.CreatePrefab(string id, string name, string description, UnityEngine.Sprite sprite) : CustomPrefab`
 
     - Returns: A custom prefab set with all the specified arguments
-  - Example:
+    - Example:
       ```cs
       var Prefab = PrefabUtils.CreatePrefab("MegaBlade", "Mega blade", "An absolutely devestating mega blade.", ImageUtils.GetUnitySprite("MegaBlade"));
       ```
