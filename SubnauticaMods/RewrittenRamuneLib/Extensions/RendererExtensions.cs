@@ -35,7 +35,7 @@ namespace RamuneLib.Extensions
         }
 
 
-        public static Renderer MultiSetTexture(this Renderer renderer, TextureType type, Texture2D texture, params int[] materialIndexes)
+        public static Renderer SetTextures(this Renderer renderer, TextureType type, Texture2D texture, params int[] materialIndexes)
         {
             if(renderer == null)
                 throw new NullReferenceException("RendererExtensions.SetTexture: renderer is null");
@@ -61,10 +61,10 @@ namespace RamuneLib.Extensions
         }
 
 
-        public static Renderer MultiSetTexture(this Renderer renderer, TextureType[] types, Texture2D texture, params int[] materialIndexes)
+        public static Renderer SetTextures(this Renderer renderer, TextureType[] types, Texture2D texture, params int[] materialIndexes)
         {
             if(renderer == null)
-                throw new NullReferenceException("RendererExtensions.SetTexture: renderer is null");
+                throw new NullReferenceException("RendererExtensions.SetTextures: renderer is null");
 
             materialIndexes.ForEach(i =>
             {
@@ -102,10 +102,10 @@ namespace RamuneLib.Extensions
         }
 
 
-        public static Renderer MultiSetGlowStrength(this Renderer renderer, float strength, params int[] materialIndexes)
+        public static Renderer SetGlowStrengths(this Renderer renderer, float strength, params int[] materialIndexes)
         {
             if(renderer == null)
-                throw new NullReferenceException("RendererExtensions.SetGlowStrength: renderer is null");
+                throw new NullReferenceException("RendererExtensions.SetGlowStrengths: renderer is null");
 
             materialIndexes.ForEach(i =>
             {
