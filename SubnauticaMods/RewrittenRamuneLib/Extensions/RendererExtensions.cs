@@ -61,6 +61,35 @@ namespace RamuneLib.Extensions
         }
 
 
+        public static Renderer MultiSetTexture(this Renderer renderer, TextureType[] types, Texture2D texture, params int[] materialIndexes)
+        {
+            if(renderer == null)
+                throw new NullReferenceException("RendererExtensions.SetTexture: renderer is null");
+
+            materialIndexes.ForEach(i =>
+            {
+                foreach(var type in types)
+                {
+                    switch(type)
+                    {
+                        case TextureType.Main:
+                            renderer.materials[i].SetTexture(ShaderPropertyID._MainTex, texture);
+                            break;
+
+                        case TextureType.Specular:
+                            renderer.materials[i].SetTexture(ShaderPropertyID._SpecTex, texture);
+                            break;
+
+                        case TextureType.Illum:
+                            renderer.materials[i].SetTexture(ShaderPropertyID._Illum, texture);
+                            break;
+                    }
+                }
+            });
+            return renderer;
+        }
+
+
         public static Renderer SetGlowStrength(this Renderer renderer, float strength, int materialIndex = 0)
         {
             if(renderer == null)

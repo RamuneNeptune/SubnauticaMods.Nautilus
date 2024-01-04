@@ -26,120 +26,113 @@ namespace Ramune.RamunesCustomizedStorage.Monos
     {
         public static Dictionary<StorageResizer, StorageType> StorageResizers = new();
 
-        public static Dictionary<StorageType, Func<(float, float)>> Values = new()
+        public static Dictionary<StorageType, Func<float2>> Values = new()
         {
-            { StorageType.Unknown, () => (10f, 10f) },
-            { StorageType.Inventory, () => (config.width_inventory, config.height_inventory) },
-            { StorageType.Seamoth, () => (config.width_seamoth, config.height_seamoth) },
-            { StorageType.Exosuit, () => (config.width_prawnSuit, config.height_prawnSuit) },
-            { StorageType.CyclopsLocker, () => (config.width_cyclops, config.height_cyclops) },
-            { StorageType.WallLocker, () => (config.width_wallLocker, config.height_wallLocker) },
-            { StorageType.StandingLocker, () => (config.width_locker, config.height_locker) },
-            { StorageType.LifepodLocker, () => (config.width_lifepod, config.height_lifepod) },
-            { StorageType.WaterproofLocker, () => (config.width_waterproofLocker, config.height_waterproofLocker) },
-            { StorageType.CarryAll, () => (config.width_carryAll, config.height_carryAll) },
-            { StorageType.BioReactor, () => (config.width_bioReactor, config.height_bioReactor) },
-            { StorageType.WaterFiltration, () => (config.water_filtration, config.height_filtration) },
+            { StorageType.Inventory, () => new(config.width_inventory, config.height_inventory) },
+            { StorageType.Seamoth, () => new(config.width_seamoth, config.height_seamoth) },
+            { StorageType.Exosuit, () => new(config.width_prawnSuit, config.height_prawnSuit) },
+            { StorageType.CyclopsLocker, () => new(config.width_cyclops, config.height_cyclops) },
+            { StorageType.WallLocker, () => new(config.width_wallLocker, config.height_wallLocker) },
+            { StorageType.StandingLocker, () => new(config.width_locker, config.height_locker) },
+            { StorageType.LifepodLocker, () => new(config.width_lifepod, config.height_lifepod) },
+            { StorageType.WaterproofLocker, () => new(config.width_waterproofLocker, config.height_waterproofLocker) },
+            { StorageType.CarryAll, () => new(config.width_carryAll, config.height_carryAll) },
+            { StorageType.BioReactor, () => new(config.width_bioReactor, config.height_bioReactor) },
+            { StorageType.WaterFiltration, () => new(config.water_filtration, config.height_filtration) },
         };
 
-        public static(float, float) GetSize(this StorageResizer resizer, StorageType storageType)
+        public static float2 GetSize(this StorageResizer resizer, StorageType storageType)
         {
-            if(Values.ContainsKey(storageType))
-                return Values[storageType]();
+            if(Values.TryGetValue(storageType, out var values))
+                return values();
 
-            throw new Exception($"'{resizer.gameObject.name}' has a storage type of 'StorageType.Unknown'");
+            // this should never run
+            return new(0, 0);
         }
     }
-
+    
 
     public class StorageResizer : MonoBehaviour
     {
         public StorageType type;
         public object container;
+        public bool applyChangesAutomatically;
+        public float2 currentSize, intendedSize;
+
 
         public void OnEnable() => StorageResizers.Add(this, type);
 
+
         public void OnDisable() => StorageResizers.Remove(this);
 
+
         public void Start() => Resize();
+
 
         public void Resize()
         {
             LoggerUtils.Debug = true;
 
-            (float width, float height) = this.GetSize(type);
+            if(type == StorageType.Unknown)
+                Destroy(this);
 
-            var filtration = gameObject.GetComponent<FiltrationMachine>();
-            if(type == StorageType.WaterFiltration && filtration is not null)
+            intendedSize = this.GetSize(type);
+
+            if(type == StorageType.WaterFiltration && gameObject.TryGetComponent<FiltrationMachine>(out var filtration))
             {
                 filtration.maxSalt = (int)config.salt_filtration;
                 filtration.maxWater = (int)config.water_filtration;
             }
 
-            var bioreactor = gameObject.GetComponent<BaseBioReactor>();
-            if(type == StorageType.BioReactor && bioreactor is not null)
+            if(type == StorageType.BioReactor)
             {
-                bioreactor._container.sizeX = (int)config.width_bioReactor;
-                bioreactor._container.sizeY = (int)config.height_bioReactor;
-            }
-
-            if(LoggerUtils.Debug)
-            {
-                LoggerUtils.LogWarning($"---------------- {type} : BEGIN ----------------");
-
-                LoggerUtils.LogWarning($"width = {width}");
-                LoggerUtils.LogWarning($"height = {height}");
-
-                bool isBioreactor = bioreactor is not null;
-                if(isBioreactor)
-                {
-                    LoggerUtils.LogWarning("bioreactor = true");
-                }
-
-                bool isFiltration = filtration is not null;
-                if(isFiltration)
-                {
-                    LoggerUtils.LogWarning($"maxSalt = {filtration.maxSalt}");
-                    LoggerUtils.LogWarning($"maxWater = {filtration.maxWater}");
-                }
+                // probably not needed, needs testing to confirm
+                if(container == null)
+                    return;
             }
 
             if(container == null)
                 throw new NullReferenceException($"{type} : 'container' is null");
 
-            if(LoggerUtils.Debug) LoggerUtils.LogWarning("");
-
             switch(container)
             {
                 case object obj when obj is StorageContainer:
                     StorageContainer storageContainer = obj as StorageContainer;
-                    if (LoggerUtils.Debug) LoggerUtils.LogWarning($"container is 'StorageContainer'");
-                    storageContainer.Resize((int)width, (int)height);
-                    if (LoggerUtils.Debug) LoggerUtils.LogWarning($"finished setting to {width}, {height}");
+                    storageContainer.Resize((int)intendedSize.x, (int)intendedSize.y);
                     break;
 
                 case object obj when obj is ItemsContainer:
                     ItemsContainer itemsContainer = obj as ItemsContainer;
-                    if (LoggerUtils.Debug) LoggerUtils.LogWarning($"container is 'ItemsContainer'");
-                    itemsContainer.Resize((int)width, (int)height);
-                    if (LoggerUtils.Debug) LoggerUtils.LogWarning($"finished setting to {width}, {height}");
+                    itemsContainer.Resize((int)intendedSize.x, (int)intendedSize.y);
                     break;
 
                 case object obj when obj is SeamothStorageContainer:
                     SeamothStorageContainer seamothStorageContainer = obj as SeamothStorageContainer;
-                    if(LoggerUtils.Debug) LoggerUtils.LogWarning($"container is 'SeamothStorageContainer'");
-                    seamothStorageContainer.width = (int)width;
-                    seamothStorageContainer.height = (int)height;
-                    if(LoggerUtils.Debug) LoggerUtils.LogWarning($"finished setting to {width}, {height}");
+                    seamothStorageContainer.width = (int)intendedSize.x;
+                    seamothStorageContainer.height = (int)intendedSize.y;
                     break;
 
                 default:
                     throw new ArgumentException($"The type of container '{container.GetType()}' is not yet handled by this mod, please DM/message @ramuneneptune about this on discord");
             }
 
-            if(LoggerUtils.Debug) LoggerUtils.LogWarning($"---------------- {type} : FINISH ----------------\n");
+            currentSize = intendedSize;
         }
 
-        public StorageType GetStorageType() => type; // this will be used when i implement adjusting storage sizes without restarting the game
+
+        public void Update()
+        {
+            if(!this.applyChangesAutomatically)
+                return;
+
+            intendedSize = this.GetSize(type);
+
+            // if the current values are set to the config values, return
+            if(currentSize.x == intendedSize.x && currentSize.y == intendedSize.y)
+                return;
+                
+            // else resize (this method will also update the currentHeight and currentWidth meaning this should only run once)
+            this.Resize();
+        }
     }
 }

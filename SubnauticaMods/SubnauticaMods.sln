@@ -124,7 +124,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Special", "Special", "{5C2F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ready", "Ready", "{184C5496-0C0D-4E74-92F0-E5A9C3F6DE7A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.1.0 -- RamunesCustomizedStorage", "RamunesCustomizedStorage\1.1.0 -- RamunesCustomizedStorage.csproj", "{0762B1EA-645B-4858-B6D0-24941977E5D0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.0.0 -- RamunesCustomizedStorage", "RamunesCustomizedStorage\1.0.0 -- RamunesCustomizedStorage.csproj", "{0762B1EA-645B-4858-B6D0-24941977E5D0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.0.0 -- KeepMyDamnSeaglideLightOffWhenSwitchingBattery", "KeepMyDamnSeaglideLightOffWhenSwitchingBattery\1.0.0 -- KeepMyDamnSeaglideLightOffWhenSwitchingBattery.csproj", "{4B7AFC29-E4FB-4339-A5C9-298DC5814AA0}"
 EndProject
@@ -132,7 +132,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "High priority", "High prior
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Low Priority", "Low Priority", "{9BCF9D28-D5D6-4B44-BD76-A01E6909C748}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.0.0 -- ReaperGoldSkin", "ReaperSkin\1.0.0 -- ReaperGoldSkin.csproj", "{77E532A6-03D4-4F25-81AF-D64CE16E59FB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.1.0 -- ReaperGoldSkin", "ReaperSkin\1.1.0 -- ReaperGoldSkin.csproj", "{77E532A6-03D4-4F25-81AF-D64CE16E59FB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.0.0 -- NoUnderwaterCaustics", "NoUnderwaterCaustics\1.0.0 -- NoUnderwaterCaustics.csproj", "{E9CC215B-2F3F-428E-9527-170D4E99BFA0}"
 EndProject

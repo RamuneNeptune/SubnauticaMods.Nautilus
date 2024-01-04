@@ -19,9 +19,7 @@ namespace Ramune.ReaperGoldSkin.Patches
                 return;
 
             renderer
-                .MultiSetTexture(TextureType.Main, Main, 0, 1)
-                .MultiSetTexture(TextureType.Specular, Main, 0, 1)
-                .MultiSetTexture(TextureType.Illum, Emissive, 0, 1)
+                .MultiSetTexture(new[] { TextureType.Main, TextureType.Specular, TextureType.Illum }, Main, 0, 1)
                 .MultiSetGlowStrength(0.5f, 0, 1);
         }
     }

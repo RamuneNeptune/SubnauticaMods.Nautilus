@@ -12,7 +12,7 @@ namespace Ramune.ReaperGoldSkin
         public static readonly Harmony harmony = new(GUID);
         public const string GUID = "com.ramune.ReaperGoldSkin";
         public const string Name = "Reaper Gold Skin";
-        public const string Version = "1.0.0";
+        public const string Version = "1.1.0";
 
         public void Awake()
         {

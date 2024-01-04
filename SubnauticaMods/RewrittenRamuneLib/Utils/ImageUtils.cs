@@ -4,6 +4,10 @@ namespace RamuneLib.Utils
 {
     public static class ImageUtils
     {
+        private static Dictionary<string, Texture2D> CachedTextures = new();
+        private static Dictionary<string, Atlas.Sprite> CachedSprites = new();
+
+
         public static string GetAssetPath(string filename, string extension = ".png") => Path.Combine(Variables.Paths.AssetsFolder, filename + extension);
 
 
@@ -12,7 +16,16 @@ namespace RamuneLib.Utils
         /// </summary>
         /// <param name="filename">The filename of the sprite to load.</param>
         /// <returns>The loaded <see cref="Atlas.Sprite"/>.
-        public static Atlas.Sprite GetSprite(string filename, string extension = ".png") => Nautilus.Utility.ImageUtils.LoadSpriteFromFile(GetAssetPath(filename, extension));
+        public static Atlas.Sprite GetSprite(string filename, string extension = ".png")
+        {
+            if(CachedSprites.ContainsKey(filename + extension))
+                return CachedSprites[filename + extension];
+
+            var sprite = Nautilus.Utility.ImageUtils.LoadSpriteFromFile(GetAssetPath(filename, extension));
+            CachedSprites.Add(filename + extension, sprite);
+
+            return sprite;
+        }
 
 
         /// <summary>
@@ -31,6 +44,7 @@ namespace RamuneLib.Utils
         public static Sprite GetUnitySprite(string filename, string extension = ".png") => GetSprite(filename, extension).AsUnitySprite();
 
 
+
         /// <summary>
         /// Returns the passed <see cref="Atlas.Sprite"/> as a <see cref="Sprite"/> 
         /// </summary>
@@ -42,6 +56,15 @@ namespace RamuneLib.Utils
         /// </summary>
         /// <param name="filename">The filename of the texture to load.</param>
         /// <returns>The loaded <see cref="Texture2D"/>.
-        public static Texture2D GetTexture(string filename, string extension = ".png") => Nautilus.Utility.ImageUtils.LoadTextureFromFile(GetAssetPath(filename, extension));
+        public static Texture2D GetTexture(string filename, string extension = ".png")
+        {
+            if(CachedTextures.ContainsKey(filename + extension))
+                return CachedTextures[filename + extension];
+
+            var texture = Nautilus.Utility.ImageUtils.LoadTextureFromFile(GetAssetPath(filename, extension));
+            CachedTextures.Add(filename + extension, texture);
+
+            return texture;
+        }
     }
 }
