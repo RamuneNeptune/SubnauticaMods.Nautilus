@@ -4,6 +4,19 @@ namespace RamuneLib.Extensions
 {
     public static class GameObjectExtensions
     {
+        public static void EnsureComponents(this GameObject obj, params Type[] types)
+        {
+            types.ForEach(t => obj.EnsureComponent(t));
+        }
+
+
+        public static void EnsureComponents<T>(this GameObject obj, params Type[] types) where T : Component
+        {
+            obj.EnsureComponent<T>();
+            types.ForEach(t => obj.EnsureComponent(t));
+        }
+
+
         public static bool TryGetComponentInChildren<T>(this GameObject gameObject, out T component, bool includeInactive = false) where T : Component
         {
             component = null;

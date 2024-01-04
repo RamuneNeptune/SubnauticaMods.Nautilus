@@ -19,6 +19,14 @@ namespace Ramune.RamunesCustomizedStorage.Monos
         CarryAll,
         BioReactor,
         WaterFiltration,
+        //Compatibility
+        MLGirlLocker,
+        MLLongLocker,
+        MLTallLocker,
+        MLOpenLocker,
+        MLSmallCrate,
+        MLSupplyCrate,
+        MLHorizontalLocker,
     }
 
 
@@ -38,6 +46,14 @@ namespace Ramune.RamunesCustomizedStorage.Monos
             { StorageType.WaterproofLocker, () => new(config.width_waterproofLocker, config.height_waterproofLocker) },
             { StorageType.CarryAll, () => new(config.width_carryAll, config.height_carryAll) },
             { StorageType.BioReactor, () => new(config.width_bioReactor, config.height_bioReactor) },
+            { StorageType.WaterFiltration, () => new(config.water_filtration, config.height_filtration) },
+            //Compatability
+            { StorageType.WaterFiltration, () => new(config.water_filtration, config.height_filtration) },
+            { StorageType.WaterFiltration, () => new(config.water_filtration, config.height_filtration) },
+            { StorageType.WaterFiltration, () => new(config.water_filtration, config.height_filtration) },
+            { StorageType.WaterFiltration, () => new(config.water_filtration, config.height_filtration) },
+            { StorageType.WaterFiltration, () => new(config.water_filtration, config.height_filtration) },
+            { StorageType.WaterFiltration, () => new(config.water_filtration, config.height_filtration) },
             { StorageType.WaterFiltration, () => new(config.water_filtration, config.height_filtration) },
         };
 

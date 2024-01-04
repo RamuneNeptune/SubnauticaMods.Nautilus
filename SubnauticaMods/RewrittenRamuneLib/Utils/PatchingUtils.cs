@@ -4,6 +4,19 @@ namespace RamuneLib.Utils
 {
     public static class PatchingUtils
     {
+        public static bool IsChainloaderReady = false;
+
+
+        public static IEnumerator WaitForChainloader()
+        {
+            Type chainloader = typeof(BepInEx.Bootstrap.Chainloader);
+            FieldInfo loaded = chainloader.GetField("_loaded", BindingFlags.NonPublic | BindingFlags.Static);
+
+            yield return new WaitUntil(() => (bool)loaded.GetValue(null));
+            IsChainloaderReady = true;
+        }
+
+
         /// <summary>
         /// Runs a specific Harmony patch on a target method within a given type. The patch type can be one of Prefix, Postfix, or Transpiler.
         /// </summary>
@@ -23,7 +36,7 @@ namespace RamuneLib.Utils
 
                 if(patchMethod is null || string.IsNullOrEmpty(methodName) || targetType is null)
                 {
-                    LoggerUtils.LogError(">> Invalid parameters provided for patching.");
+                    LoggerUtils.LogError(">> Invalid parameters provided for patching");
                     return;
                 }
 
