@@ -1,6 +1,6 @@
 ﻿
 
-namespace RamuneLib
+namespace RamuneLib.Miscellaneous
 {
     public class EnumStringAttribute : Attribute
     {

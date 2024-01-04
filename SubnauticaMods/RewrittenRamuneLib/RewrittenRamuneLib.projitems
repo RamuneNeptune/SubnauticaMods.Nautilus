@@ -16,6 +16,8 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)core\Variables.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\CustomPrefabExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)extensions\GameObjectExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)extensions\RendererExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Miscellaneous\Attributes.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Miscellaneous\GlobalReferences.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Initializer.cs" />
@@ -29,7 +31,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)piracy\Piracy.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Piracy\Monos\PirateTunes.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)piracy\Core.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)utils\EquipmentUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)utils\DialogUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)utils\PingUtils.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\PatchingUtils.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\ImageUtils.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\JsonUtils.cs" />

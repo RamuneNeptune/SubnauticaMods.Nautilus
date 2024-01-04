@@ -60,7 +60,7 @@ namespace RamuneLib.Utils
             catch(Exception ex)
             {
                 LoggerUtils.LogError($">> Error applying patch for '{targetType}.{methodName}' as '{patchType}', see next line for exception");
-                LoggerUtils.LogError($">> {ex.GetType()}: {ex.Message}");
+                LoggerUtils.LogError($">> {ex.Message}");
             }
         }
     }

@@ -73,8 +73,8 @@ namespace Ramune.LithiumBatteries.Patches
 
         public static void ApplyPowerCellTexture(string itemName, Renderer chargerRenderer, MeshRenderer modelRenderer, MeshFilter batteryMeshFilter)
         {
-            batteryMeshFilter.mesh = modelMeshFilter.mesh;
-            chargerRenderer.material.CopyPropertiesFromMaterial(modelMeshFilter.material);
+            //batteryMeshFilter.mesh = modelMeshFilter.mesh;
+            //chargerRenderer.material.CopyPropertiesFromMaterial(modelMeshFilter.material);
 
             switch (itemName)
             {
@@ -84,4 +84,4 @@ namespace Ramune.LithiumBatteries.Patches
             }
         }
     }
-}   
+}

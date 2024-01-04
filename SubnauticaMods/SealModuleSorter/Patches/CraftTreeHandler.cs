@@ -2,6 +2,7 @@
 
 namespace Ramune.Seal.ModuleSorter.Patches
 {
+    /*
     [HarmonyPatch(typeof(CraftTreeHandler))]
     public static class CraftTreeHandlerPatch
     {
@@ -24,4 +25,5 @@ namespace Ramune.Seal.ModuleSorter.Patches
             return false;
         }
     }
+    */
 }

@@ -34,10 +34,10 @@ namespace RamuneLib.Utils
 
 
         /// <summary>
-        /// Retrieves an array of speed values set on the provided vehicle component.
+        /// Retrieves an array of speed values on the provided vehicle component.
         /// </summary>
-        /// <returns>An array containing the values set on the provided vehicle component in the following order: forwardForce, backwardForce, sidewardForce, verticalForce.</returns>
-        public static float[] GetCurrentSpeedValues(Vehicle vehicle)
+        /// <returns>An array containing the values on the provided vehicle component in the following order: forwardForce, backwardForce, sidewardForce, verticalForce.</returns>
+        public static float[] SpeedValues(this Vehicle vehicle)
         {
             float[] values = null;
 
@@ -50,9 +50,9 @@ namespace RamuneLib.Utils
         }
 
 
-        private static IEnumerator SpeedupAsync(Vehicle vehicle, SpeedType speedType, float multiplier, float duration = 0, Action onIncrease = null, Action onDecrease = null)
+        private static IEnumerator SpeedupAsync(this Vehicle vehicle, SpeedType speedType, float multiplier, float duration = 0, Action onIncrease = null, Action onDecrease = null)
         {
-            float[] originals = GetCurrentSpeedValues(vehicle);
+            float[] originals = vehicle.SpeedValues();
 
             switch(speedType)
             {
@@ -117,7 +117,9 @@ namespace RamuneLib.Utils
         }
 
 
-        public static void Speedup(this Vehicle vehicle, SpeedType speedType, float multiplier, float duration = 0, Action onIncrease = null, Action onDecrease = null) => 
-            CoroutineHost.StartCoroutine(SpeedupAsync(vehicle, speedType, multiplier, duration, onIncrease, onDecrease));
+        public static void Speedup(this Vehicle vehicle, SpeedType speedType, float multiplier, float duration = 0, Action onIncrease = null, Action onDecrease = null)
+        {
+            CoroutineHost.StartCoroutine(vehicle.SpeedupAsync(speedType, multiplier, duration, onIncrease, onDecrease));
+        }
     }
 }

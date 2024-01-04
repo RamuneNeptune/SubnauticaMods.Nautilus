@@ -12,24 +12,17 @@ namespace Ramune.ReaperGoldSkin.Patches
         [HarmonyPatch(nameof(Creature.Start)), HarmonyPostfix]
         public static void Start(Creature __instance)
         {
-            if(__instance.name is not "ReaperLeviathan(Clone)")
+            if(__instance is not ReaperLeviathan)
                 return;
 
-            var renderer = __instance.gameObject.GetComponentInChildren<Renderer>(true);
-
-            if(renderer is null)
+            if(!__instance.gameObject.TryGetComponentInChildren<Renderer>(out var renderer, true))
                 return;
 
-            renderer.material.SetTexture(ShaderPropertyID._MainTex, Main);
-            renderer.material.SetTexture(ShaderPropertyID._SpecTex, Main);
-            renderer.material.SetTexture(ShaderPropertyID._Illum, Emissive);
-            renderer.material.SetFloat(ShaderPropertyID._GlowStrength, 0.5f);
-            renderer.material.SetFloat(ShaderPropertyID._GlowStrengthNight, 0.5f);
-            renderer.materials[1].SetTexture(ShaderPropertyID._MainTex, Main);
-            renderer.materials[1].SetTexture(ShaderPropertyID._SpecTex, Main);
-            renderer.materials[1].SetTexture(ShaderPropertyID._Illum, Emissive);
-            renderer.materials[1].SetFloat(ShaderPropertyID._GlowStrength, 0.5f);
-            renderer.materials[1].SetFloat(ShaderPropertyID._GlowStrengthNight, 0.5f);
+            renderer
+                .MultiSetTexture(TextureType.Main, Main, 0, 1)
+                .MultiSetTexture(TextureType.Specular, Main, 0, 1)
+                .MultiSetTexture(TextureType.Illum, Emissive, 0, 1)
+                .MultiSetGlowStrength(0.5f, 0, 1);
         }
     }
 }

@@ -10,14 +10,10 @@ namespace Ramune.RamunesCustomizedStorage.Patches
         {
             float x = __instance.rectTransform.anchoredPosition.x;
 
-            if(height == 9)
-                __instance.rectTransform.anchoredPosition = new Vector2(x, -39f);
-
-            else if(height == 10)
-                __instance.rectTransform.anchoredPosition = new Vector2(x, -75);
-
-            else
-                __instance.rectTransform.anchoredPosition = new Vector2(x, -4);
+            __instance.rectTransform.anchoredPosition = new Vector2(x, 
+                (height == 9) ? -39f :        // if height is 9:       new Vector2(x, -39f)
+                (height == 10) ? -75f : -4f); // if height is 10:      new Vector2(x, -75f)
+                                              // if height is neither: new Vector2(x, -4f)
 
             __instance.rectTransform.anchoredPosition = new Vector2(Mathf.Sign(x) * (width == 8 ? 292f : 284f), __instance.rectTransform.anchoredPosition.y);
         }

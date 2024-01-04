@@ -1,7 +1,5 @@
 
 
-using HarmonyLib;
-
 namespace RamuneLib
 {
     public static class Initializer
@@ -14,13 +12,19 @@ namespace RamuneLib
             if(Piracy.Exists()) 
                 return;
 
-            LoggerUtils.LogInfo($">> Loading harmony patches for '{name} {version}'..");
+            var start = $"<-------------------> {name} ({version}) <------------------->";
+            var finish = $"<{new string('-', start.Length - 2)}>";
+
+            LoggerUtils.LogInfo(start);
 
             if(patchAll)
             {
+                LoggerUtils.LogInfo($">> Loading harmony patches for '{name} {version}'");
                 harmony.PatchAll();
-                LoggerUtils.LogInfo($">> Loaded harmony patches for '{name} {version}'..");
+                LoggerUtils.LogInfo($">> Finished loading harmony patches for '{name} {version}'..");
             }
+
+            LoggerUtils.LogInfo(finish);
         }
     }
 }

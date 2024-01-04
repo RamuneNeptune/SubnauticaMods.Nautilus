@@ -20,3 +20,4 @@ namespace Ramune.NoEpilepsyWarning
         }
     }
 }
+

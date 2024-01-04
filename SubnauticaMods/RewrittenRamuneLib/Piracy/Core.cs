@@ -8,28 +8,20 @@ namespace RamuneLib
         {
             public static void HackTheMainframe()
             {
-               /*
-               -------------------------------------------- START OF TRANSMISSION --------------------------------------------
-
-                 J.P. : I'm in position. Nanomites are live, data knife is primed.. prepared to breach the mainframe.
-                 A.R. : Copy that, please be safe, I cannot afford to lose you to their ultra high tech man-eating piracy infested software.
-                 J.P. : Don't worry about me, but, in case I don't make it out...
-                 A.R. : Don't say that! You're coming back, do you hear me?
-                 A.R. : Jake are you there? 
-                 A.R. : Jake? Jake?! Hello?! Jake please respond!
-
-               -------------------------------------------- END OF TRANSMISSION --------------------------------------------
-               */
-
                 LoggerUtils.LogInfo(">> Ahoy matey!");
 
                 CoroutineHost.StartCoroutine(Logger());
+
                 CoroutineHost.StartCoroutine(GetAudioClips());
 
                 PatchingUtils.ApplyPatch(typeof(Player), nameof(Player.Awake), new(typeof(Patches), nameof(Patches.Player_Awake)), HarmonyPatchType.Postfix);
+
                 PatchingUtils.ApplyPatch(typeof(Charger), nameof(Charger.Start), new(typeof(Patches), nameof(Patches.Charger_Start)), HarmonyPatchType.Postfix);
+
                 PatchingUtils.ApplyPatch(typeof(LiveMixin), nameof(LiveMixin.TakeDamage), new(typeof(Patches), nameof(Patches.LiveMixin_TakeDamage)), HarmonyPatchType.Postfix);
+
                 PatchingUtils.ApplyPatch(typeof(SoundSystem), nameof(SoundSystem.SetMusicVolume), new(typeof(Patches), nameof(Patches.SoundSystem_SetMusicVolume)), HarmonyPatchType.Postfix);
+
                 PatchingUtils.ApplyPatch(typeof(BreakableResource), nameof(BreakableResource.BreakIntoResources), new(typeof(Patches), nameof(Patches.BreakableResource_BreakIntoResources)), HarmonyPatchType.Postfix);
             }
 

@@ -9,7 +9,7 @@ namespace Ramune.RadiantBlade.Monos
             base.OnToolUseAnim(hand);
 
             Vector3 vector = default;
-            GameObject? gameObject = null;
+            GameObject gameObject = null;
             UWE.Utils.TraceFPSTargetPosition(Player.main.gameObject, attackDist, ref gameObject, ref vector, true);
 
             if (gameObject == null) return;

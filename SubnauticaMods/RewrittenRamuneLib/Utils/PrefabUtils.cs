@@ -19,14 +19,14 @@ namespace RamuneLib.Utils
 
 
         /// <summary>
-        /// Creates a custom prefab with the specified ID, name, description, and <see cref="UnityEngine.Sprite"/>.
+        /// Creates a custom prefab with the specified ID, name, description, and <see cref="Sprite"/>.
         /// </summary>
         /// <param name="id">The unique identifier for the prefab.</param>
         /// <param name="name">The name of the prefab.</param>
         /// <param name="description">The description of the prefab.</param>
         /// <param name="sprite">The <see cref="UnityEngine.Sprite"/> to associate with the prefab.</param>
         /// <returns>The created custom prefab.</returns>
-        public static CustomPrefab CreatePrefab(string id, string name, string description, UnityEngine.Sprite sprite)
+        public static CustomPrefab CreatePrefab(string id, string name, string description, Sprite sprite)
         {
             return new CustomPrefab(id, name, description, sprite);
         }

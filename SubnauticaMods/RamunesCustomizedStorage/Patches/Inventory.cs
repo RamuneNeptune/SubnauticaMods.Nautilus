@@ -6,6 +6,11 @@ namespace Ramune.RamunesCustomizedStorage.Patches
     public static class InventoryPatch
     {
         [HarmonyPatch(nameof(Inventory.Awake)), HarmonyPostfix]
-        public static void Awake(Inventory __instance) => __instance.container.Resize((int)RamunesCustomizedStorage.config.width_inventory, (int)RamunesCustomizedStorage.config.height_inventory);
+        public static void Awake(Inventory __instance)
+        {
+            var resizer = __instance.gameObject.EnsureComponent<Monos.StorageResizer>();
+            resizer.type = Monos.StorageType.Inventory;
+            resizer.container = __instance.container;
+        }
     }
 }

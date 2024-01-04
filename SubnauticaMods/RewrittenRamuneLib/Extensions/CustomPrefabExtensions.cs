@@ -1,6 +1,6 @@
 
 
-namespace RamuneLib
+namespace RamuneLib.Extensions
 {
     public static class CustomPrefabExtensions
     {

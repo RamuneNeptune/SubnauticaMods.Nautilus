@@ -9,7 +9,8 @@ namespace Ramune.SeamothSprint.Monos
         public Animator animator;
         public SeaMoth seamoth;
         public Vehicle vehicle;
-        public float forward, backward, sideward, energy = 0.24f, speed;
+        public float forward, backward, sideward, speed, pitch, volume, energy = 0.24f;
+
 
         public void Start()
         {
@@ -18,46 +19,51 @@ namespace Ramune.SeamothSprint.Monos
             seamoth = gameObject.GetComponentInChildren<SeaMoth>();
             animator = gameObject.GetComponentInChildren<Animator>();
             vehicle = gameObject.GetComponentInParent<Vehicle>();
-
             forward = vehicle.forwardForce;
             backward = vehicle.backwardForce;
             sideward = vehicle.sidewardForce;
             speed = animator.speed;
         }
 
+
         public void Update()
         {
             if(SeamothSprint.config.requiresModule)
             {
-                if(vehicle.modules.GetCount(TechType.Quartz) > 0)
+                if(vehicle.modules.GetCount(Items.SeamothSprintModule.Prefab.Info.TechType) <= 0)
                     return;
             }
 
-            if(SeamothSprint.config.energyMultiplier == 1) energy = 0.066667f;
-            if(!seamoth.playerFullyEntered) return;
+            if(!seamoth.playerFullyEntered)
+                return;
+
+            _ = SeamothSprint.config.energyMultiplier == 1
+                ? energy = 0.066667f
+                : energy = 0.24f;
 
             if(GameInput.GetKey(SeamothSprint.config.boostKeybind))
             {
                 seamoth.enginePowerConsumption = energy * SeamothSprint.config.energyMultiplier;
 
-                engineSFX.engineRpmSFX.GetEventInstance().setPitch(1.15f);
-                engineSFX.engineRpmSFX.GetEventInstance().setVolume(1.25f);
+                float insanityMultiplier = SeamothSprint.config.isInsanity ? 3f : 1f;
+                float multiplier = SeamothSprint.config.speedMultiplier * insanityMultiplier;
 
-                animator.speed = SeamothSprint.config.isInsanity
-                    ? (speed * SeamothSprint.config.speedMultiplier * 3f)
-                    : (speed * SeamothSprint.config.speedMultiplier);
+                animator.speed = speed * multiplier;
+                vehicle.forwardForce = forward * multiplier;
+                vehicle.backwardForce = backward * multiplier;
+                vehicle.sidewardForce = sideward * multiplier;
 
-                vehicle.forwardForce = SeamothSprint.config.isInsanity
-                    ? (forward * SeamothSprint.config.speedMultiplier * 3f)
-                    : (forward * SeamothSprint.config.speedMultiplier);
+                if(pitch != 1.15f || volume != 1.25f)
+                {
+                    engineSFX.engineRpmSFX.GetEventInstance().getPitch(out pitch);
+                    engineSFX.engineRpmSFX.GetEventInstance().getVolume(out volume);
 
-                vehicle.backwardForce = SeamothSprint.config.isInsanity
-                    ? (backward * SeamothSprint.config.speedMultiplier * 3f)
-                    : (backward * SeamothSprint.config.speedMultiplier);
+                    if(pitch != 1.15f)
+                        engineSFX.engineRpmSFX.GetEventInstance().setPitch(1.15f);
 
-                vehicle.sidewardForce = SeamothSprint.config.isInsanity
-                    ? (sideward * SeamothSprint.config.speedMultiplier * 3f)
-                    : (sideward * SeamothSprint.config.speedMultiplier);
+                    if(volume != 1.25f)
+                        engineSFX.engineRpmSFX.GetEventInstance().setVolume(1.25f);
+                }
             }
             else SetDefault();
         }

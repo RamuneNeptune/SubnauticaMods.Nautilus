@@ -8,8 +8,11 @@ namespace Ramune.RamunesCustomizedStorage.Patches
         [HarmonyPatch(nameof(SeamothStorageContainer.Init)), HarmonyPrefix]
         public static void Init(SeamothStorageContainer __instance)
         {
-            __instance.width = (int)RamunesCustomizedStorage.config.width_seamoth;
-            __instance.height = (int)RamunesCustomizedStorage.config.height_seamoth;
+            var resizer = __instance.gameObject.EnsureComponent<Monos.StorageResizer>();
+            resizer.type = Monos.StorageType.Seamoth;
+            resizer.container = __instance;
         }
+
+        // add logic to account for storage modules plz self
     }
 }

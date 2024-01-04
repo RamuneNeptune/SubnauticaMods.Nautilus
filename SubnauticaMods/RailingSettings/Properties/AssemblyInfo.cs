@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("BloodTweaks")]
+[assembly: AssemblyTitle("SealRailingSettings")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("BloodTweaks")]
+[assembly: AssemblyProduct("SealRailingSettings")]
 [assembly: AssemblyCopyright("Copyright ©  2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("54277e8a-eee5-4fb8-9056-433aacf80562")]
+[assembly: Guid("ab73997d-e375-4eda-bf0c-0a30297edcb0")]
 
 // Version information for an assembly consists of the following four values:
 //
