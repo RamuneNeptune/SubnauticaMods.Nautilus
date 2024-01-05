@@ -161,7 +161,7 @@ namespace RamuneLib.Extensions
 
 
         /// <summary>
-        /// Toggles emission keyword on a specific material index of the Renderer.
+        /// Toggles 'MARMO_EMISSION' keyword for the specified material
         /// </summary>
         /// <param name="toggleState">True to enable emission, false to disable</param>
         /// <param name="materialIndex">The index of the material to toggle emission on</param>
@@ -174,7 +174,7 @@ namespace RamuneLib.Extensions
 
 
         /// <summary>
-        /// Toggles emission keyword on multiple material indexes of the Renderer.
+        /// Toggles 'MARMO_EMISSION' keyword for multiple materials
         /// </summary>
         /// <param name="toggleState">True to enable emission, false to disable</param>
         /// <param name="materialIndexes">An array of material indexes to toggle emission on to</param>
