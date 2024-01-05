@@ -4,9 +4,17 @@ namespace RamuneLib.Extensions
 {
     public static class GameObjectExtensions
     {
+        /// <summary>
+        /// Loops 'GameObject.EnsureComponent' over the GameObject for all passed componenets
+        /// </summary>
+        /// <param name="types">Array of components to ensure</param>
         public static void EnsureComponents(this GameObject obj, params Type[] types) => types.ForEach(t => obj.EnsureComponent(t));
-     
 
+
+        /// <summary>
+        /// Loops 'GameObject.EnsureComponent' over the GameObject for all passed componenets
+        /// </summary>
+        /// <param name="types">Array of components to ensure</param>
         public static void EnsureComponents<T>(this GameObject obj, params Type[] types) where T : Component
         {
             obj.EnsureComponent<T>();

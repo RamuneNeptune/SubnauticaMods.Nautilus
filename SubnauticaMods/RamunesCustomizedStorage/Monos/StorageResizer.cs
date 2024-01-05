@@ -1,6 +1,7 @@
 ﻿
 global using static Ramune.RamunesCustomizedStorage.RamunesCustomizedStorage;
 global using static Ramune.RamunesCustomizedStorage.Monos.StorageTypeConfig;
+using static VFXParticlesPool;
 
 
 namespace Ramune.RamunesCustomizedStorage.Monos
@@ -19,14 +20,6 @@ namespace Ramune.RamunesCustomizedStorage.Monos
         CarryAll,
         BioReactor,
         WaterFiltration,
-        //Compatibility
-        MLGirlLocker,
-        MLLongLocker,
-        MLTallLocker,
-        MLOpenLocker,
-        MLSmallCrate,
-        MLSupplyCrate,
-        MLHorizontalLocker,
     }
 
 
@@ -46,14 +39,6 @@ namespace Ramune.RamunesCustomizedStorage.Monos
             { StorageType.WaterproofLocker, () => new(config.width_waterproofLocker, config.height_waterproofLocker) },
             { StorageType.CarryAll, () => new(config.width_carryAll, config.height_carryAll) },
             { StorageType.BioReactor, () => new(config.width_bioReactor, config.height_bioReactor) },
-            { StorageType.WaterFiltration, () => new(config.water_filtration, config.height_filtration) },
-            //Compatability
-            { StorageType.WaterFiltration, () => new(config.water_filtration, config.height_filtration) },
-            { StorageType.WaterFiltration, () => new(config.water_filtration, config.height_filtration) },
-            { StorageType.WaterFiltration, () => new(config.water_filtration, config.height_filtration) },
-            { StorageType.WaterFiltration, () => new(config.water_filtration, config.height_filtration) },
-            { StorageType.WaterFiltration, () => new(config.water_filtration, config.height_filtration) },
-            { StorageType.WaterFiltration, () => new(config.water_filtration, config.height_filtration) },
             { StorageType.WaterFiltration, () => new(config.water_filtration, config.height_filtration) },
         };
 
@@ -87,10 +72,11 @@ namespace Ramune.RamunesCustomizedStorage.Monos
 
         public void Resize()
         {
-            LoggerUtils.Debug = true;
-
             if(type == StorageType.Unknown)
                 Destroy(this);
+
+            if(container == null)
+                throw new NullReferenceException($"{type} : 'container' is null");
 
             intendedSize = this.GetSize(type);
 
@@ -107,8 +93,15 @@ namespace Ramune.RamunesCustomizedStorage.Monos
                     return;
             }
 
-            if(container == null)
-                throw new NullReferenceException($"{type} : 'container' is null");
+            if(type == StorageType.Exosuit)
+            {
+                if(gameObject.TryGetComponent<Exosuit>(out var exosuit))
+                {
+                    StorageContainer storageContainer = container as StorageContainer;
+                    storageContainer.Resize((int)intendedSize.x + (int)(config.height_prawnSuitModule * exosuit.modules.GetCount(TechType.VehicleStorageModule)), (int)intendedSize.y);
+                }
+                return;
+            }
 
             switch(container)
             {

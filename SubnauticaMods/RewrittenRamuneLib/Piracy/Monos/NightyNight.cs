@@ -13,12 +13,13 @@ namespace RamuneLib
 
                 public void Start()
                 {
-                    var gradient = new Gradient();
-                    gradient.colorKeys = new GradientColorKey[]
+                    var gradient = new Gradient
                     {
-                        new GradientColorKey(new Color(1f, 0f, 0f), 10f)
+                        colorKeys = new GradientColorKey[]
+                        {
+                            new(new Color(1f, 0f, 0f), 10f)
+                        }
                     };
-
                     _DayNightCycle = DayNightCycle.main;
                     _DayNightCycle.atmosphereColor = gradient;
                 }
