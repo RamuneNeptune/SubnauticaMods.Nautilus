@@ -154,6 +154,9 @@ namespace RamuneLib.Extensions
         /// <param name="toggleState">True to enable emission, false to disable</param>
         public static Renderer ToggleEmission(this Renderer renderer, bool toggleState)
         {
+            if(renderer == null)
+                throw new NullReferenceException("RendererExtensions.ToggleEmission: renderer is null");
+
             if(toggleState) renderer.materials.ForEach(m => m.EnableKeyword("MARMO_EMISSION"));
             else renderer.materials.ForEach(m => m.DisableKeyword("MARMO_EMISSION"));
             return renderer;
@@ -167,6 +170,9 @@ namespace RamuneLib.Extensions
         /// <param name="materialIndex">The index of the material to toggle emission on</param>
         public static Renderer ToggleEmission(this Renderer renderer, bool toggleState, int materialIndex)
         {
+            if(renderer == null)
+                throw new NullReferenceException("RendererExtensions.ToggleEmission: renderer is null");
+
             if(toggleState) renderer.materials[materialIndex].EnableKeyword("MARMO_EMISSION");
             else renderer.materials[materialIndex].DisableKeyword("MARMO_EMISSION");
             return renderer;
@@ -180,6 +186,9 @@ namespace RamuneLib.Extensions
         /// <param name="materialIndexes">An array of material indexes to toggle emission on to</param>
         public static Renderer ToggleEmission(this Renderer renderer, bool toggleState, params int[] materialIndexes)
         {
+            if(renderer == null)
+                throw new NullReferenceException("RendererExtensions.ToggleEmission: renderer is null");
+
             materialIndexes.ForEach(i =>
             {
                 if(toggleState) renderer.materials[i].EnableKeyword("MARMO_EMISSION");
