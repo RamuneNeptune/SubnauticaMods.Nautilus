@@ -178,7 +178,7 @@ namespace RamuneLib.Extensions
         /// </summary>
         /// <param name="toggleState">True to enable emission, false to disable</param>
         /// <param name="materialIndexes">An array of material indexes to toggle emission on to</param>
-        public static Renderer MultiToggleEmission(this Renderer renderer, bool toggleState, params int[] materialIndexes)
+        public static Renderer ToggleEmission(this Renderer renderer, bool toggleState, params int[] materialIndexes)
         {
             materialIndexes.ForEach(i =>
             {
