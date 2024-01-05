@@ -52,7 +52,7 @@ namespace RamuneLib.Extensions
         /// <param name="texture">The texture to apply</param>
         /// <param name="materialIndexes">An array of material indexes to apply the textures to</param>
         /// <returns>The modified Renderer.</returns>
-        public static Renderer SetTextures(this Renderer renderer, TextureType type, Texture2D texture, params int[] materialIndexes)
+        public static Renderer SetTexture(this Renderer renderer, TextureType type, Texture2D texture, params int[] materialIndexes)
         {
             if(renderer == null)
                 throw new NullReferenceException("RendererExtensions.SetTexture: renderer is null");
@@ -84,7 +84,7 @@ namespace RamuneLib.Extensions
         /// <param name="types">Array of texture types to set (Main, Specular, Illum)</param>
         /// <param name="texture">The texture to apply</param>
         /// <param name="materialIndexes">An array of material indexes to apply the textures to</param>
-        public static Renderer SetTextures(this Renderer renderer, TextureType[] types, Texture2D texture, params int[] materialIndexes)
+        public static Renderer SetTexture(this Renderer renderer, TextureType[] types, Texture2D texture, params int[] materialIndexes)
         {
             if(renderer == null)
                 throw new NullReferenceException("RendererExtensions.SetTextures: renderer is null");
@@ -134,7 +134,7 @@ namespace RamuneLib.Extensions
         /// </summary>
         /// <param name="strength">The glow strength value</param>
         /// <param name="materialIndexes">An array of material indexes to apply the glow strength to</param>
-        public static Renderer SetGlowStrengths(this Renderer renderer, float strength, params int[] materialIndexes)
+        public static Renderer SetGlowStrength(this Renderer renderer, float strength, params int[] materialIndexes)
         {
             if(renderer == null)
                 throw new NullReferenceException("RendererExtensions.SetGlowStrengths: renderer is null");

@@ -19,8 +19,8 @@ namespace Ramune.ReaperGoldSkin.Patches
                 return;
 
             renderer
-                .SetTextures(new[] { TextureType.Main, TextureType.Specular, TextureType.Illum }, Main, 0, 1)
-                .SetGlowStrengths(0.5f, 0, 1);
+                .SetTexture(new[] { TextureType.Main, TextureType.Specular, TextureType.Illum }, Main, 0, 1)
+                .SetGlowStrength(0.5f, 0, 1);
         }
     }
 }
