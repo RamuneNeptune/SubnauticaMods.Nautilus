@@ -5,7 +5,7 @@ namespace RamuneLib.Extensions
     public static class RendererExtensions
     {
         /// <summary>
-        /// Types of textures that can be set on a Renderer.
+        /// Types of textures that can be set
         /// </summary>
         public enum TextureType
         {
