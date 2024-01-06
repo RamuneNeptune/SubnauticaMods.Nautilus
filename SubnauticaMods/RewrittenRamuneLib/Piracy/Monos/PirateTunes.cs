@@ -14,17 +14,21 @@ namespace RamuneLib
 
             public class PirateTunes : MonoBehaviour
             {
-                public List<AudioClip> clips = new();
-                public AudioSource source;
+                public static List<AudioClip> clips = new();
+                public static AudioSource source;
+                public static int clipIndex = 0;
 
 
                 public void Update()
                 {
+                    if(!GameInput.AnyKeyDown())
+                        return;
+
+                    if(Cursor.visible)
+                        return;
+
                     if(GameInput.GetKeyDown(KeyCode.Period))
-                    {
-                        LoggerUtils.LogSubtitle($"PIRATE TUNES: Skipping track..");
                         source.Stop();
-                    }
                 }
 
 
@@ -34,12 +38,42 @@ namespace RamuneLib
                     go.transform.parent = gameObject.transform;
 
                     source = go.EnsureComponent<AudioSource>();
-                    source.volume = 0.035f;
+                    source.volume = 0.095f;
                     source.loop = false;
 
                     CoroutineHost.StartCoroutine(GetAudioClips());
+                }
 
-                    LoggerUtils.LogSubtitle($"PIRATE TUNES: Thanks for choosing Pirate Tunes as your preferred music player", 7);
+
+                public IEnumerator LoopSongs()
+                {
+                    LoggerUtils.LogSubtitle($"PIRATE TUNES: Thanks for choosing Pirate Tunes as your preferred music player", 4);
+
+                    while (true)
+                    {
+                        for(int i = 0; i < clips.Count; i++)
+                        {
+                            var clip = clips[i];
+
+                            if(source is null)
+                                yield break;
+
+                            if(clip is null)
+                            {
+                                clips.Remove(clip);
+                                continue;
+                            }
+
+                            while(source.isPlaying)
+                                yield return null;
+
+                            source.clip = clip;
+                            source.Play();
+
+                            var length = TimeSpan.FromSeconds(clip.length);
+                            LoggerUtils.LogSubtitle($"PIRATE TUNES: Playing {clip.name}, length: {string.Format("{0:00}:{1:00}", (int)length.TotalMinutes, length.Seconds)} ({i + 1}/{clips.Count})", 5);
+                        }
+                    }
                 }
 
 
@@ -50,75 +84,51 @@ namespace RamuneLib
 
                     if(request.isNetworkError || request.isHttpError)
                     {
-                        LoggerUtils.LogError("Error: " + request.error);
+                        LoggerUtils.LogError("PirateTunes.GetAudioClips: " + request.error);
+                        yield break;
                     }
-                    else
+
+                    var rawText = request.downloadHandler.text;
+
+                    if(rawText is null)
+                        yield break;
+
+                    var data = JsonConvert.DeserializeObject<MyData>(rawText);
+                    var list = data.URLs.ToList();
+                    list.RemoveAll(url => url is null);
+
+                    float urls = list.Count;
+                    float currentValue = 0f;
+
+                    foreach(string url in list)
                     {
-                        var rawText = request.downloadHandler.text;
+                        using var _ = UnityWebRequestMultimedia.GetAudioClip(url, AudioType.MPEG);
+                        yield return _.SendWebRequest();
 
-                        if(rawText is null)
-                            yield break;
-
-                        var data = JsonConvert.DeserializeObject<MyData>(rawText);
-
-                        if(data.URLs.Length == 0)
-                            yield break;
-
-                        foreach(var url in data.URLs)
+                        if(_.isNetworkError || _.isHttpError)
                         {
-                            if(url is null)
-                                yield break;
-
-                            using var request_ = UnityWebRequestMultimedia.GetAudioClip(url, AudioType.MPEG);
-                            yield return request_.SendWebRequest();
-
-                            if(request_.isNetworkError || request_.isHttpError)
-                            {
-                                LoggerUtils.LogError(request_.error);
-                            }
-                            else
-                            {
-                                yield return new WaitUntil(() => Player.main);
-
-                                var clip = DownloadHandlerAudioClip.GetContent(request_);
-
-                                if(clip is not null)
-                                    clips.Add(clip);
-                            }
+                            LoggerUtils.LogError("PirateTunes.GetAudioClips: " + _.error);
+                            yield break;
                         }
+
+                        yield return new WaitUntil(() => Player.main);
+                        var clip = DownloadHandlerAudioClip.GetContent(_);
+
+                        if(clip != null)
+                        {
+                            clip.name = Path.GetFileName(url);
+                            clips.Add(clip);
+                        }
+
+                        currentValue++;
+                        float progressPercentage = (currentValue / urls) * 100f;
+                        string formattedPercentage = progressPercentage.ToString("F1");
+
+                        LoggerUtils.LogSubtitle($"PIRATE TUNES: Processing {formattedPercentage}% complete..", 1);
                     }
 
-                    CoroutineHost.StartCoroutine(LoopSongs());
-                }
-
-
-                public IEnumerator LoopSongs()
-                {
                     clips.Shuffle();
-
-                    while(true)
-                    {
-                        foreach(var clip in clips)
-                        {
-                            if(clip is null)
-                                yield break;
-
-                            if(source is null)
-                                yield break;
-
-                            if(source.isPlaying)
-                            {
-                                while (source.isPlaying)
-                                    yield return null;
-                            }
-
-                            source.clip = clip;
-                            source.Play();
-
-                            var length = TimeSpan.FromSeconds(clip.length);
-                            LoggerUtils.LogSubtitle($"PIRATE TUNES: Playing next track, length: {string.Format("{0:00}:{1:00}", (int)length.TotalMinutes, (int)length.Seconds)}", 4);
-                        }
-                    }
+                    CoroutineHost.StartCoroutine(LoopSongs());
                 }
             }
         }

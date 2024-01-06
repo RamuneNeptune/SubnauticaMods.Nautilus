@@ -5,6 +5,26 @@ namespace RamuneLib.Extensions
     public static class GameObjectExtensions
     {
         /// <summary>
+        /// Loops over all children and runs 'GameObject.Destroy()'
+        /// </summary>
+        public static void DestroyChildren(this GameObject gameObject)
+        {
+            foreach(Transform child in gameObject.transform)
+                GameObject.Destroy(child.gameObject);
+        }
+
+
+        /// <summary>
+        /// Loops over all children and runs 'GameObject.DestroyImmediate()'
+        /// </summary>
+        public static void DestroyChildrenImmediate(this GameObject gameObject)
+        {
+            foreach(Transform child in gameObject.transform) 
+                GameObject.DestroyImmediate(child.gameObject);
+        }
+
+
+        /// <summary>
         /// Loops 'GameObject.EnsureComponent' over the GameObject for all passed componenets
         /// </summary>
         /// <param name="types">Array of components to ensure</param>
@@ -29,7 +49,7 @@ namespace RamuneLib.Extensions
             if(gameObject == null)
                 return false;
 
-            return (component = includeInactive ? gameObject.GetComponentInChildren<T>(true) : gameObject.GetComponentInChildren<T>()) != null;
+            return(component = includeInactive ? gameObject.GetComponentInChildren<T>(true) : gameObject.GetComponentInChildren<T>()) != null;
         }
 
 
@@ -52,6 +72,38 @@ namespace RamuneLib.Extensions
                 return false;
 
             return(components = includeInactive ? gameObject.GetComponentsInChildren<T>(true) : gameObject.GetComponentsInChildren<T>()).Length > 0;
+        }
+
+
+        public static bool TryGetComponentInParent<T>(this GameObject gameObject, out T component) where T : Component
+        {
+            component = null;
+
+            if(gameObject == null)
+                return false;
+
+            var parent = gameObject.transform.parent;
+
+            if(parent == null)
+                return false;
+
+            return(component = parent.GetComponent<T>()) != null;
+        }
+
+
+        public static bool TryGetComponentsInParent<T>(this GameObject gameObject, out T[] components) where T : Component
+        {
+            components = null;
+
+            if(gameObject == null)
+                return false;
+
+            var parent = gameObject.transform.parent;
+
+            if(parent == null)
+                return false;
+
+            return(components = parent.gameObject.GetComponents<T>()).Length > 0;
         }
     }
 }

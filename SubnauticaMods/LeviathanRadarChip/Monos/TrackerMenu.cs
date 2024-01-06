@@ -27,7 +27,7 @@ namespace Ramune.LeviathanRadarChip.Monos
                 var menu = MenuClone.AddComponent<BasicMenuComponent>();
                 var buttons = MenuClone.GetComponentsInChildren<Button>(true);
 
-                foreach (var button in buttons)
+                foreach(var button in buttons)
                 {
                     if (isFirst)
                     {

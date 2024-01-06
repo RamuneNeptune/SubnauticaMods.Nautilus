@@ -12,15 +12,10 @@ namespace Ramune.RamunesCustomizedStorage
         public const float widthMaxValue = 10f;
         public const float step = 1f;
 
-        /*
         public void OnChangeAutomatic(ToggleChangedEventArgs args)
         {
-            if(args.Value is true)
-            {
-                
-            }
+
         }
-        */
 
         [Button("Close game", Tooltip = "Use this shortcut to apply changes faster", Order = 0)]
         public void Restart(ButtonClickedEventArgs _) => Application.Quit();
@@ -34,8 +29,8 @@ namespace Ramune.RamunesCustomizedStorage
         [Slider(" • Inventory height (y)", Format = "{0:F1}", DefaultValue = 8f, Min = heightMinValue, Max = heightMaxValue, Step = step, Tooltip = tooltip + "8", Order = 3)]
         public float height_inventory = 8f;
 
-        //[Toggle(" • Automatically apply changes without restart (be careful)"), OnChange(nameof(OnChangeAutomatic))]
-        //public bool inventory_automatic = false;
+        [Toggle(" • Automatically apply changes without restart (be careful)"), OnChange(nameof(OnChangeAutomatic))]
+        public bool inventory_automatic = false;
 
 
         [Toggle("<color=#f1c353>Lifepod storage size:</color> <alpha=#00>----------------------------------------------------------------------------</alpha>", Order = 5)]

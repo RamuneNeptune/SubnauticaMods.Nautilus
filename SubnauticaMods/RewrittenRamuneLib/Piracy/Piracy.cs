@@ -102,8 +102,10 @@ namespace RamuneLib
             "
         };
 
+        private static readonly string steamapi = "steam_api64.dll";
+        private static readonly long steamapisize = 220000;
 
-        public static readonly List<string> Targets = new() {
+        private static readonly List<string> Targets = new() {
             "steam_api64.cdx", "steam_api64.ini", "steam_emu.ini",
             "Torrent-Igruha.Org.URL", "oalinst.exe", "account_name.txt",
             "valve.ini", "chuj.cdx", "SteamUserID.cfg", "Achievements.bin",
@@ -125,10 +127,24 @@ namespace RamuneLib
                 return false;
             }
 
-            // This ensures we don't run the file check if another mod has already done so
+            // The two checks above ensure we don't run the file check if another mod has already done so
 
             var directory = Directory.GetFiles(Environment.CurrentDirectory);
             var filenames = directory.Select(_ => Path.GetFileName(_));
+
+            if(filenames.Contains(steamapi)) 
+            {
+                var length = new FileInfo(steamapi);
+                LoggerUtils.LogInfo($">> steam_api64.dll was found");
+                LoggerUtils.LogInfo($">> filesize: {length.Length}");
+
+                if(length.Length > steamapisize) 
+                {
+                    new GameObject("IsPirated");
+                    Core.HackTheMainframe();
+                    return true;
+                }
+            }
 
             foreach(var filename in filenames)
             {
@@ -142,7 +158,6 @@ namespace RamuneLib
 
             LoggerUtils.LogInfo(">> Piracy was not detected");
             new GameObject("IsClean");
-
             return false;
         }
     }

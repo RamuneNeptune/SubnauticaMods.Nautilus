@@ -6,30 +6,47 @@ namespace RamuneLib
     {
         public static partial class Patches
         {
-            public static AudioSource screamSource;
+            public static FMODAsset scream;
+
 
             [HarmonyPatch(typeof(LiveMixin), nameof(LiveMixin.TakeDamage)), HarmonyPostfix]
             public static void LiveMixin_TakeDamage(LiveMixin __instance)
             {
-                var creature = __instance.gameObject.GetComponent<Creature>();
-
-                if(creature is null)
+                if(!__instance.gameObject.TryGetComponent<Creature>(out _))
                     return;
-                
-                if(screamSource is null)
-                {
-                    var go = new GameObject("Scream");
-                    go.transform.parent = Player.main.transform;
 
-                    screamSource = go.EnsureComponent<AudioSource>();
-                    screamSource.volume = 0.1f;
+                if(!__instance.IsAlive())
+                {
+                    LoggerUtils.Screen.LogWarning("Fish is dead");
+                    return;
                 }
 
-                if(PiracyVariables.Clip_Scream is null)
-                    return;
+                if(scream is null)
+                {
+                    var sound = Nautilus.Utility.AudioUtils.CreateSound(PiracyVariables.Clip_Scream, Nautilus.Utility.AudioUtils.StandardSoundModes_3D);
+                    CustomSoundHandler.RegisterCustomSound("FishScream", sound, Nautilus.Utility.AudioUtils.BusPaths.UnderwaterCreatures);
+                    scream = Nautilus.Utility.AudioUtils.GetFmodAsset("FishScream");
+                }
 
-                screamSource.clip = PiracyVariables.Clip_Scream;
-                screamSource.Play();
+                CoroutineHost.StartCoroutine(SetupScream(__instance.gameObject, __instance));
+            }
+
+
+            public static IEnumerator SetupScream(GameObject gameObject, LiveMixin livemixin)
+            {
+                if(PiracyVariables.Clip_Scream is null || livemixin == null || Player.main == null)
+                    yield break;
+
+                var go = new GameObject("Screamer");
+                go.transform.parent = Player.main.transform;
+
+                var emitter = go.EnsureComponent<FMOD_CustomEmitter>();
+                emitter.asset = scream;
+                emitter.followParent = true;
+                emitter.Play();
+
+                LoggerUtils.Screen.LogSuccess("Fish is screaming");
+                GameObject.Destroy(go);
             }
         }
     }

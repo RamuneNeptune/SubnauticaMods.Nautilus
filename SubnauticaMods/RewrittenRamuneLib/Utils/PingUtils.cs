@@ -17,6 +17,30 @@ namespace RamuneLib.Utils
         }
 
 
+        public static PingType RegisterPingType(string name)
+        {
+            return EnumHandler.AddEntry<PingType>(name)
+                .WithIcon(ImageUtils.GetSprite(name)).Value;
+        }
+
+
+        public static PingType RegisterPingType(string name, Atlas.Sprite sprite)
+        {
+            return EnumHandler.AddEntry<PingType>(name)
+                .WithIcon(sprite).Value;
+        }
+
+
+        public static PingType GetPingType(string name)
+        {
+            if(EnumHandler.TryGetValue<PingType>(name, out var pingType))
+                return pingType;
+
+            LoggerUtils.LogWarning($"PingUtils.GetPingType: Couldn't find PingType with name '{name}'");
+            return PingType.None;
+        }
+
+
         /// <summary>
         /// Create a new ping instance and add it to the CachedPings dictionary.
         /// </summary>
@@ -28,7 +52,7 @@ namespace RamuneLib.Utils
         /// <returns>The created PingInstance.</returns>
         public static PingInstance Create(string id, string label, PingColor color, PingType type, bool visible = true)
         {
-            if (CachedPings.ContainsKey(id))
+            if(CachedPings.ContainsKey(id))
                 throw new ArgumentException($"Ping with ID '{id}' already exists in cache");
 
             PingInstance ping = new();
@@ -66,7 +90,7 @@ namespace RamuneLib.Utils
         }
 
 
-        public static void Clear()
+        public static void ClearCache()
         {
             foreach(var ping in CachedPings.Values)
                 GameObject.Destroy(ping);

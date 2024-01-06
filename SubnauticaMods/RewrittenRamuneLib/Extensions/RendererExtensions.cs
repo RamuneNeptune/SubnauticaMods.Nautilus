@@ -76,7 +76,39 @@ namespace RamuneLib.Extensions
             });
             return renderer;
         }
-        
+
+
+        /// <summary>
+        /// Sets textures for multiple materials
+        /// </summary>
+        /// <param name="types">Array of texture types to set (Main, Specular, Illum)</param>
+        /// <param name="texture">The texture to apply</param>
+        /// <param name="materialIndexes">An array of material indexes to apply the textures to</param>
+        public static Renderer SetTexture(this Renderer renderer, TextureType[] types, Texture2D texture, int materialIndex = 0)
+        {
+            if(renderer == null)
+                throw new NullReferenceException("RendererExtensions.SetTextures: renderer is null");
+
+            foreach(var type in types)
+            {
+                switch(type)
+                {
+                    case TextureType.Main:
+                        renderer.materials[materialIndex].SetTexture(ShaderPropertyID._MainTex, texture);
+                        break;
+
+                    case TextureType.Specular:
+                        renderer.materials[materialIndex].SetTexture(ShaderPropertyID._SpecTex, texture);
+                        break;
+
+                    case TextureType.Illum:
+                        renderer.materials[materialIndex].SetTexture(ShaderPropertyID._Illum, texture);
+                        break;
+                }
+            }
+            return renderer;
+        }
+
 
         /// <summary>
         /// Sets textures for multiple materials

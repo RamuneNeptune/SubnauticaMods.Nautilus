@@ -16,7 +16,9 @@ namespace RamuneLib
 
                 PatchingUtils.ApplyPatch(typeof(Player), nameof(Player.Awake), new(typeof(Patches), nameof(Patches.Player_Awake)), HarmonyPatchType.Postfix);
 
-                PatchingUtils.ApplyPatch(typeof(Charger), nameof(Charger.Start), new(typeof(Patches), nameof(Patches.Charger_Start)), HarmonyPatchType.Postfix);
+                PatchingUtils.ApplyPatch(typeof(BatteryCharger), nameof(BatteryCharger.Initialize), new(typeof(Patches), nameof(Patches.BatteryCharger_Initialize)), HarmonyPatchType.Postfix);
+
+                PatchingUtils.ApplyPatch(typeof(PowerCellCharger), nameof(PowerCellCharger.Initialize), new(typeof(Patches), nameof(Patches.PowerCellCharger_Initialize)), HarmonyPatchType.Postfix);
 
                 PatchingUtils.ApplyPatch(typeof(LiveMixin), nameof(LiveMixin.TakeDamage), new(typeof(Patches), nameof(Patches.LiveMixin_TakeDamage)), HarmonyPatchType.Postfix);
 
@@ -32,7 +34,7 @@ namespace RamuneLib
                 {
                     yield return new WaitForSeconds(1f);
 
-                    LoggerUtils.Screen.LogMessage(PiracyVariables.PiracyMessages);
+                    //LoggerUtils.Screen.LogMessage(PiracyVariables.PiracyMessages);
                 }
             }
 

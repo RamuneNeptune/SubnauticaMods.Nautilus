@@ -1,7 +1,6 @@
 ﻿
 global using static Ramune.RamunesCustomizedStorage.RamunesCustomizedStorage;
 global using static Ramune.RamunesCustomizedStorage.Monos.StorageTypeConfig;
-using static VFXParticlesPool;
 
 
 namespace Ramune.RamunesCustomizedStorage.Monos
@@ -76,7 +75,7 @@ namespace Ramune.RamunesCustomizedStorage.Monos
                 Destroy(this);
 
             if(container == null)
-                throw new NullReferenceException($"{type} : 'container' is null");
+                throw new NullReferenceException($"[StorageResizer({type})]: 'container' is null");
 
             intendedSize = this.GetSize(type);
 
@@ -124,7 +123,6 @@ namespace Ramune.RamunesCustomizedStorage.Monos
                 default:
                     throw new ArgumentException($"The type of container '{container.GetType()}' is not yet handled by this mod, please DM/message @ramuneneptune about this on discord");
             }
-
             currentSize = intendedSize;
         }
 
@@ -139,9 +137,13 @@ namespace Ramune.RamunesCustomizedStorage.Monos
             // if the current values are set to the config values, return
             if(currentSize.x == intendedSize.x && currentSize.y == intendedSize.y)
                 return;
+
+            LoggerUtils.LogDebug($"Resizing from: {currentSize.x}, {currentSize.y}\nTo: {intendedSize.x}, {intendedSize.y}");
                 
             // else resize (this method will also update the currentHeight and currentWidth meaning this should only run once)
             this.Resize();
+
+            LoggerUtils.LogSubtitle($"Resized from: {currentSize.x}, {currentSize.y}\nTo: {intendedSize.x}, {intendedSize.y}");
         }
     }
 }

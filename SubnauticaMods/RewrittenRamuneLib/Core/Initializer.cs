@@ -12,6 +12,8 @@ namespace RamuneLib
             if(Piracy.Exists()) 
                 return;
 
+            // if you use this could you please change it up a bit cause i use this to easily spot which mods are mine in logfile
+
             var start = $"<-------------------> {name} ({version}) <------------------->";
             var finish = $"<{new string('-', start.Length - 2)}>";
 
@@ -25,6 +27,8 @@ namespace RamuneLib
             }
 
             LoggerUtils.LogInfo(finish);
+
+            // if you use this could you please change it up a bit cause i use this to easily spot which mods are mine in logfile
         }
     }
 }

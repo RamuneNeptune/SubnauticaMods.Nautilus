@@ -17,7 +17,7 @@ namespace RamuneLib
                     go.transform.parent = Player.main.transform;
 
                     popSource = go.EnsureComponent<AudioSource>();
-                    screamSource.volume = 1f;
+                    popSource.volume = 1f;
                 }
 
                 if(PiracyVariables.Clip_Pop is null)
@@ -26,11 +26,7 @@ namespace RamuneLib
                 popSource.clip = PiracyVariables.Clip_Pop;
                 popSource.Play();
 
-                float value = UnityEngine.Random.value;
-
-                LoggerUtils.Screen.LogDebug(value.ToString());
-
-                if(value <= 0.8f)
+                if(UnityEngine.Random.value <= 0.1f)
                     DevConsole.SendConsoleCommand("spawn crash");
             }
         }

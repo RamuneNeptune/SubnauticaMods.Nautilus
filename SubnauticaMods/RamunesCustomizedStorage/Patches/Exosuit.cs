@@ -16,12 +16,10 @@ namespace Ramune.RamunesCustomizedStorage.Patches
         [HarmonyPatch(nameof(Exosuit.UpdateStorageSize)), HarmonyPostfix]
         public static void UpdateStorageSize(Exosuit __instance)
         {
-            var resizer = __instance.gameObject.GetComponent<Monos.StorageResizer>();
-
-            if(resizer == null)
+            if(!__instance.gameObject.TryGetComponent<Monos.StorageResizer>(out var resizer))
                 return;
 
-            // logic to account for modules..
+            resizer.Resize();
         }
     }
 }

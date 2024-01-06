@@ -4,45 +4,54 @@ namespace RamuneLib.Utils
 {
     public static class DialogUtils
     {
-        public static Dialog.DialogButton CreateButton(string text, Action action) => new(text, action);
-
-
-        public class Dialog
+        public class BasicMenuComponent : uGUI_InputGroup, uGUI_IButtonReceiver
         {
-            internal DialogButton LB = DialogButton.Empty;
-            internal DialogButton RB = DialogButton.Empty;
-            internal string text = "";
+            public void Start() => this.Select();
 
-
-            private static IEnumerator ShowCoroutine()
+            public bool OnButtonDown(GameInput.Button button)
             {
-                yield break;
-            }
-
-
-            public static void Show()
-            {
-                CoroutineHost.StartCoroutine(ShowCoroutine());
-            }
-
-
-            public class DialogButton
-            {
-                public Action Action = null;
-                public string Text = null;
-
-
-                internal DialogButton() { }
-
-
-                internal DialogButton(string text, Action action)
+                if(button == GameInput.Button.UICancel && IngameMenu.main.CanClose())
                 {
-                    Text = text;
-                    Action = action;
+                    Close();
+                    GameInput.ClearInput();
+                    return true;
                 }
+                return false;
+            }
 
+            public void Close()
+            {
+                Deselect();
+                Destroy(gameObject);
+            }
 
-                internal static readonly DialogButton Empty = new();
+            public void OnEnable()
+            {
+                uGUI_LegendBar.ClearButtons();
+                //uGUI_LegendBar.ChangeButton(0, uGUI.FormatButton(GameInput.Button.UICancel, false, " / ", true), Language.main.GetFormat("Back"));
+                //uGUI_LegendBar.ChangeButton(1, uGUI.FormatButton(GameInput.Button.UISubmit, false, " / ", true), Language.main.GetFormat("ItemSelectorSelect"));
+            }
+
+            public override void OnDisable()
+            {
+                base.OnDisable();
+                uGUI_LegendBar.ClearButtons();
+                Destroy(gameObject);
+            }
+
+            public override void OnSelect(bool lockMovement)
+            {
+                base.OnSelect(lockMovement);
+                gameObject.SetActive(true);
+                FreezeTime.Begin(FreezeTime.Id.IngameMenu);
+                UWE.Utils.lockCursor = false;
+            }
+
+            public override void OnDeselect()
+            {
+                base.OnDeselect();
+                FreezeTime.End(FreezeTime.Id.IngameMenu);
+                Destroy(gameObject);
             }
         }
     }
