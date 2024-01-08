@@ -49,13 +49,20 @@ namespace Ramune.RadiantDepths.Monos
             }
 
             TotalChance = Drops.Values.Sum();
+
+            // All of the above logs as intended
+            // At the time this method is being run, 'Drops' is not null and is populated with entries
+            // but (go to update)
         }
 
 
         public void Update()
         {
+
             if(Drops == null) LoggerUtils.Screen.LogWarning($"Drops.Count: null");
             else LoggerUtils.Screen.LogWarning($"Drops.Count: {Drops.Count}");
+
+            // This still somehow *always* logs null, before, during, and after AddDrops()
         }
 
 
