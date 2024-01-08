@@ -5,7 +5,7 @@ namespace RamuneLib.Extensions
     public static class GameObjectExtensions
     {
         /// <summary>
-        /// Loops over all children and runs 'GameObject.Destroy()'
+        /// Loops over all the children of this GameObject and runs '<c>GameObject.Destroy()</c>' on them
         /// </summary>
         public static void DestroyChildren(this GameObject gameObject)
         {
@@ -15,7 +15,7 @@ namespace RamuneLib.Extensions
 
 
         /// <summary>
-        /// Loops over all children and runs 'GameObject.DestroyImmediate()'
+        /// Loops over all the children of this GameObject and runs '<c>GameObject.DestroyImmediate()</c>' on them
         /// </summary>
         public static void DestroyChildrenImmediate(this GameObject gameObject)
         {
@@ -25,14 +25,14 @@ namespace RamuneLib.Extensions
 
 
         /// <summary>
-        /// Loops 'GameObject.EnsureComponent' over the GameObject for all passed componenets
+        /// Loops '<c>GameObject.EnsureComponent()</c>' for all passed components
         /// </summary>
         /// <param name="types">Array of components to ensure</param>
         public static void EnsureComponents(this GameObject obj, params Type[] types) => types.ForEach(t => obj.EnsureComponent(t));
 
 
         /// <summary>
-        /// Loops 'GameObject.EnsureComponent' over the GameObject for all passed componenets
+        /// Loops '<c>GameObject.EnsureComponent</c>' for all passed components
         /// </summary>
         /// <param name="types">Array of components to ensure</param>
         public static void EnsureComponents<T>(this GameObject obj, params Type[] types) where T : Component

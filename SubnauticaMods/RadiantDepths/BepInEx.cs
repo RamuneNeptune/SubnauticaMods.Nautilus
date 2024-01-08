@@ -19,26 +19,6 @@ namespace Ramune.RadiantDepths
         {
             Initializer.Initialize(harmony, Logger, Name, Version);
             Items.Resources.RamuneOutcrop.Patch();
-            F();
-        }
-
-        public void F()
-        {
-            var prefab = PrefabUtils.CreatePrefab("RamuneTest", "Ramune test", "Ramune test official, this is real.", ImageUtils.GetSprite(TechType.TitaniumIngot))
-                .WithRecipe(PrefabUtils.CreateRecipe(1, new Ingredient(TechType.Titanium)), CraftTree.Type.Fabricator, CraftTreeHandler.Paths.FabricatorsAdvancedMaterials)
-                .WithAutoUnlock();
-
-            var clone = new CloneTemplate(prefab.Info, TechType.TitaniumIngot)
-            {
-                ModifyPrefab = go =>
-                {
-                    if(go.TryGetComponentInChildren<Renderer>(out var renderer, true)) renderer.SetTexture(new[] { TextureType.Main, TextureType.Specular }, ImageUtils.GetTexture("Test"));
-                    else LoggerUtils.LogFatal("Couldn't find renderer for Titanium Ingot clone");
-                }
-            };
-
-            prefab.SetGameObject(clone);
-            prefab.Register();
         }
     }
 }
