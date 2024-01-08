@@ -4,6 +4,7 @@ namespace RamuneLib.Utils
 {
     public static class DialogUtils
     {
+        // don't use any of this WIP shit lol
         public class BasicMenuComponent : uGUI_InputGroup, uGUI_IButtonReceiver
         {
             public void Start() => this.Select();

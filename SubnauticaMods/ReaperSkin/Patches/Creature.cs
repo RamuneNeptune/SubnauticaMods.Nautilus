@@ -1,4 +1,6 @@
 ﻿
+using DroneBuddy.MonoBehaviours;
+
 
 namespace Ramune.ReaperGoldSkin.Patches
 {
@@ -21,6 +23,29 @@ namespace Ramune.ReaperGoldSkin.Patches
             renderer
                 .SetTexture(new[] { TextureType.Main, TextureType.Specular, TextureType.Illum }, Main, 0, 1)
                 .SetGlowStrength(0.5f, 0, 1);
+        }
+    }
+
+
+    [HarmonyPatch(typeof(MapRoomCamera))]
+    public static class MapRoomCameraPatch
+    {
+        public static Texture2D Texture = ImageUtils.GetTexture("Base_Exterior_Map_Room");
+
+        [HarmonyPatch(nameof(MapRoomCamera.Start)), HarmonyPostfix]
+        public static void Start(MapRoomCamera __instance)
+        {
+            LoggerUtils.LogFatal("MapRoomCamera.Start: Start");
+
+            if(!__instance.gameObject.TryGetComponent<Drone>(out var drone))
+                return;
+
+            LoggerUtils.LogFatal("MapRoomCamera.Start: This is a drone buddy!");
+
+            if (__instance.gameObject.TryGetComponentInChildren<Renderer>(out var renderer, true))
+                renderer.SetTexture(new[] { TextureType.Main, TextureType.Specular }, Texture);
+
+            LoggerUtils.LogFatal("MapRoomCamera.Start: Set textures");
         }
     }
 }

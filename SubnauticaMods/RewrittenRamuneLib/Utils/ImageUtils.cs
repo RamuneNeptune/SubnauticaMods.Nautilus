@@ -11,6 +11,9 @@ namespace RamuneLib.Utils
         public static string GetAssetPath(string filename, string extension = ".png") => Path.Combine(Variables.Paths.AssetsFolder, filename + extension);
 
 
+        public static string GetAssetPath(string foldername, string filename, string extension = ".png") => Path.Combine(Variables.Paths.AssetsFolder, foldername, filename + extension);
+
+
         /// <summary>
         /// Loads and returns an <see cref="Atlas.Sprite"/> loaded from the Assets folder using the filename provided
         /// </summary>
@@ -18,10 +21,28 @@ namespace RamuneLib.Utils
         /// <returns>The loaded <see cref="Atlas.Sprite"/>.
         public static Atlas.Sprite GetSprite(string filename, string extension = ".png")
         {
-            if(CachedSprites.ContainsKey(filename + extension))
-                return CachedSprites[filename + extension];
+            if(CachedSprites.TryGetValue(filename + extension, out var cachedSprite))
+                return cachedSprite;
 
-            var sprite = Nautilus.Utility.ImageUtils.LoadSpriteFromFile(GetAssetPath(filename, extension));
+            var sprite = Utility.ImageUtils.LoadSpriteFromFile(GetAssetPath(filename, extension));
+            CachedSprites.Add(filename + extension, sprite);
+
+            return sprite;
+        }
+
+
+        /// <summary>
+        /// Loads and returns an <see cref="Atlas.Sprite"/> loaded from the Assets folder using the filename provided
+        /// </summary>
+        /// <param name="foldername">The name of the parent folder for this asset.</param>
+        /// <param name="filename">The filename of the sprite to load.</param>
+        /// <returns>The loaded <see cref="Atlas.Sprite"/>.
+        public static Atlas.Sprite GetSprite(string foldername, string filename, string extension = ".png")
+        {
+            if(CachedSprites.TryGetValue(filename + extension, out var cachedSprite))
+                return cachedSprite;
+
+            var sprite = Utility.ImageUtils.LoadSpriteFromFile(GetAssetPath(foldername, filename, extension));
             CachedSprites.Add(filename + extension, sprite);
 
             return sprite;
@@ -52,16 +73,40 @@ namespace RamuneLib.Utils
 
 
         /// <summary>
+        /// Returns the passed <see cref="Sprite"/> as a <see cref="Atlas.Sprite"/> 
+        /// </summary>
+        public static Atlas.Sprite AsSprite(this Sprite sprite) => new(sprite);
+
+
+        /// <summary>
         /// Loads and returns a <see cref="Texture2D"/> loaded from the Assets folder using the filename provided.
         /// </summary>
         /// <param name="filename">The filename of the texture to load.</param>
         /// <returns>The loaded <see cref="Texture2D"/>.
         public static Texture2D GetTexture(string filename, string extension = ".png")
         {
-            if(CachedTextures.ContainsKey(filename + extension))
-                return CachedTextures[filename + extension];
+            if(CachedTextures.TryGetValue(filename + extension, out var cachedTexture))
+                return cachedTexture;
 
-            var texture = Nautilus.Utility.ImageUtils.LoadTextureFromFile(GetAssetPath(filename, extension));
+            var texture = Utility.ImageUtils.LoadTextureFromFile(GetAssetPath(filename, extension));
+            CachedTextures.Add(filename + extension, texture);
+
+            return texture;
+        }
+
+
+        /// <summary>
+        /// Loads and returns an <see cref="Texture2D"/> loaded from the Assets folder using the filename provided
+        /// </summary>
+        /// <param name="foldername">The name of the parent folder for this asset.</param>
+        /// <param name="filename">The filename of the sprite to load.</param>
+        /// <returns>The loaded <see cref="Texture2D"/>.
+        public static Texture2D GetTexture(string foldername, string filename, string extension = ".png")
+        {
+            if(CachedTextures.TryGetValue(filename + extension, out var cachedTexture))
+                return cachedTexture;
+
+            var texture = Utility.ImageUtils.LoadTextureFromFile(GetAssetPath(foldername, filename, extension));
             CachedTextures.Add(filename + extension, texture);
 
             return texture;

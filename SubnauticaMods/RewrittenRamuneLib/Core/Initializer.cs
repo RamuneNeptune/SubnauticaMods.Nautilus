@@ -12,6 +12,8 @@ namespace RamuneLib
             if(Piracy.Exists()) 
                 return;
 
+            CoroutineHost.StartCoroutine(PatchingUtils.WaitForChainloader());
+
             // if you use this could you please change it up a bit cause i use this to easily spot which mods are mine in logfile
 
             var start = $"<-------------------> {name} ({version}) <------------------->";
@@ -25,7 +27,7 @@ namespace RamuneLib
                 harmony.PatchAll();
                 LoggerUtils.LogInfo($">> Finished loading harmony patches for '{name} {version}'..");
             }
-
+            
             LoggerUtils.LogInfo(finish);
 
             // if you use this could you please change it up a bit cause i use this to easily spot which mods are mine in logfile

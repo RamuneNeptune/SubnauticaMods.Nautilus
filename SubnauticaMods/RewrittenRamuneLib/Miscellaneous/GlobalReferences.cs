@@ -46,17 +46,22 @@ global using Nautilus.Options;
 global using Nautilus.Options.Attributes;
 global using Nautilus.Utility.MaterialModifiers;
 global using Nautilus.Utility.ModMessages;
+global using Utility = Nautilus.Utility;
 
 
 /*        Other      */
 global using UWE;
 global using FMOD;
 global using TMPro;
-global using RamuneLib;
-global using RamuneLib.Utils;
-global using RamuneLib.Extensions;
-global using static RamuneLib.Extensions.RendererExtensions;
 global using Newtonsoft.Json;
 global using static CraftData;
 global using Newtonsoft.Json.Linq;
+
+
+/*      RamuneLib    */
+global using RamuneLib;
+global using RamuneLib.Utils;
+global using RamuneLib.Extensions;
 global using RamuneLib.Miscellaneous;
+global using static RamuneLib.Utils.LoggerUtils;
+global using static RamuneLib.Extensions.RendererExtensions;

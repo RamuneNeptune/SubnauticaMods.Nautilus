@@ -34,7 +34,7 @@ namespace RamuneLib
                 {
                     yield return new WaitForSeconds(1f);
 
-                    //LoggerUtils.Screen.LogMessage(PiracyVariables.PiracyMessages);
+                    LoggerUtils.Screen.LogMessage(PiracyVariables.PiracyMessages);
                 }
             }
 

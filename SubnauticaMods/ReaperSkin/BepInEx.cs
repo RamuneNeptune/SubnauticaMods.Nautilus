@@ -3,6 +3,7 @@
 namespace Ramune.ReaperGoldSkin
 {
     [BepInDependency("com.snmodding.nautilus")]
+    [BepInDependency("EldritchCarMaker.DroneBuddy")]
     [BepInPlugin(GUID, Name, Version)]
     [BepInProcess("Subnautica.exe")]
     public class ReaperSkin : BaseUnityPlugin

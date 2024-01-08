@@ -1,5 +1,7 @@
 
 
+using static VFXParticlesPool;
+
 namespace RamuneLib.Utils
 {
     public static class PrefabUtils
@@ -65,6 +67,27 @@ namespace RamuneLib.Utils
                 Ingredients = new List<Ingredient>(ingredients),
                 LinkedItems = new List<TechType>(linkedItems)
             };
+        }
+
+
+        public static void SpawnTechType(TechType techType, Vector3 position, Quaternion rotation = default) => CoroutineHost.StartCoroutine(SpawnTechTypeAsync(techType, position, rotation));
+
+
+        public static void SpawnTechType(TechType techType, Vector3 position, Action<GameObject> additionalPrefabProcessing, Quaternion rotation = default) => CoroutineHost.StartCoroutine(SpawnTechTypeAsync(techType, position, rotation));
+
+
+        private static IEnumerator SpawnTechTypeAsync(TechType techType, Vector3 position, Quaternion rotation)
+        {
+            var task = GetPrefabForTechTypeAsync(techType);
+            yield return task;
+        }
+
+
+        private static IEnumerator SpawnTechTypeAsync(TechType techType, Vector3 position, Action<GameObject> additionalPrefabProcessing, Quaternion rotation)
+        {
+            var task = GetPrefabForTechTypeAsync(techType);
+            yield return task;
+            additionalPrefabProcessing.Invoke(GameObject.Instantiate(task.GetResult(), position, rotation));
         }
     }
 }

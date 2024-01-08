@@ -324,8 +324,10 @@
   <ItemGroup>
     <Compile Include="BepInEx.cs" />
     <Compile Include="Config.cs" />
-    <Compile Include="Items\Resource\BaseOutcrop.cs" />
-    <Compile Include="Patches\Player.cs" />
+    <Compile Include="Items\ItemUtils.cs" />
+    <Compile Include="Items\Resources\RamuneOutcrop.cs" />
+    <Compile Include="Monos\CustomOutcrop.cs" />
+    <Compile Include="Patches\BreakableResource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

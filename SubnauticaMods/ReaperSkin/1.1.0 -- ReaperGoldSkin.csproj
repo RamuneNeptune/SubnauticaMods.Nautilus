@@ -68,6 +68,9 @@
     <Reference Include="BepInEx.AssemblyPublicizer.MSBuild, Version=0.4.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\BepInEx.AssemblyPublicizer.MSBuild.0.4.1\lib\net472\BepInEx.AssemblyPublicizer.MSBuild.dll</HintPath>
     </Reference>
+    <Reference Include="DroneBuddy-publicized">
+      <HintPath>..\..\..\..\Program Files (x86)\Steam\steamapps\common\SubnauticaBranches\Stable\DroneBuddy-publicized.dll</HintPath>
+    </Reference>
     <Reference Include="FMODUnity, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Subnautica.GameLibs.71288.0.0-r.0\lib\net472\FMODUnity.dll</HintPath>
       <Private>True</Private>
