@@ -53,6 +53,7 @@ global using Utility = Nautilus.Utility;
 global using UWE;
 global using FMOD;
 global using TMPro;
+global using MonoMod.Utils;
 global using Newtonsoft.Json;
 global using static CraftData;
 global using Newtonsoft.Json.Linq;

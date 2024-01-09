@@ -1,8 +1,8 @@
 ﻿
 
-namespace Ramune.RadiantDepths.Items.Resources
+namespace Ramune.RadiantDepths.Items.Outcrops
 {
-    public static class RamuneOutcrop
+    internal class GeyseriteOutcrop
     {
         public static Dictionary<BiomeType, float> BiomeSpawnData = new()
         {
@@ -18,13 +18,12 @@ namespace Ramune.RadiantDepths.Items.Resources
 
         public static Dictionary<TechType, float> ItemDrops = new()
         {
-            { TechType.Quartz, 0.50f },
-            { TechType.Silver, 0.50f },
-            { TechType.Nickel, 0.25f },
-            { TechType.Marki2, 0.10f },
+            { Brimstone.Prefab.Info.TechType, 0.20f },
+            { TechType.Gold,                  0.40f },
+            { TechType.Lead,                  0.40f },
         };
 
-        public static CustomPrefab Prefab = ItemUtils.CreateOutcrop("RamuneOutcrop", "Ramune outcrop", "An outcrop comprised of pure Ramune.", TechType.SandstoneChunk, 1, ItemUtils.ConvertToBiomeData(BiomeSpawnData), ItemDrops);
+        public static CustomPrefab Prefab = ItemUtils.CreateOutcrop("GeyseriteOutcrop", "Geyserite outcrop", "An outcrop comprised of pure Geyserite.", TechType.ShaleChunk, 1, ItemUtils.ConvertToBiomeData(BiomeSpawnData), ItemDrops);
 
         public static void Patch() => Prefab.Register();
     }

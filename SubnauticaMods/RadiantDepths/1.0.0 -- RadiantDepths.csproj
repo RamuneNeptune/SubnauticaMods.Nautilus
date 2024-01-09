@@ -45,6 +45,9 @@
     <Reference Include="BepInEx, Version=5.4.20.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\BepInEx.BaseLib.5.4.20\lib\net35\BepInEx.dll</HintPath>
     </Reference>
+    <Reference Include="ECCLibrary">
+      <HintPath>..\..\..\..\Program Files (x86)\Steam\steamapps\common\Subnautica\BepInEx\plugins\ECCLibrary\ECCLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="FMODUnity, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Subnautica.GameLibs.71288.0.0-r.0\lib\net472\FMODUnity.dll</HintPath>
     </Reference>
@@ -324,8 +327,14 @@
   <ItemGroup>
     <Compile Include="BepInEx.cs" />
     <Compile Include="Config.cs" />
+    <Compile Include="Creatures\RadiantPeeper.cs" />
     <Compile Include="Items\ItemUtils.cs" />
-    <Compile Include="Items\Resources\RamuneOutcrop.cs" />
+    <Compile Include="Items\Outcrops\GeyseriteOutcrop.cs" />
+    <Compile Include="Items\Outcrops\LodestoneOutcrop.cs" />
+    <Compile Include="Items\Outcrops\SerpentiteOutcrop.cs" />
+    <Compile Include="Items\Outcrops\SiltstoneOutcrop.cs" />
+    <Compile Include="Items\Resources\Brimstone.cs" />
+    <Compile Include="Monos\AreaLight.cs" />
     <Compile Include="Monos\CustomOutcrop.cs" />
     <Compile Include="Patches\BreakableResource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

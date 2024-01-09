@@ -4,6 +4,9 @@ namespace Ramune.RadiantDepths.Items
 {
     public class ItemUtils
     {
+        public static Dictionary<string, Dictionary<TechType, float>> OutcropPatcher = new();
+
+
         public static CustomPrefab CreateOutcrop(string id, string name, string description, TechType outcropToCopy, int dropAmount, LootDistributionData.BiomeData[] biomeData, Dictionary<TechType, float> drops)
         {
             var prefab = PrefabUtils.CreatePrefab(id, name, description, ImageUtils.GetSprite(id + "Sprite"))
@@ -18,28 +21,14 @@ namespace Ramune.RadiantDepths.Items
                         breakable.breakText = "Break " + name.ToLower();
 
                     if(go.TryGetComponentInChildren<Renderer>(out var renderer))
-                        renderer.SetTexture(new[] { TextureType.Main, TextureType.Specular }, ImageUtils.GetTexture(id + "Texture"));
+                        renderer.SetTexture(new[] { TextureType.Main, TextureType.Specular }, ImageUtils.GetTexture(id + "Texture"), true);
 
+                    var guid = Guid.NewGuid().ToString();
                     var outcrop = go.EnsureComponent<Monos.CustomOutcrop>();
                     outcrop.DropAmount = dropAmount;
-                    outcrop.AddDrops(drops);
+                    outcrop.GUID = guid;
 
-                    // PREVIOUS ATTEMPTS:
-                    // ------------------------------------------------------------------------
-                    // outcrop.Drops = new()
-                    // {
-                    //     { TechType.Salt, 1f }
-                    // };
-                    // ------------------------------------------------------------------------
-                    // outcrop.Drops.AddRange(drops);
-                    // ------------------------------------------------------------------------
-                    // outcrop.Drops = drops;
-                    // ------------------------------------------------------------------------
-                    // drops.ForEach(pair => outcrop.Drops.Add(pair.Key, pair.Value));
-                    // ------------------------------------------------------------------------
-                    // outcrop.Drops = new();
-                    // --> followed by addrange, or the foreach, doesn't matter doesn't work..
-                    // ------------------------------------------------------------------------
+                    OutcropPatcher.Add(guid, drops);
                 }
             };
 
@@ -63,12 +52,14 @@ namespace Ramune.RadiantDepths.Items
                         breakable.breakText = "Break " + name.ToLower();
 
                     if(go.TryGetComponentInChildren<Renderer>(out var renderer))
-                        renderer.SetTexture(new[] { TextureType.Main, TextureType.Specular }, ImageUtils.GetTexture(id + "Texture"));
+                        renderer.SetTexture(new[] { TextureType.Main, TextureType.Specular }, ImageUtils.GetTexture(id + "Texture"), true);
 
+                    var guid = Guid.NewGuid().ToString();
                     var outcrop = go.EnsureComponent<Monos.CustomOutcrop>();
                     outcrop.DropAmount = dropAmount;
-                    outcrop.AddDrops(drops);
+                    outcrop.GUID = guid;
 
+                    OutcropPatcher.Add(guid, drops);
                     additionalModifyPrefab.Invoke(go);
                 }
             };
@@ -76,6 +67,112 @@ namespace Ramune.RadiantDepths.Items
             prefab.SetGameObject(clone);
             prefab.SetSpawns(biomeData);
             return prefab;
+        }
+
+
+        public static CustomPrefab CreateResource(string id, string name, string description, TechType resourceToCopy, TechCategory pdaCategory, LootDistributionData.BiomeData[] biomeData, Action<GameObject> additionalModifyPrefab)
+        {
+            var prefab = PrefabUtils.CreatePrefab(id, name, description, ImageUtils.GetSprite(id + "Sprite"))
+                .WithPDACategory(TechGroup.Resources, pdaCategory)
+                .WithAutoUnlock();
+
+            var clone = new CloneTemplate(prefab.Info, resourceToCopy)
+            {
+                ModifyPrefab = go =>
+                {
+                    if(!go.TryGetComponentInChildren<Renderer>(out var renderer))
+                        throw new Exception($"Couldn't find renderer while setting up {id}");
+
+                    renderer.SetTexture(new[] { TextureType.Main, TextureType.Specular }, ImageUtils.GetTexture(id + "Texture"), true);
+                    additionalModifyPrefab.Invoke(go);
+                }
+            };
+
+            prefab.SetGameObject(clone);
+            prefab.SetSpawns(biomeData);
+            return prefab;
+        }
+
+
+        public static CustomPrefab CreateResource(string id, string name, string description, TechType resourceToCopy, TechCategory pdaCategory, LootDistributionData.BiomeData[] biomeData)
+        {
+            var prefab = PrefabUtils.CreatePrefab(id, name, description, ImageUtils.GetSprite(id + "Sprite"))
+                .WithPDACategory(TechGroup.Resources, pdaCategory)
+                .WithAutoUnlock();
+
+            var clone = new CloneTemplate(prefab.Info, resourceToCopy)
+            {
+                ModifyPrefab = go =>
+                {
+                    if (!go.TryGetComponentInChildren<Renderer>(out var renderer))
+                        throw new Exception($"Couldn't find renderer while setting up {id}");
+
+                    renderer.SetTexture(new[] { TextureType.Main, TextureType.Specular }, ImageUtils.GetTexture(id + "Texture"), true);
+                }
+            };
+
+            prefab.SetGameObject(clone);
+            prefab.SetSpawns(biomeData);
+            return prefab;
+        }
+
+
+        public static CustomPrefab CreateResource(string id, string name, string description, TechType resourceToCopy, TechCategory pdaCategory, Action<GameObject> additionalModifyPrefab)
+        {
+            var prefab = PrefabUtils.CreatePrefab(id, name, description, ImageUtils.GetSprite(id + "Sprite"))
+                .WithPDACategory(TechGroup.Resources, pdaCategory)
+                .WithAutoUnlock();
+
+            var clone = new CloneTemplate(prefab.Info, resourceToCopy)
+            {
+                ModifyPrefab = go =>
+                {
+                    if(!go.TryGetComponentInChildren<Renderer>(out var renderer))
+                        throw new Exception($"Couldn't find renderer while setting up {id}");
+
+                    renderer.SetTexture(new[] { TextureType.Main, TextureType.Specular }, ImageUtils.GetTexture(id + "Texture"), true);
+                    additionalModifyPrefab.Invoke(go);
+                }
+            };
+
+            prefab.SetGameObject(clone);
+            return prefab;
+        }
+
+
+        public static CustomPrefab CreateResource(string id, string name, string description, TechType resourceToCopy, TechCategory pdaCategory)
+        {
+            var prefab = PrefabUtils.CreatePrefab(id, name, description, ImageUtils.GetSprite(id + "Sprite"))
+                .WithPDACategory(TechGroup.Resources, pdaCategory)
+                .WithAutoUnlock();
+
+            var clone = new CloneTemplate(prefab.Info, resourceToCopy)
+            {
+                ModifyPrefab = go =>
+                {
+                    if (!go.TryGetComponentInChildren<Renderer>(out var renderer))
+                        throw new Exception($"Couldn't find renderer while setting up {id}");
+
+                    renderer.SetTexture(new[] { TextureType.Main, TextureType.Specular }, ImageUtils.GetTexture(id + "Texture"), true);
+                }
+            };
+
+            prefab.SetGameObject(clone);
+            return prefab;
+        }
+
+
+        public static void CreateAltRecipe(string id, string name, string description, TechType itemToCraft, TechGroup pdaGroup, TechCategory pdaCategory, RecipeData recipe, CraftTree.Type craftTreeType)
+        {
+            var prefab = PrefabUtils.CreatePrefab(id, name, description, ImageUtils.GetSprite(itemToCraft))
+                .WithPDACategory(pdaGroup, pdaCategory)
+                .WithRecipe(recipe, craftTreeType)
+                .WithAutoUnlock();
+
+            var clone = new CloneTemplate(prefab.Info, itemToCraft);
+
+            prefab.SetGameObject(clone);
+            prefab.Register();
         }
 
 

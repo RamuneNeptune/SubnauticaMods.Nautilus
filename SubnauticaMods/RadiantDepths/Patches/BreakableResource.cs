@@ -6,10 +6,10 @@ namespace Ramune.RadiantDepths.Patches
     public static class BreakableResourcePatch
     {
         [HarmonyPatch(nameof(BreakableResource.BreakIntoResources)), HarmonyPrefix]
-        public static void BreakIntoResources(BreakableResource __instance)
+        public static bool BreakIntoResources(BreakableResource __instance)
         {
             if(!__instance.gameObject.TryGetComponent<Monos.CustomOutcrop>(out var outcrop))
-                return;
+                return true;
 
             if(!__instance.broken)
             {
@@ -28,7 +28,10 @@ namespace Ramune.RadiantDepths.Patches
 
                 if(__instance.hitFX) Utils.PlayOneShotPS(__instance.breakFX, __instance.transform.position, Quaternion.Euler(new Vector3(270f, 0f, 0f)), null);
             }
+
+            return false;
         }
+
 
         public static void SpawnPrefabForTechType(TechType techType, BreakableResource parent) => CoroutineHost.StartCoroutine(SpawnPrefabForTechTypeAsync(techType, parent));
 

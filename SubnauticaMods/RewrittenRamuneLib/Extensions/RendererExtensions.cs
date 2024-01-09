@@ -27,7 +27,7 @@ namespace RamuneLib.Extensions
             if(renderer == null)
                 throw new NullReferenceException("RendererExtensions.SetTexture: renderer is null");
 
-            switch (type)
+            switch(type)
             {
                 case TextureType.Main:
                     renderer.materials[materialIndex].SetTexture(ShaderPropertyID._MainTex, texture);
@@ -146,6 +146,41 @@ namespace RamuneLib.Extensions
 
 
         /// <summary>
+        /// Sets textures for multiple materials
+        /// </summary>
+        /// <param name="types">Array of texture types to set (Main, Specular, Illum)</param>
+        /// <param name="texture">The texture to apply</param>
+        /// <param name="materialIndexes">An array of material indexes to apply the textures to</param>
+        public static Renderer SetTexture(this Renderer renderer, TextureType[] types, Texture2D texture, bool applyToEverything)
+        {
+            if(renderer == null)
+                throw new NullReferenceException("RendererExtensions.SetTextures: renderer is null");
+
+            renderer.materials.ForEach(i =>
+            {
+                foreach(var type in types)
+                {
+                    switch(type)
+                    {
+                        case TextureType.Main:
+                            i.SetTexture(ShaderPropertyID._MainTex, texture);
+                            break;
+
+                        case TextureType.Specular:
+                            i.SetTexture(ShaderPropertyID._SpecTex, texture);
+                            break;
+
+                        case TextureType.Illum:
+                            i.SetTexture(ShaderPropertyID._Illum, texture);
+                            break;
+                    }
+                }
+            });
+            return renderer;
+        }
+
+
+        /// <summary>
         /// Sets the glow strength of the specified material
         /// </summary>
         /// <param name="strength">The glow strength value</param>
@@ -184,7 +219,7 @@ namespace RamuneLib.Extensions
         /// Toggles 'MARMO_EMISSION' keyword on all materials
         /// </summary>
         /// <param name="toggleState">True to enable emission, false to disable</param>
-        public static Renderer ToggleEmission(this Renderer renderer, bool toggleState)
+        public static Renderer ToggleEmission(this Renderer renderer, bool toggleState = true)
         {
             if(renderer == null)
                 throw new NullReferenceException("RendererExtensions.ToggleEmission: renderer is null");

@@ -1,8 +1,16 @@
 ﻿
+global using ECCLibrary;
+global using ECCLibrary.Data;
+global using Ramune.RadiantDepths.Creatures;
+global using Ramune.RadiantDepths.Items.Outcrops;
+global using Ramune.RadiantDepths.Items.Resources;
+global using ItemUtils = Ramune.RadiantDepths.Items.ItemUtils;
+
 
 namespace Ramune.RadiantDepths
 {
     [BepInDependency("com.snmodding.nautilus")]
+    [BepInDependency("com.lee23.ecclibrary")]
     [BepInPlugin(GUID, Name, Version)]
     [BepInProcess("Subnautica.exe")]
     public class RadiantDepths : BaseUnityPlugin
@@ -18,7 +26,11 @@ namespace Ramune.RadiantDepths
         public void Awake()
         {
             Initializer.Initialize(harmony, Logger, Name, Version);
-            Items.Resources.RamuneOutcrop.Patch();
+            Brimstone.Patch();
+            GeyseriteOutcrop.Patch();
+            LodestoneOutcrop.Patch();
+            SerpentiteOutcrop.Patch();
+            SiltstoneOutcrop.Patch();
         }
     }
 }

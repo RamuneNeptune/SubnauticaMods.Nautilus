@@ -144,8 +144,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.0.0 -- LeviathanRadarChip
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.0.0 -- SealRailingSettings", "RailingSettings\1.0.0 -- SealRailingSettings.csproj", "{AB73997D-E375-4EDA-BF0C-0A30297EDCB0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.0.0 -- NukeEm", "NukeEm\1.0.0 -- NukeEm.csproj", "{30966CB8-21E1-4738-BE40-E648D6EB9EB3}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "..SPECIAL", "..SPECIAL", "{067410F9-40E1-474C-91C7-1FCA866AB106}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.0.0 -- RadiantDepths", "RadiantDepths\1.0.0 -- RadiantDepths.csproj", "{78969732-CEDF-4B9F-B92B-3BAE0282D9A6}"
@@ -451,12 +449,6 @@ Global
 		{AB73997D-E375-4EDA-BF0C-0A30297EDCB0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AB73997D-E375-4EDA-BF0C-0A30297EDCB0}.Subnautica|Any CPU.ActiveCfg = Release|Any CPU
 		{AB73997D-E375-4EDA-BF0C-0A30297EDCB0}.Subnautica|Any CPU.Build.0 = Release|Any CPU
-		{30966CB8-21E1-4738-BE40-E648D6EB9EB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{30966CB8-21E1-4738-BE40-E648D6EB9EB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{30966CB8-21E1-4738-BE40-E648D6EB9EB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{30966CB8-21E1-4738-BE40-E648D6EB9EB3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{30966CB8-21E1-4738-BE40-E648D6EB9EB3}.Subnautica|Any CPU.ActiveCfg = Debug|Any CPU
-		{30966CB8-21E1-4738-BE40-E648D6EB9EB3}.Subnautica|Any CPU.Build.0 = Debug|Any CPU
 		{78969732-CEDF-4B9F-B92B-3BAE0282D9A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{78969732-CEDF-4B9F-B92B-3BAE0282D9A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78969732-CEDF-4B9F-B92B-3BAE0282D9A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -533,7 +525,6 @@ Global
 		{56D03F2B-D6A6-4E6E-8FBD-36E747E97586} = {8210A7F5-52B2-4669-9E46-087D93978F43}
 		{84423C79-1C63-4C94-8A12-019EB1668AF8} = {27A7DA9D-B5BA-4E23-9724-9AB2918295DC}
 		{AB73997D-E375-4EDA-BF0C-0A30297EDCB0} = {F21B759E-0174-45F7-BB07-602878FAC634}
-		{30966CB8-21E1-4738-BE40-E648D6EB9EB3} = {067410F9-40E1-474C-91C7-1FCA866AB106}
 		{067410F9-40E1-474C-91C7-1FCA866AB106} = {36B94EF9-6949-40D2-BAF2-5F768EDF2690}
 		{78969732-CEDF-4B9F-B92B-3BAE0282D9A6} = {067410F9-40E1-474C-91C7-1FCA866AB106}
 	EndGlobalSection
@@ -547,7 +538,6 @@ Global
 		RewrittenRamuneLib\RewrittenRamuneLib.projitems*{2aa9caeb-9c92-46a2-961f-53868b8fc699}*SharedItemsImports = 4
 		RewrittenRamuneLib\RewrittenRamuneLib.projitems*{2f15e29f-8280-474f-b56c-4ed1ca57e9b9}*SharedItemsImports = 4
 		SealUtils\SealUtils.projitems*{2f15e29f-8280-474f-b56c-4ed1ca57e9b9}*SharedItemsImports = 4
-		RewrittenRamuneLib\RewrittenRamuneLib.projitems*{30966cb8-21e1-4738-be40-e648d6eb9eb3}*SharedItemsImports = 4
 		RewrittenRamuneLib\RewrittenRamuneLib.projitems*{35a8660b-874f-4a8d-8ea4-8e67a5b2e258}*SharedItemsImports = 4
 		RewrittenRamuneLib\RewrittenRamuneLib.projitems*{3ed879be-8972-49e6-9544-1f6d92571d4a}*SharedItemsImports = 4
 		RewrittenRamuneLib\RewrittenRamuneLib.projitems*{421bc22b-b46e-408d-838e-e1668b93d22b}*SharedItemsImports = 4
