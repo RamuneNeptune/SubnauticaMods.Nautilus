@@ -27,6 +27,7 @@ namespace Ramune.RadiantDepths
         {
             Initializer.Initialize(harmony, Logger, Name, Version);
             Brimstone.Patch();
+            ItemUtils.CreateAltRecipe("AltCaveSulfur", "Cave sulfur (x2)", "SO4Tr. Sulfur-based powder which collects within particular cave plants. Combustible underwater.", TechType.CrashPowder, TechCategory.BasicMaterials, PrefabUtils.CreateRecipe(0, new Ingredient(Brimstone.Prefab.Info.TechType, 1), TechType.CrashPowder, TechType.CrashPowder), CraftTree.Type.Fabricator, CraftTreeHandler.Paths.FabricatorsBasicMaterials);
             GeyseriteOutcrop.Patch();
             LodestoneOutcrop.Patch();
             SerpentiteOutcrop.Patch();

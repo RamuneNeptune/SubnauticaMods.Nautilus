@@ -162,11 +162,11 @@ namespace Ramune.RadiantDepths.Items
         }
 
 
-        public static void CreateAltRecipe(string id, string name, string description, TechType itemToCraft, TechGroup pdaGroup, TechCategory pdaCategory, RecipeData recipe, CraftTree.Type craftTreeType)
+        public static void CreateAltRecipe(string id, string name, string description, TechType itemToCraft, TechCategory pdaCategory, RecipeData recipe, CraftTree.Type craftTreeType, params string[] stepsToTab)
         {
             var prefab = PrefabUtils.CreatePrefab(id, name, description, ImageUtils.GetSprite(itemToCraft))
-                .WithPDACategory(pdaGroup, pdaCategory)
-                .WithRecipe(recipe, craftTreeType)
+                .WithPDACategory(TechGroup.Resources, pdaCategory)
+                .WithRecipe(recipe, craftTreeType, stepsToTab)
                 .WithAutoUnlock();
 
             var clone = new CloneTemplate(prefab.Info, itemToCraft);
