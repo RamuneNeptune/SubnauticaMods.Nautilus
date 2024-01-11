@@ -10,13 +10,17 @@ namespace Ramune.RadiantDepths.Items.Tools.RadiantBlade
         public string HandText;
 
 
-        public Action<GameObject> Attack;
+        public Color Color;
 
 
-        public RadiantBladeAttack(string name, string handText, Action<GameObject> attack)
+        public Action<GameObject, Renderer> Attack;
+
+
+        public RadiantBladeAttack(string name, string handText, Color color, Action<GameObject, Renderer> attack)
         {
             Name = name;
             HandText = handText;
+            Color = color;
             Attack = attack;
         }
     }

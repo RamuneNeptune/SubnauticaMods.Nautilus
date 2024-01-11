@@ -8,6 +8,8 @@ namespace Ramune.RadiantDepths.Items.Tools.RadiantBlade
         public static FMODAsset ExplosiveAsset = Utility.AudioUtils.GetFmodAsset("");
         public static FMODAsset NanoswarmAsset = Utility.AudioUtils.GetFmodAsset("event:/tools/stasis_gun/sphere_enter");
         public static FMODAsset NextAsset = Utility.AudioUtils.GetFmodAsset("event:/env/input_number");
+        public Renderer renderer;
+
         public bool shouldDisplay = false;
         public bool isPowered = false;
         public string handText = "";
@@ -16,13 +18,10 @@ namespace Ramune.RadiantDepths.Items.Tools.RadiantBlade
 
         public List<RadiantBladeAttack> Attacks = new()
         {
-            {new("None", "<color=#ffffff>None</color>", (go) =>
-            {
-
-            })},
+            {new("None", "<color=#ffffff>None</color>", new(0.67f, 0.1f, 0.85f), null)},
 
 
-            {new("Seismic", "<color=#ffffff>Seismic</color> (1/3)", (go) =>
+            {new("Seismic", "<color=#ffffff>Seismic</color> (1/3)", new(0f, 1f, 0f), (go, renderer) =>
             {
                 FMODUWE.PlayOneShot(SeismicAsset, go.transform.position, 5f);
 
@@ -31,13 +30,13 @@ namespace Ramune.RadiantDepths.Items.Tools.RadiantBlade
             })},
 
 
-            {new("Explosive", "<color=#ffffff>Explosive</color> (2/3)", (go) =>
+            {new("Explosive", "<color=#ffffff>Explosive</color> (2/3)", new(1f, 0f, 0f), (go, renderer) =>
             {
-                LogSuccess("Not yet implemented");
+                FMODUWE.PlayOneShot(ExplosiveAsset, go.transform.position, 5f);
             })},
 
 
-            {new("Nanoswarm", "<color=#ffffff>Nanoswarm</color> (3/3)", (go) =>
+            {new("Nanoswarm", "<color=#ffffff>Nanoswarm</color> (3/3)", new(0f, 0f, 1f), (go, renderer) =>
             {
                 FMODUWE.PlayOneShot(NanoswarmAsset, go.transform.position, 5f);
 
@@ -52,6 +51,7 @@ namespace Ramune.RadiantDepths.Items.Tools.RadiantBlade
             damage = 50f * RadiantDepths.config.RadiantBladeDamage;
             attackDist = 3.5f * RadiantDepths.config.RadiantBladeRange;
             handText = Attacks[attackIndex].HandText;
+            renderer = GetComponentInChildren<Renderer>(true);
         }
 
 
@@ -84,10 +84,7 @@ namespace Ramune.RadiantDepths.Items.Tools.RadiantBlade
             if(Input.anyKeyDown && !Cursor.visible)
             {
                 if(Input.GetKeyDown(KeyCode.Q))
-                {
-                    IngameMenu.main.PlaySound(NextAsset);
                     CycleNextMode();
-                }
             }
 
             HandReticle.main.SetText(HandReticle.TextType.Use, "Switch mode", false, GameInput.Button.Deconstruct);
@@ -115,7 +112,10 @@ namespace Ramune.RadiantDepths.Items.Tools.RadiantBlade
             if(!IsValidTarget(liveMixin)) 
                 return;
 
-            Attacks[attackIndex].Attack.Invoke(gameObject);
+            if(!liveMixin.IsAlive())
+                return;
+
+            Attacks[attackIndex].Attack.Invoke(gameObject, renderer);
         }
 
 
@@ -137,11 +137,14 @@ namespace Ramune.RadiantDepths.Items.Tools.RadiantBlade
 
         public void CycleNextMode()
         {
+            IngameMenu.main.PlaySound(NextAsset);
+
             _ = attackIndex == Attacks.Count - 1
                 ? attackIndex = 0
                 : attackIndex++;
 
             handText = Attacks[attackIndex].HandText;
+            renderer.SetColor(ShaderPropertyID._GlowColor, Attacks[attackIndex].Color);
         }
 
 

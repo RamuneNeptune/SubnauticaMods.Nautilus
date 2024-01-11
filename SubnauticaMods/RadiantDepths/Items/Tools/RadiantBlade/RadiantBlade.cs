@@ -30,8 +30,8 @@ namespace Ramune.RadiantDepths.Items.Tools.RadiantBlade
                     renderer
                         .SetTexture(TextureType.Main, ImageUtils.GetTexture(Prefab.Id() + "Texture"))
                         .SetTexture(TextureType.Specular, ImageUtils.GetTexture(Prefab.Id() + "Texture"))
-                        .SetTexture(TextureType.Illum, ImageUtils.GetTexture(Prefab.Id() + "Illum"))
-                        .material.SetColor(ShaderPropertyID._GlowColor, new(0.67f, 0.1f, 0.85f, 0.4f));
+                        .SetTexture(TextureType.Illum, ImageUtils.GetTexture(Prefab.Id() + "IllumClear"))
+                        .SetColor(ShaderPropertyID._GlowColor, new(0.67f, 0.1f, 0.85f));
                 }
             };
 

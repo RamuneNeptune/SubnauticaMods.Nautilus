@@ -331,7 +331,7 @@
     <Compile Include="Items\Buildable\RadiantFabricator.cs" />
     <Compile Include="Items\Resources\RadiantCrystal.cs" />
     <Compile Include="Items\Resources\RadiantCube.cs" />
-    <Compile Include="Items\Tools\RadiantBlade\Freeze.cs" />
+    <Compile Include="Items\Tools\RadiantBlade\FreezeBitch.cs" />
     <Compile Include="Items\Tools\RadiantBlade\RadiantBlade.cs" />
     <Compile Include="Items\Tools\RadiantBlade\RadiantBladeAttack.cs" />
     <Compile Include="Items\Tools\RadiantBlade\RadiantBladeBehaviour.cs" />
