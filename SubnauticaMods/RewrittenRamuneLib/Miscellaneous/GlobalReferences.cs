@@ -65,4 +65,8 @@ global using RamuneLib.Utils;
 global using RamuneLib.Extensions;
 global using RamuneLib.Miscellaneous;
 global using static RamuneLib.Utils.LoggerUtils;
+global using static RamuneLib.Utils.LoggerUtils.Screen;
+global using static RamuneLib.Extensions.StringExtensions;
 global using static RamuneLib.Extensions.RendererExtensions;
+global using static RamuneLib.Extensions.GameObjectExtensions;
+global using static RamuneLib.Extensions.CustomPrefabExtensions;

@@ -14,7 +14,7 @@ namespace Ramune.RadiantDepths.Creatures
             { BiomeType.SafeShallows_CaveWall, 0.5f },
         };
 
-        public static CustomPrefab Prefab = PrefabUtils.CreatePrefab("RadiantPeeper", "Radiant peeper", "A damn radiant peeper.", ImageUtils.GetSprite("RadiantPeeperTexture2"));
+        public static CustomPrefab Prefab = PrefabUtils.CreatePrefab("UnknownPeeper", "Unknown peeper", "A damn unknown peeper.", ImageUtils.GetSprite("UnknownPeeperTexture"));
 
         public static void Patch()
         {
@@ -26,14 +26,15 @@ namespace Ramune.RadiantDepths.Creatures
                         return;
 
                     renderers.Where(ren => ren != null).ToList().ForEach(r => r
-                        .SetTexture(new[] { TextureType.Main, TextureType.Specular }, ImageUtils.GetTexture("RadiantPeeperTexture2"), true)
-                        .SetTexture(TextureType.Illum, ImageUtils.GetTexture("RadiantPeeperTexture2"))
-                        .SetGlowStrength(1.5f)
-                        .ToggleEmission());
+                        //.SetTexture(new[] { TextureType.Main, TextureType.Specular }, ImageUtils.GetTexture("UnknownPeeperTexture"), true)
+                        .SetTexture(TextureType.Illum, ImageUtils.GetTexture("UnknownPeeperIllum"))
+                        .ToggleEmission()
+                        .SetGlowStrength(0.3f)
+                        .materials.ForEach(m => m.SetColor(ShaderPropertyID._GlowColor, Color.red)));
                 }
             };
 
-            Prefab.SetSpawns(ItemUtils.ConvertToBiomeData(BiomeSpawnData));
+            Prefab.SetSpawns(BiomeSpawnData.AsBiomeData());
             Prefab.SetGameObject(clone);
             Prefab.Register();
         }

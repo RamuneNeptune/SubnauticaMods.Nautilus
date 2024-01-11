@@ -7,6 +7,19 @@ namespace RamuneLib.Utils
     public static class PrefabUtils
     {
         /// <summary>
+        /// Creates a custom prefab with the specified ID, name, and description.
+        /// </summary>
+        /// <param name="id">The unique identifier for the prefab.</param>
+        /// <param name="name">The name of the prefab.</param>
+        /// <param name="description">The description of the prefab.</param>
+        /// <param name="defaultSprite">When true this sets your sprite to a question mark, otherwise it searches for a sprite with the name of your id followed by Texture, e.g. an id of "Titanium" will look for "TitaniumSprite".</returns>
+        public static CustomPrefab CreatePrefab(string id, string name, string description, bool defaultSprite = true)
+        {
+            return new CustomPrefab(id, name, description, defaultSprite ? SpriteManager.Get(TechType.None) : ImageUtils.GetSprite(id + "Sprite"));
+        }
+
+
+        /// <summary>
         /// Creates a custom prefab with the specified ID, name, description, and <see cref="Atlas.Sprite"/>.
         /// </summary>
         /// <param name="id">The unique identifier for the prefab.</param>

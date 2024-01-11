@@ -18,6 +18,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\CustomPrefabExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)extensions\GameObjectExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)extensions\RendererExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)extensions\StringExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)extensions\TechTypeExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Miscellaneous\Attributes.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Miscellaneous\GlobalReferences.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Initializer.cs" />

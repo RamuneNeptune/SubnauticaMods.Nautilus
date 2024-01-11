@@ -18,12 +18,14 @@ namespace Ramune.RadiantDepths.Items.Outcrops
 
         public static Dictionary<TechType, float> ItemDrops = new()
         {
-            { Brimstone.Prefab.Info.TechType, 0.20f },
-            { TechType.Gold,                  0.40f },
-            { TechType.Lead,                  0.40f },
+            { BrimstoneOre.Prefab.Info.TechType, 0.20f },
+            { TechType.Gold,                     0.30f },
+            { TechType.Lead,                     0.30f },
         };
 
-        public static CustomPrefab Prefab = ItemUtils.CreateOutcrop("GeyseriteOutcrop", "Geyserite outcrop", "An outcrop comprised of pure Geyserite.", TechType.ShaleChunk, 1, ItemUtils.ConvertToBiomeData(BiomeSpawnData), ItemDrops);
+        public static CustomPrefab Prefab = PrefabUtils.CreatePrefab("GeyseriteOutcrop", "Geyserite outcrop", "An outcrop comprised of pure Geyserite.", false)
+            .WithOutcrop("GeyseriteOutcrop", TechType.ShaleChunk, 1, BiomeSpawnData.AsBiomeData(), ItemDrops)
+            .WithAutoUnlock();
 
         public static void Patch() => Prefab.Register();
     }

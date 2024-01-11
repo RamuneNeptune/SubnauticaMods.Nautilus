@@ -1,16 +1,8 @@
 ﻿
-global using ECCLibrary;
-global using ECCLibrary.Data;
-global using Ramune.RadiantDepths.Creatures;
-global using Ramune.RadiantDepths.Items.Outcrops;
-global using Ramune.RadiantDepths.Items.Resources;
-global using ItemUtils = Ramune.RadiantDepths.Items.ItemUtils;
-
 
 namespace Ramune.RadiantDepths
 {
     [BepInDependency("com.snmodding.nautilus")]
-    [BepInDependency("com.lee23.ecclibrary")]
     [BepInPlugin(GUID, Name, Version)]
     [BepInProcess("Subnautica.exe")]
     public class RadiantDepths : BaseUnityPlugin
@@ -21,17 +13,28 @@ namespace Ramune.RadiantDepths
         public static readonly Harmony harmony = new(GUID);
         public const string GUID = "com.ramune.RadiantDepths";
         public const string Name = "Radiant Depths";
-        public const string Version = "1.0.0";
+        public const string Version = "1.0.0.1";
 
         public void Awake()
         {
             Initializer.Initialize(harmony, Logger, Name, Version);
-            Brimstone.Patch();
-            ItemUtils.CreateAltRecipe("AltCaveSulfur", "Cave sulfur (x2)", "SO4Tr. Sulfur-based powder which collects within particular cave plants. Combustible underwater.", TechType.CrashPowder, TechCategory.BasicMaterials, PrefabUtils.CreateRecipe(0, new Ingredient(Brimstone.Prefab.Info.TechType, 1), TechType.CrashPowder, TechType.CrashPowder), CraftTree.Type.Fabricator, CraftTreeHandler.Paths.FabricatorsBasicMaterials);
-            GeyseriteOutcrop.Patch();
-            LodestoneOutcrop.Patch();
-            SerpentiteOutcrop.Patch();
-            SiltstoneOutcrop.Patch();
+
+            #region Patching
+            RadiantCrystal.Patch();    // req: 
+            RadiantFabricator.Patch(); // req: radiant crystal
+            RadiantCube.Patch();       // req: radiant crystal + fabricator
+            RadiantBlade.Patch();      // req: radiant crystal + fabricator + cube
+            BrimstoneOre.Patch();      // req: 
+            GeyseriteOutcrop.Patch();  // req: brimstone ore
+            LodestoneOutcrop.Patch();  // req: 
+            SerpentiteOutcrop.Patch(); // req: 
+            SiltstoneOutcrop.Patch();  // req: 
+            #endregion
+
+
+            #region Other
+            ItemUtils.CreateAltRecipe(" (x2)", TechType.CrashPowder, TechCategory.BasicMaterials, PrefabUtils.CreateRecipe(0, new Ingredient(BrimstoneOre.Prefab.Info.TechType, 1), TechType.CrashPowder, TechType.CrashPowder), CraftTree.Type.Fabricator, CraftTreeHandler.Paths.FabricatorsBasicMaterials);
+            #endregion
         }
     }
 }

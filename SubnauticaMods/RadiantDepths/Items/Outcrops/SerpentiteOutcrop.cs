@@ -20,10 +20,22 @@ namespace Ramune.RadiantDepths.Items.Outcrops
             { TechType.Nickel,  0.33f },
             { TechType.Diamond, 0.33f },
             { TechType.Silver,  0.33f },
+            { TechType.Copper,  0.33f },
         };
-
-        public static CustomPrefab Prefab = ItemUtils.CreateOutcrop("SerpentiteOutcrop", "Serpentite outcrop", "An outcrop comprised of pure Serpentite.", TechType.SandstoneChunk, 1, ItemUtils.ConvertToBiomeData(BiomeSpawnData), ItemDrops);
+        
+        public static CustomPrefab Prefab = PrefabUtils.CreatePrefab("SerpentiteOutcrop", "Serpentite outcrop", "An outcrop comprised of pure Serpentite.", false)
+            .WithOutcrop("SerpentiteOutcrop", TechType.SandstoneChunk, 1, BiomeSpawnData.AsBiomeData(), ItemDrops)
+            .WithAutoUnlock();
 
         public static void Patch() => Prefab.Register();
+
+        /*
+        public static Action<GameObject> ModifyPrefab = go =>
+        {
+            LoggerUtils.Screen.LogInfo("Additional modify prefab");
+            var light = go.EnsureComponent<AreaLight>();
+            light.color = new(0f, 1f, 0f);
+        };
+        */
     }
 }

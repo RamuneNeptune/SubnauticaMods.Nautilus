@@ -17,13 +17,15 @@ namespace Ramune.RadiantDepths.Items.Outcrops
 
         public static Dictionary<TechType, float> ItemDrops = new()
         {
-            { TechType.Titanium, 0.50f },
-            { TechType.Lithium,  0.40f },
+            { TechType.Titanium, 0.30f },
+            { TechType.Lithium,  0.30f },
             { TechType.Copper,   0.30f },
             { TechType.Silver,   0.20f },
         };
 
-        public static CustomPrefab Prefab = ItemUtils.CreateOutcrop("SiltstoneOutcrop", "Siltstone outcrop", "An outcrop comprised of pure Siltstone.", TechType.LimestoneChunk, 1, ItemUtils.ConvertToBiomeData(BiomeSpawnData), ItemDrops);
+        public static CustomPrefab Prefab = PrefabUtils.CreatePrefab("SiltstoneOutcrop", "Siltstone outcrop", "An outcrop comprised of pure Siltstone.", false)
+            .WithOutcrop("SiltstoneOutcrop", TechType.LimestoneChunk, 1, BiomeSpawnData.AsBiomeData(), ItemDrops)
+            .WithAutoUnlock();
 
         public static void Patch() => Prefab.Register();
     }

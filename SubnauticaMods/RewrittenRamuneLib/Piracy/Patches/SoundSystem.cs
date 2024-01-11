@@ -13,6 +13,8 @@ namespace RamuneLib
 
                 if(SoundSystem.musicVCA.hasHandle())
                     SoundSystem.musicVCA.setVolume(0f);
+
+                // Pirate Tune's will handle the music :D
             }
         }
     }

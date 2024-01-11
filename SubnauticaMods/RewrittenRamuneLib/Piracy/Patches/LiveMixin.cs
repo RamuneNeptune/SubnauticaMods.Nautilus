@@ -23,9 +23,9 @@ namespace RamuneLib
 
                 if(scream is null)
                 {
-                    var sound = Nautilus.Utility.AudioUtils.CreateSound(PiracyVariables.Clip_Scream, Nautilus.Utility.AudioUtils.StandardSoundModes_3D);
-                    CustomSoundHandler.RegisterCustomSound("FishScream", sound, Nautilus.Utility.AudioUtils.BusPaths.UnderwaterCreatures);
-                    scream = Nautilus.Utility.AudioUtils.GetFmodAsset("FishScream");
+                    var sound = Utility.AudioUtils.CreateSound(PiracyVariables.Clip_Scream, Utility.AudioUtils.StandardSoundModes_3D);
+                    CustomSoundHandler.RegisterCustomSound("FishScream", sound, Utility.AudioUtils.BusPaths.UnderwaterCreatures);
+                    scream = Utility.AudioUtils.GetFmodAsset("FishScream");
                 }
 
                 CoroutineHost.StartCoroutine(SetupScream(__instance.gameObject, __instance));

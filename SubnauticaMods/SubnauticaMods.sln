@@ -146,7 +146,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.0.0 -- SealRailingSetting
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "..SPECIAL", "..SPECIAL", "{067410F9-40E1-474C-91C7-1FCA866AB106}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.0.0 -- RadiantDepths", "RadiantDepths\1.0.0 -- RadiantDepths.csproj", "{78969732-CEDF-4B9F-B92B-3BAE0282D9A6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.0.0.1 -- RadiantDepths", "RadiantDepths\1.0.0.1 -- RadiantDepths.csproj", "{78969732-CEDF-4B9F-B92B-3BAE0282D9A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

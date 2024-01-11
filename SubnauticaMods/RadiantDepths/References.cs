@@ -1,0 +1,11 @@
+﻿global using ECCLibrary;
+global using ECCLibrary.Data;
+global using Ramune.RadiantDepths.Monos;
+global using Ramune.RadiantDepths.Items;
+global using Ramune.RadiantDepths.Creatures;
+global using Ramune.RadiantDepths.Items.Outcrops;
+global using Ramune.RadiantDepths.Items.Buildable;
+global using Ramune.RadiantDepths.Items.Resources;
+global using Ramune.RadiantDepths.Items.Tools;
+global using Ramune.RadiantDepths.Items.Tools.RadiantBlade;
+global using ItemUtils = Ramune.RadiantDepths.Items.ItemUtils;

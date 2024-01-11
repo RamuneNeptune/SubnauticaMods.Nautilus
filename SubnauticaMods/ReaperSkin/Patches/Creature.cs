@@ -21,7 +21,7 @@ namespace Ramune.ReaperGoldSkin.Patches
                 return;
 
             renderer
-                .SetTexture(new[] { TextureType.Main, TextureType.Specular, TextureType.Illum }, Main, 0, 1)
+                //.SetTexture(new[] { TextureType.Main, TextureType.Specular, TextureType.Illum }, Main, 0, 1)
                 .SetGlowStrength(0.5f, 0, 1);
         }
     }
@@ -42,8 +42,8 @@ namespace Ramune.ReaperGoldSkin.Patches
 
             LoggerUtils.LogFatal("MapRoomCamera.Start: This is a drone buddy!");
 
-            if (__instance.gameObject.TryGetComponentInChildren<Renderer>(out var renderer, true))
-                renderer.SetTexture(new[] { TextureType.Main, TextureType.Specular }, Texture);
+            if(__instance.gameObject.TryGetComponentInChildren<Renderer>(out var renderer, true))
+                //renderer.SetTexture(new[] { TextureType.Main, TextureType.Specular }, Texture);
 
             LoggerUtils.LogFatal("MapRoomCamera.Start: Set textures");
         }
